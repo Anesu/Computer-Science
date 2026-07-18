@@ -18,6 +18,7 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/pathway-canvas-script.js` | Document script embedded in the .tldraw: click a course to highlight its prereq chain |
 | `planning/04-pathway-graph.md` | Generated companion doc: semester credit-load table + canvas legend |
 | `planning/05-frontend-plan.md` | Frontend build plan: Astro static site + Caddy, git-backed progress |
+| `planning/06-agentic-feedback-system.md` | Assessment & feedback layer for AI-only feedback: examiner/reviewer roles, rubrics-as-data, evidence-linked records |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles: spec, reading list, `/teach` mission (Phase 2) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
