@@ -46,8 +46,10 @@ export default function ({ editor, signal }) {
 		return seen
 	}
 
+	// Shapes are generated locked (read-only diagram) — ignoreShapeLock lets
+	// the script still restyle them.
 	function setOpacities(updates) {
-		editor.run(() => editor.updateShapes(updates), { history: 'ignore' })
+		editor.run(() => editor.updateShapes(updates), { history: 'ignore', ignoreShapeLock: true })
 	}
 
 	function highlight(courseId) {
@@ -94,6 +96,9 @@ export default function ({ editor, signal }) {
 		else reset()
 	}
 
+	try {
+		editor.setCurrentTool('select')
+	} catch {}
 	editor.on('event', handleEvent)
 	signal.addEventListener('abort', () => editor.off('event', handleEvent))
 }

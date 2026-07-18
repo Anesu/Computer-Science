@@ -258,8 +258,11 @@ def _rich_text(*lines: str) -> dict:
 
 
 def _shape(sid, stype, parent, index, x, y, props, opacity=1):
+    # isLocked keeps the generated diagram read-only in the editor: clicks
+    # can't select, drag, or text-edit, but the highlight script still sees
+    # pointer events (it hit-tests coordinates and writes with ignoreShapeLock).
     return {
-        "x": x, "y": y, "rotation": 0, "isLocked": False, "opacity": opacity,
+        "x": x, "y": y, "rotation": 0, "isLocked": True, "opacity": opacity,
         "meta": {}, "id": sid, "type": stype, "props": props,
         "parentId": parent, "index": index, "typeName": "shape",
     }
