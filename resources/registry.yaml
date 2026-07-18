@@ -1,546 +1,508 @@
-# Central source registry — the single place bibliographic data and license
-# status live. Curriculum documents reference entries by id only.
-# Schema and status lifecycle: planning/01-okf-profile.md
-#
-# Outreach queue (approval_needed / approval_requested, by priority):
-#   python3 scripts/validate_pathway.py --outreach
+# Central source registry - the single place bibliographic data and license
+# statuses are tracked. Every document in the curriculum links to these IDs.
 
-# ── Programming & software fundamentals ─────────────────────────────────
 - id: sicp
   title: Structure and Interpretation of Computer Programs
-  authors: [Harold Abelson, Gerald Jay Sussman, Julie Sussman]
+  authors:
+    - Harold Abelson
+    - Gerald Jay Sussman
+    - Julie Sussman
   publisher: MIT Press
   year: 1996
   url: https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html
   license: CC BY-SA 4.0 (online edition)
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS1101, CS3103]
-  priority: medium
-
+  used_in:
+    - CS1101
+    - CS3103
 - id: composing-programs
   title: Composing Programs
-  authors: [John DeNero]
+  authors:
+    - John DeNero
   publisher: self-published (UC Berkeley CS61A)
   year: 2023
   url: https://www.composingprograms.com/
   license: CC BY-SA 3.0
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS1101]
-  priority: high
-
+  used_in:
+    - CS1101
 - id: rust-book
   title: The Rust Programming Language
-  authors: [Steve Klabnik, Carol Nichols]
+  authors:
+    - Steve Klabnik
+    - Carol Nichols
   publisher: No Starch Press / rust-lang.org
   year: 2023
   url: https://doc.rust-lang.org/book/
   license: MIT/Apache-2.0 (online edition)
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS1202]
-  priority: high
-
+  used_in:
+    - CS1202
 - id: knr
   title: The C Programming Language (2nd ed.)
-  authors: [Brian Kernighan, Dennis Ritchie]
+  authors:
+    - Brian Kernighan
+    - Dennis Ritchie
   publisher: Pearson (Prentice Hall)
   year: 1988
   url: null
   license: all rights reserved
-  status: purchase_only
+  status: identified
   status_date: 2026-07-18
-  contact: Pearson permissions — https://www.pearson.com/en-us/contact-us/permissions.html
-  terms: null
-  used_in: [CS1202]
-  priority: medium
-
+  used_in:
+    - CS1202
 - id: pragprog
   title: The Pragmatic Programmer (20th Anniversary ed.)
-  authors: [David Thomas, Andrew Hunt]
+  authors:
+    - David Thomas
+    - Andrew Hunt
   publisher: Pearson (Addison-Wesley)
   year: 2019
   url: https://pragprog.com/titles/tpp20/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: The Pragmatic Bookshelf — support@pragprog.com
-  terms: null
-  used_in: [CS1203, CS2103]
-  priority: medium
-
+  used_in:
+    - CS1203
+    - CS2103
 - id: aposd
   title: A Philosophy of Software Design (2nd ed.)
-  authors: [John Ousterhout]
+  authors:
+    - John Ousterhout
   publisher: Yaknyam Press
   year: 2021
   url: https://web.stanford.edu/~ouster/cgi-bin/book.php
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: John Ousterhout — Stanford CS faculty page
-  terms: null
-  used_in: [CS2103]
-  priority: high
-
-# ── Mathematics ─────────────────────────────────────────────────────────
+  used_in:
+    - CS2103
 - id: mcs-mit
   title: Mathematics for Computer Science
-  authors: [Eric Lehman, F. Thomson Leighton, Albert R. Meyer]
+  authors:
+    - Eric Lehman
+    - F. Thomson Leighton
+    - Albert R. Meyer
   publisher: MIT OpenCourseWare
   year: 2018
   url: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/
   license: CC BY-NC-SA 4.0
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [MA1101]
-  priority: high
-
+  used_in:
+    - MA1101
 - id: rosen-discrete
   title: Discrete Mathematics and Its Applications (8th ed.)
-  authors: [Kenneth Rosen]
+  authors:
+    - Kenneth Rosen
   publisher: McGraw Hill
   year: 2019
   url: null
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: McGraw Hill permissions — https://www.mheducation.com/permissions.html
-  terms: null
-  used_in: [MA1101]
-  priority: low
-
+  used_in:
+    - MA1101
 - id: openstax-calculus
-  title: "Calculus Volume 1–3"
-  authors: [Gilbert Strang, Edwin Herman, et al.]
+  title: "Calculus Volume 1\u20133"
+  authors:
+    - Gilbert Strang
+    - Edwin Herman
+    - et al.
   publisher: OpenStax
   year: 2016
   url: https://openstax.org/details/books/calculus-volume-1
   license: CC BY-NC-SA 4.0
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [MA1102]
-  priority: high
-
+  used_in:
+    - MA1102
 - id: strang-linalg
   title: Introduction to Linear Algebra (6th ed.)
-  authors: [Gilbert Strang]
+  authors:
+    - Gilbert Strang
   publisher: Wellesley-Cambridge Press
   year: 2023
   url: https://math.mit.edu/~gs/linearalgebra/
   license: all rights reserved (MIT OCW 18.06 lectures are CC BY-NC-SA)
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Wellesley-Cambridge Press — gilstrang@gmail.com (listed on book site)
-  terms: null
-  used_in: [MA1201]
-  priority: high
-
+  used_in:
+    - MA1201
 - id: openintro-stats
   title: OpenIntro Statistics (4th ed.)
-  authors: [David Diez, Mine Çetinkaya-Rundel, Christopher Barr]
+  authors:
+    - David Diez
+    - "Mine \xC7etinkaya-Rundel"
+    - Christopher Barr
   publisher: OpenIntro
   year: 2019
   url: https://www.openintro.org/book/os/
   license: CC BY-SA 3.0
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [MA2101]
-  priority: high
-
+  used_in:
+    - MA2101
 - id: mml
   title: Mathematics for Machine Learning
-  authors: [Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong]
+  authors:
+    - Marc Peter Deisenroth
+    - A. Aldo Faisal
+    - Cheng Soon Ong
   publisher: Cambridge University Press
   year: 2020
   url: https://mml-book.github.io/
   license: free PDF by publisher agreement
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [MA1201, MA2101, CS3102]
-  priority: high
-
-# ── Algorithms & theory ─────────────────────────────────────────────────
+  used_in:
+    - MA1201
+    - MA2101
+    - CS3102
 - id: clrs
   title: Introduction to Algorithms (4th ed.)
-  authors: [Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein]
+  authors:
+    - Thomas Cormen
+    - Charles Leiserson
+    - Ronald Rivest
+    - Clifford Stein
   publisher: MIT Press
   year: 2022
   url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: MIT Press rights & permissions — https://mitpress.mit.edu/rights-permissions/
-  terms: null
-  used_in: [CS1201, CS2101]
-  priority: high
-
+  used_in:
+    - CS1201
+    - CS2101
 - id: erickson-algorithms
   title: Algorithms
-  authors: [Jeff Erickson]
+  authors:
+    - Jeff Erickson
   publisher: self-published
   year: 2019
   url: https://jeffe.cs.illinois.edu/teaching/algorithms/
   license: CC BY 4.0
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS2101]
-  priority: high
-
+  used_in:
+    - CS2101
 - id: sipser
   title: Introduction to the Theory of Computation (3rd ed.)
-  authors: [Michael Sipser]
+  authors:
+    - Michael Sipser
   publisher: Cengage
   year: 2013
   url: null
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Cengage permissions — https://www.cengage.com/permissions/
-  terms: null
-  used_in: [CS2203]
-  priority: high
-
-# ── Systems ─────────────────────────────────────────────────────────────
+  used_in:
+    - CS2203
 - id: nand2tetris
   title: The Elements of Computing Systems (Nand2Tetris, 2nd ed.)
-  authors: [Noam Nisan, Shimon Schocken]
+  authors:
+    - Noam Nisan
+    - Shimon Schocken
   publisher: MIT Press
   year: 2021
   url: https://www.nand2tetris.org/
   license: course materials free; book all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: nand2tetris.org contact form / MIT Press permissions
-  terms: null
-  used_in: [CS1102]
-  priority: high
-
+  used_in:
+    - CS1102
 - id: csapp
-  title: "Computer Systems: A Programmer's Perspective (3rd ed.)"
-  authors: [Randal Bryant, David O'Hallaron]
+  title: 'Computer Systems: A Programmer''s Perspective (3rd ed.)'
+  authors:
+    - Randal Bryant
+    - David O'Hallaron
   publisher: Pearson
   year: 2016
   url: https://csapp.cs.cmu.edu/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Pearson permissions — https://www.pearson.com/en-us/contact-us/permissions.html
-  terms: null
-  used_in: [CS1202, CS2102]
-  priority: high
-
+  used_in:
+    - CS1202
+    - CS2102
 - id: ostep
-  title: "Operating Systems: Three Easy Pieces"
-  authors: [Remzi Arpaci-Dusseau, Andrea Arpaci-Dusseau]
+  title: 'Operating Systems: Three Easy Pieces'
+  authors:
+    - Remzi Arpaci-Dusseau
+    - Andrea Arpaci-Dusseau
   publisher: Arpaci-Dusseau Books
   year: 2023
   url: https://pages.cs.wisc.edu/~remzi/OSTEP/
   license: free online chapters
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS2201, SYS-ADV]
-  priority: high
-
+  used_in:
+    - CS2201
+    - SYS-ADV
 - id: ddia
   title: Designing Data-Intensive Applications (2nd ed.)
-  authors: [Martin Kleppmann, Chris Riccomini]
+  authors:
+    - Martin Kleppmann
+    - Chris Riccomini
   publisher: O'Reilly
   year: 2025
   url: https://dataintensive.net/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: O'Reilly permissions — permissions@oreilly.com
-  terms: null
-  used_in: [CS2202, CS3201, SYS-DBI]
-  priority: high
-
+  used_in:
+    - CS2202
+    - CS3201
+    - SYS-DBI
 - id: db-concepts
   title: Database System Concepts (7th ed.)
-  authors: [Avi Silberschatz, Henry Korth, S. Sudarshan]
+  authors:
+    - Avi Silberschatz
+    - Henry Korth
+    - S. Sudarshan
   publisher: McGraw Hill
   year: 2019
   url: https://db-book.com/
   license: all rights reserved (slides/materials free on site)
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: McGraw Hill permissions — https://www.mheducation.com/permissions.html
-  terms: null
-  used_in: [CS2202]
-  priority: medium
-
+  used_in:
+    - CS2202
 - id: db-internals
   title: Database Internals
-  authors: [Alex Petrov]
+  authors:
+    - Alex Petrov
   publisher: O'Reilly
   year: 2019
   url: https://www.databass.dev/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: O'Reilly permissions — permissions@oreilly.com
-  terms: null
-  used_in: [SYS-DBI]
-  priority: medium
-
+  used_in:
+    - SYS-DBI
 - id: kurose-ross
-  title: "Computer Networking: A Top-Down Approach (8th ed.)"
-  authors: [James Kurose, Keith Ross]
+  title: 'Computer Networking: A Top-Down Approach (8th ed.)'
+  authors:
+    - James Kurose
+    - Keith Ross
   publisher: Pearson
   year: 2021
   url: https://gaia.cs.umass.edu/kurose_ross/
   license: all rights reserved (lecture materials free on site)
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Pearson permissions — https://www.pearson.com/en-us/contact-us/permissions.html
-  terms: null
-  used_in: [CS3101]
-  priority: high
-
+  used_in:
+    - CS3101
 - id: beej-network
   title: Beej's Guide to Network Programming
-  authors: [Brian "Beej Jorgensen" Hall]
+  authors:
+    - Brian "Beej Jorgensen" Hall
   publisher: self-published
   year: 2023
   url: https://beej.us/guide/bgnet/
   license: free online, permissive personal-use terms
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3101]
-  priority: medium
-
+  used_in:
+    - CS3101
 - id: sysperf-gregg
-  title: "Systems Performance: Enterprise and the Cloud (2nd ed.)"
-  authors: [Brendan Gregg]
+  title: 'Systems Performance: Enterprise and the Cloud (2nd ed.)'
+  authors:
+    - Brendan Gregg
   publisher: Pearson (Addison-Wesley)
   year: 2020
   url: https://www.brendangregg.com/systems-performance-2nd-edition-book.html
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Pearson permissions; author site brendangregg.com
-  terms: null
-  used_in: [SYS-PERF]
-  priority: medium
-
+  used_in:
+    - SYS-PERF
 - id: sre-book
-  title: "Site Reliability Engineering: How Google Runs Production Systems"
-  authors: [Betsy Beyer, Chris Jones, Jennifer Petoff, Niall Murphy]
+  title: 'Site Reliability Engineering: How Google Runs Production Systems'
+  authors:
+    - Betsy Beyer
+    - Chris Jones
+    - Jennifer Petoff
+    - Niall Murphy
   publisher: O'Reilly / Google
   year: 2016
   url: https://sre.google/sre-book/table-of-contents/
   license: CC BY-NC-ND 4.0 (free online)
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3203]
-  priority: high
-
-# ── Programming languages & compilers ───────────────────────────────────
+  used_in:
+    - CS3203
 - id: crafting-interpreters
   title: Crafting Interpreters
-  authors: [Robert Nystrom]
+  authors:
+    - Robert Nystrom
   publisher: Genever Benning
   year: 2021
   url: https://craftinginterpreters.com/
   license: free online full text
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3103, SYS-COMP]
-  priority: high
-
+  used_in:
+    - CS3103
+    - SYS-COMP
 - id: tapl
   title: Types and Programming Languages
-  authors: [Benjamin Pierce]
+  authors:
+    - Benjamin Pierce
   publisher: MIT Press
   year: 2002
   url: https://www.cis.upenn.edu/~bcpierce/tapl/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: MIT Press rights & permissions — https://mitpress.mit.edu/rights-permissions/
-  terms: null
-  used_in: [CS3103]
-  priority: low
-
-# ── AI / ML ─────────────────────────────────────────────────────────────
+  used_in:
+    - CS3103
 - id: aima
-  title: "Artificial Intelligence: A Modern Approach (4th ed.)"
-  authors: [Stuart Russell, Peter Norvig]
+  title: 'Artificial Intelligence: A Modern Approach (4th ed.)'
+  authors:
+    - Stuart Russell
+    - Peter Norvig
   publisher: Pearson
   year: 2020
   url: https://aima.cs.berkeley.edu/
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Pearson permissions — https://www.pearson.com/en-us/contact-us/permissions.html
-  terms: null
-  used_in: [CS3102]
-  priority: medium
-
+  used_in:
+    - CS3102
 - id: d2l
   title: Dive into Deep Learning
-  authors: [Aston Zhang, Zachary Lipton, Mu Li, Alexander Smola]
+  authors:
+    - Aston Zhang
+    - Zachary Lipton
+    - Mu Li
+    - Alexander Smola
   publisher: Cambridge University Press
   year: 2023
   url: https://d2l.ai/
   license: CC BY-SA 4.0 (online edition)
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3102, AI-DL]
-  priority: high
-
+  used_in:
+    - CS3102
+    - AI-DL
 - id: goodfellow-dl
   title: Deep Learning
-  authors: [Ian Goodfellow, Yoshua Bengio, Aaron Courville]
+  authors:
+    - Ian Goodfellow
+    - Yoshua Bengio
+    - Aaron Courville
   publisher: MIT Press
   year: 2016
   url: https://www.deeplearningbook.org/
   license: free HTML online by publisher agreement
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [AI-DL]
-  priority: medium
-
+  used_in:
+    - AI-DL
 - id: slp3
   title: Speech and Language Processing (3rd ed. draft)
-  authors: [Dan Jurafsky, James Martin]
+  authors:
+    - Dan Jurafsky
+    - James Martin
   publisher: draft, free online
   year: 2025
   url: https://web.stanford.edu/~jurafsky/slp3/
   license: free online draft
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [AI-NLP]
-  priority: high
-
+  used_in:
+    - AI-NLP
 - id: sutton-barto
-  title: "Reinforcement Learning: An Introduction (2nd ed.)"
-  authors: [Richard Sutton, Andrew Barto]
+  title: 'Reinforcement Learning: An Introduction (2nd ed.)'
+  authors:
+    - Richard Sutton
+    - Andrew Barto
   publisher: MIT Press
   year: 2018
   url: http://incompleteideas.net/book/the-book-2nd.html
   license: free PDF by author agreement
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [AI-RL]
-  priority: medium
-
+  used_in:
+    - AI-RL
 - id: anthropic-docs
   title: Anthropic developer documentation & agent-building guides
-  authors: [Anthropic]
+  authors:
+    - Anthropic
   publisher: Anthropic
   year: 2026
   url: https://docs.anthropic.com/
   license: publicly available documentation
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3202, AI-MLOPS]
-  priority: high
-
-# ── Security ────────────────────────────────────────────────────────────
+  used_in:
+    - CS3202
+    - AI-MLOPS
 - id: security-engineering
   title: Security Engineering (3rd ed.)
-  authors: [Ross Anderson]
+  authors:
+    - Ross Anderson
   publisher: Wiley
   year: 2020
   url: https://www.cl.cam.ac.uk/~rja14/book.html
   license: free chapters online by author agreement
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [CS3104]
-  priority: high
-
+  used_in:
+    - CS3104
 - id: boneh-shoup
   title: A Graduate Course in Applied Cryptography
-  authors: [Dan Boneh, Victor Shoup]
+  authors:
+    - Dan Boneh
+    - Victor Shoup
   publisher: draft, free online
   year: 2023
   url: https://toc.cryptobook.us/
   license: free online draft
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [SEC-CRYPTO]
-  priority: high
-
-# ── HCI, graphics, other ────────────────────────────────────────────────
+  used_in:
+    - SEC-CRYPTO
 - id: design-everyday-things
   title: The Design of Everyday Things (revised ed.)
-  authors: [Don Norman]
+  authors:
+    - Don Norman
   publisher: Basic Books
   year: 2013
   url: null
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Hachette Book Group permissions
-  terms: null
-  used_in: [CS2204]
-  priority: medium
-
+  used_in:
+    - CS2204
 - id: cg-from-scratch
   title: Computer Graphics from Scratch
-  authors: [Gabriel Gambetta]
+  authors:
+    - Gabriel Gambetta
   publisher: No Starch Press
   year: 2021
   url: https://gabrielgambetta.com/computer-graphics-from-scratch/
   license: free online edition by author
   status: open
   status_date: 2026-07-18
-  contact: null
-  terms: null
-  used_in: [EL-GRAPH, CS2204]
-  priority: medium
-
+  used_in:
+    - EL-GRAPH
+    - CS2204
 - id: nielsen-chuang
   title: Quantum Computation and Quantum Information
-  authors: [Michael Nielsen, Isaac Chuang]
+  authors:
+    - Michael Nielsen
+    - Isaac Chuang
   publisher: Cambridge University Press
   year: 2010
   url: null
   license: all rights reserved
-  status: approval_needed
+  status: identified
   status_date: 2026-07-18
-  contact: Cambridge University Press permissions — https://www.cambridge.org/about-us/rights-permissions
-  terms: null
-  used_in: [EL-QUANT]
-  priority: low
+  used_in:
+    - EL-QUANT

@@ -12,8 +12,6 @@ Checks (planning/01-okf-profile.md, "Validation rules"):
 
 Usage:
   python3 scripts/validate_pathway.py                   # validate everything
-  python3 scripts/validate_pathway.py --outreach        # print the license outreach queue
-  python3 scripts/validate_pathway.py --outreach-drafts # write outreach letters to resources/outreach/
   python3 scripts/validate_pathway.py --mermaid         # print pathway graph doc (planning/04)
 """
 
@@ -31,8 +29,7 @@ CURRICULUM = ROOT / "curriculum"
 
 TRACKS = {"core", "ai", "systems", "security", "elective"}
 STATUSES = {
-    "open", "purchase_only", "purchased",
-    "approval_needed", "approval_requested", "licensed", "declined",
+    "open", "identified", "ingested",
 }
 CHURN = {"evergreen", "stable", "volatile"}
 STALE_AFTER = timedelta(days=183)
@@ -237,93 +234,7 @@ elective in semester 8.
 """
 
 
-def outreach_drafts(registry: dict, courses: dict) -> None:
-    outdir = ROOT / "resources" / "outreach"
-    outdir.mkdir(parents=True, exist_ok=True)
-    queue = [e for e in registry.values()
-             if e.get("status") in ("approval_needed", "approval_requested")]
-    for e in queue:
-        cited = [cid for cid in e.get("used_in", []) if cid in courses]
-        course_lines = "\n".join(
-            f"- {cid} — {courses[cid]['title']}" for cid in cited) or "- (course mapping pending)"
-        authors = ", ".join(e.get("authors", []))
-        body = f"""# Outreach draft — {e['title']}
-
-<!-- GENERATED from resources/registry.yaml (id: {e['id']}).
-     Edit freely before sending; regenerating overwrites this file.
-     After sending, set the registry entry's status to approval_requested;
-     after an answer, to licensed (record terms) or declined. -->
-
-- **Registry id:** {e['id']}
-- **Status:** {e['status']} (priority: {e.get('priority', 'n/a')})
-- **Contact:** {e.get('contact') or 'TBD — find rights/permissions contact'}
-- **Generated:** {date.today()}
-
----
-
-**To:** {e.get('contact') or '[rights & permissions contact]'}
-**Subject:** Permission request — "{e['title']}" as a recommended text in an open CS curriculum
-
-Dear {authors or 'rights and permissions team'},
-
-I am developing **Open CS Degree 2026**, a freely available, university-level
-computer-science curriculum aligned with the ACM/IEEE CS2023 guidelines and
-delivered through AI-assisted personalized tutoring. The curriculum recommends
-*{e['title']}* as a primary text for the following course(s):
-
-{course_lines}
-
-Learners are always directed to purchase or otherwise legitimately access the
-book — the curriculum links and cites; it does not reproduce the work.
-
-I am writing to ask:
-
-1. **Excerpt permission** — may course materials include short quoted excerpts
-   (with full attribution and a purchase link) where the curriculum discusses
-   the book's presentation of a topic?
-2. **Adaptation terms** — where a course's exercises build directly on the
-   book's material, what licensing terms would you offer for that adapted use?
-3. **Preferred purchase link** — which storefront link would you like learner
-   reading lists to use, so purchases credit the author as directly as possible?
-
-I'm happy to share the curriculum repository and the exact contexts in which
-the book is cited. Thank you for considering this — the book earned its place
-on this reading list.
-
-Kind regards,
-
-[Your name]
-[Your contact email]
-"""
-        (outdir / f"{e['id']}.md").write_text(body)
-    print(f"Wrote {len(queue)} outreach draft(s) to {outdir.relative_to(ROOT)}/")
-
-
-def outreach(registry: dict) -> None:
-    prio = {"high": 0, "medium": 1, "low": 2}
-    queue = sorted(
-        (e for e in registry.values()
-         if e.get("status") in ("approval_needed", "approval_requested")),
-        key=lambda e: (prio.get(e.get("priority", "low"), 3), e["id"]),
-    )
-    if not queue:
-        print("Outreach queue is empty.")
-        return
-    print(f"License outreach queue ({len(queue)} entries):\n")
-    for e in queue:
-        print(f"  [{e.get('priority', '?'):<6}] {e['status']:<19} {e['title']}")
-        print(f"           by {', '.join(e.get('authors', []))} — {e.get('publisher', 'n/a')}")
-        print(f"           contact: {e.get('contact') or 'TBD'}   since: {e.get('status_date', '?')}\n")
-
-
 def main() -> int:
-    if "--outreach" in sys.argv:
-        outreach(check_registry())
-        return 0
-    if "--outreach-drafts" in sys.argv:
-        courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
-        outreach_drafts(check_registry(), courses)
-        return 0
     if "--mermaid" in sys.argv:
         courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
         sys.stdout.write(mermaid_doc(courses))

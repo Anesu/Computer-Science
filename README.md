@@ -18,27 +18,14 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
-| `resources/outreach/` | Generated permission-request letter drafts, one per book |
 | `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
 
 ## Working with the source registry
 
 Every cited work lives in `resources/registry.yaml` with a license status
-(`open`, `purchase_only`, `purchased`, `approval_needed`, `approval_requested`,
-`licensed`, `declined`). To see the outreach queue — the books to seek author or
-publisher approval for, or to purchase:
+(`open`, `identified`, `ingested`). 
 
-```
-python3 scripts/validate_pathway.py --outreach          # print the queue
-python3 scripts/validate_pathway.py --outreach-drafts   # write letter drafts to resources/outreach/
-```
-
-Each draft in `resources/outreach/` is a ready-to-edit permission-request
-letter naming the courses that cite the book. After sending one, set the
-registry entry's status to `approval_requested`; when answered, to `licensed`
-(record the `terms`) or `declined`. When approval is granted or a book is
-bought, update that entry's `status`, `status_date`, and `terms` — the change
-applies to every document that cites it.
+When a work is `identified`, it means the application has identified it might need it. You can acquire it and change its status to `ingested` when it is in your library. The change applies to every document that cites it.
 
 ## Pathway graph
 

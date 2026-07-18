@@ -99,42 +99,16 @@ registry, so a status change (e.g. approval granted) applies everywhere at once.
   license: free-online                   # free text description of the default terms
   status: open                           # see lifecycle below
   status_date: 2026-07-18
-  contact: null                          # author/publisher contact point for outreach
-  terms: null                            # recorded terms once licensed/purchased
   used_in: [CS2201]                      # maintained by tooling, not by hand
-  priority: high                         # high | medium | low — outreach ordering
 ```
 
 ### License status lifecycle
 
-```
-open ────────────────────────────► (usable now, attribution required)
-purchase_only ──(book bought)────► purchased
-approval_needed ─(outreach sent)─► approval_requested ─┬─► licensed
-                                                       └─► declined ─► cite-only
-```
-
 | Status | Meaning | What curriculum docs may do |
 |---|---|---|
 | `open` | Openly licensed or freely published by the author | Link, cite, synthesize; excerpt within the license terms |
-| `purchase_only` | Commercial work, no special arrangement | Link and cite; direct the learner to buy it |
-| `purchased` | A copy has been bought for the programme | As above, plus the learner-owned copy is a first-class resource in missions |
-| `approval_needed` | We want deeper use (excerpts/adaptation); outreach not yet started | Cite-only until resolved |
-| `approval_requested` | Outreach sent (`status_date` = when) | Cite-only until resolved |
-| `licensed` | Author/publisher granted terms (recorded in `terms`) | Whatever `terms` permits |
-| `declined` | Approval refused | Cite-only, permanently |
-
-### Outreach queue
-
-The owner's approval workflow is a registry query, not a separate document:
-
-```
-python3 scripts/validate_pathway.py --outreach
-```
-
-lists every `approval_needed` / `approval_requested` entry ordered by
-`priority`, with contact points — the to-do list for seeking approvals and
-logging purchases.
+| `identified` | The application identified it might need this resource | Cite-only until ingested |
+| `ingested` | The user has ingested the work into their library | Link, cite, synthesize, and excerpt |
 
 ## Validation rules (enforced by `scripts/validate_pathway.py`)
 

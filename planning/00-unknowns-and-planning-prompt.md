@@ -153,11 +153,10 @@ stays outside the repo.
 - Content policy (amended 2026-07-18): OKF documents contain original synthesis
   plus citations into a central **source registry** (`resources/registry.yaml`).
   Copyrighted works are not excluded — each registry entry carries a license
-  status (`open`, `purchase_only`, `approval_needed`, `approval_requested`,
-  `licensed`, `declined`), and the registry doubles as the outreach queue for
-  seeking author/publisher approvals and recording purchases. Deeper use of a
-  work (excerpts, adaptation) is unlocked when its status reaches `licensed`
-  or the book is purchased; until then documents cite and link only.
+  status (`open`, `identified`, `ingested`). The application identifies what
+  it might need (`identified`), and the user ingests it (`ingested`). Deeper use of a
+  work (excerpts, adaptation) is unlocked when its status reaches `ingested`
+  or `open`; until then documents cite and link only.
 - Storage format: OKF v0.1 (markdown + YAML frontmatter, concept-per-document,
   bundle-per-course) extended by our documented pedagogical profile with
   required fields: `id`, `title`, `learning_objectives`, `prerequisites`
