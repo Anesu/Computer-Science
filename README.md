@@ -13,7 +13,10 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/01-okf-profile.md` | OKF pedagogical frontmatter profile + source-registry contract |
 | `planning/02-programme-structure.md` | Human-readable programme: 8 semesters, 3 tracks, capstone |
 | `planning/03-coverage-matrix.md` | CS2023 knowledge-area coverage proof |
-| `planning/04-pathway-graph.md` | Generated Mermaid rendering of the prerequisite DAG + semester load |
+| `planning/pathway.tldraw` | Generated interactive tldraw canvas of the prerequisite DAG (open in tldraw Desktop) |
+| `planning/pathway.tldr` | Same canvas as flat portable JSON (loads on tldraw.com; no script) |
+| `planning/pathway-canvas-script.js` | Document script embedded in the .tldraw: click a course to highlight its prereq chain |
+| `planning/04-pathway-graph.md` | Generated companion doc: semester credit-load table + canvas legend |
 | `planning/05-frontend-plan.md` | Frontend build plan: Astro static site + Caddy, git-backed progress |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
@@ -29,15 +32,23 @@ When a work is `identified`, it means the application has identified it might ne
 
 ## Pathway graph
 
-`planning/04-pathway-graph.md` renders the full prerequisite DAG (GitHub
-displays the Mermaid diagram inline) plus the semester credit-load table. It is
-generated — after editing `curriculum/pathway.yaml`, refresh it with:
+`planning/pathway.tldraw` is the full prerequisite DAG as an interactive
+tldraw canvas — one frame per semester, track-colored course boxes, bound
+prerequisite arrows, and an embedded document script: click any course to
+highlight its prerequisite ancestry plus everything it unlocks; click empty
+canvas to reset. Open it with tldraw Desktop (offline).
+`planning/pathway.tldr` is the same canvas as flat JSON (loads on tldraw.com,
+no script), and `planning/04-pathway-graph.md` is the companion doc with the
+semester credit-load table. All three are generated — after editing
+`curriculum/pathway.yaml`, refresh them with:
 
 ```
-python3 scripts/validate_pathway.py --mermaid > planning/04-pathway-graph.md
+python3 scripts/validate_pathway.py --graph
 ```
 
-CI fails if the graph is stale.
+CI fails if any of them is stale (the `.tldraw` archive is checked
+semantically, since SQLite bytes vary across platforms). The canvas is
+regenerated wholesale, so freehand edits to it will be overwritten.
 
 ## Validation
 

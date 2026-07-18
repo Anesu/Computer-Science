@@ -16,5 +16,5 @@ jobs:
       - run: python3 scripts/validate_pathway.py
       - name: Pathway graph is up to date
         run: |
-          python3 scripts/validate_pathway.py --mermaid > planning/04-pathway-graph.md
-          git diff --exit-code -- planning/04-pathway-graph.md
+          python3 scripts/validate_pathway.py --graph
+          git diff --exit-code -- planning/pathway.tldr planning/04-pathway-graph.md
