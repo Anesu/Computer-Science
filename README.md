@@ -13,9 +13,11 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/01-okf-profile.md` | OKF pedagogical frontmatter profile + source-registry contract |
 | `planning/02-programme-structure.md` | Human-readable programme: 8 semesters, 3 tracks, capstone |
 | `planning/03-coverage-matrix.md` | CS2023 knowledge-area coverage proof |
+| `planning/04-pathway-graph.md` | Generated Mermaid rendering of the prerequisite DAG + semester load |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
+| `resources/outreach/` | Generated permission-request letter drafts, one per book |
 | `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
 
 ## Working with the source registry
@@ -26,11 +28,28 @@ Every cited work lives in `resources/registry.yaml` with a license status
 publisher approval for, or to purchase:
 
 ```
-python3 scripts/validate_pathway.py --outreach
+python3 scripts/validate_pathway.py --outreach          # print the queue
+python3 scripts/validate_pathway.py --outreach-drafts   # write letter drafts to resources/outreach/
 ```
 
-When approval is granted or a book is bought, update that entry's `status`,
-`status_date`, and `terms` — the change applies to every document that cites it.
+Each draft in `resources/outreach/` is a ready-to-edit permission-request
+letter naming the courses that cite the book. After sending one, set the
+registry entry's status to `approval_requested`; when answered, to `licensed`
+(record the `terms`) or `declined`. When approval is granted or a book is
+bought, update that entry's `status`, `status_date`, and `terms` — the change
+applies to every document that cites it.
+
+## Pathway graph
+
+`planning/04-pathway-graph.md` renders the full prerequisite DAG (GitHub
+displays the Mermaid diagram inline) plus the semester credit-load table. It is
+generated — after editing `curriculum/pathway.yaml`, refresh it with:
+
+```
+python3 scripts/validate_pathway.py --mermaid > planning/04-pathway-graph.md
+```
+
+CI fails if the graph is stale.
 
 ## Validation
 

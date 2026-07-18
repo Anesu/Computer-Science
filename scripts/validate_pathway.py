@@ -11,8 +11,10 @@ Checks (planning/01-okf-profile.md, "Validation rules"):
   7. volatile documents unverified for >6 months are flagged (warning only)
 
 Usage:
-  python3 scripts/validate_pathway.py             # validate everything
-  python3 scripts/validate_pathway.py --outreach  # print the license outreach queue
+  python3 scripts/validate_pathway.py                   # validate everything
+  python3 scripts/validate_pathway.py --outreach        # print the license outreach queue
+  python3 scripts/validate_pathway.py --outreach-drafts # write outreach letters to resources/outreach/
+  python3 scripts/validate_pathway.py --mermaid         # print pathway graph doc (planning/04)
 """
 
 import re
@@ -107,7 +109,18 @@ def check_courses(data) -> dict:
     core_credits = sum(c["credits"] for c in courses.values() if c["track"] == "core")
     print(f"  {len(courses)} courses ({sum(1 for c in courses.values() if c['track'] == 'core')} core, "
           f"{core_credits} core credits); {len(covered)}/{len(kas)} KAs covered by core")
+    load = semester_load(courses)
+    print("  semester load (core credits): "
+          + "  ".join(f"S{s}:{cr}" for s, cr in load.items()))
     return courses
+
+
+def semester_load(courses: dict) -> dict:
+    load: dict[int, int] = {}
+    for c in courses.values():
+        if c.get("track") == "core":
+            load[c["semester"]] = load.get(c["semester"], 0) + c["credits"]
+    return dict(sorted(load.items()))
 
 
 def check_registry() -> dict:
@@ -166,6 +179,126 @@ def check_documents(courses: dict, registry: dict) -> None:
     print(f"  {n} curriculum documents checked")
 
 
+TRACK_STYLE = {
+    "core": "fill:#dbeafe,stroke:#1e40af,color:#1e3a8a",
+    "ai": "fill:#fce7f3,stroke:#9d174d,color:#831843",
+    "systems": "fill:#dcfce7,stroke:#166534,color:#14532d",
+    "security": "fill:#fef3c7,stroke:#92400e,color:#78350f",
+    "elective": "fill:#e5e7eb,stroke:#374151,color:#1f2937",
+}
+
+
+def _nid(cid: str) -> str:
+    return cid.replace("-", "_")
+
+
+def mermaid_doc(courses: dict) -> str:
+    lines = ["flowchart TD"]
+    by_sem: dict[int, list] = {}
+    for c in courses.values():
+        by_sem.setdefault(c["semester"], []).append(c)
+    for s in sorted(by_sem):
+        lines.append(f'  subgraph S{s}["Semester {s}"]')
+        for c in sorted(by_sem[s], key=lambda x: (x["track"] != "core", x["id"])):
+            lines.append(f'    {_nid(c["id"])}["{c["id"]}<br/>{c["title"]}"]:::{c["track"]}')
+        lines.append("  end")
+    for c in sorted(courses.values(), key=lambda x: x["id"]):
+        for p in c.get("prerequisites", []):
+            lines.append(f'  {_nid(p)} --> {_nid(c["id"])}')
+    for t, style in TRACK_STYLE.items():
+        lines.append(f"  classDef {t} {style}")
+    graph = "\n".join(lines)
+
+    load = semester_load(courses)
+    load_rows = "\n".join(f"| {s} | {cr} |" for s, cr in load.items())
+    return f"""# Pathway Graph
+
+<!-- GENERATED FILE — do not edit by hand.
+     Regenerate: python3 scripts/validate_pathway.py --mermaid > planning/04-pathway-graph.md
+     CI fails if this file is stale relative to curriculum/pathway.yaml. -->
+
+Prerequisite DAG for the full programme, grouped by earliest-availability
+semester. An arrow A → B means A is a prerequisite of B. Colors: blue = core,
+pink = AI track, green = Systems track, amber = Security track, gray = general
+elective.
+
+```mermaid
+{graph}
+```
+
+## Semester load (core credits)
+
+Track-elective slots (3 credits each) sit on top of semesters 6–8; free
+elective in semester 8.
+
+| Semester | Core credits |
+|---|---|
+{load_rows}
+"""
+
+
+def outreach_drafts(registry: dict, courses: dict) -> None:
+    outdir = ROOT / "resources" / "outreach"
+    outdir.mkdir(parents=True, exist_ok=True)
+    queue = [e for e in registry.values()
+             if e.get("status") in ("approval_needed", "approval_requested")]
+    for e in queue:
+        cited = [cid for cid in e.get("used_in", []) if cid in courses]
+        course_lines = "\n".join(
+            f"- {cid} — {courses[cid]['title']}" for cid in cited) or "- (course mapping pending)"
+        authors = ", ".join(e.get("authors", []))
+        body = f"""# Outreach draft — {e['title']}
+
+<!-- GENERATED from resources/registry.yaml (id: {e['id']}).
+     Edit freely before sending; regenerating overwrites this file.
+     After sending, set the registry entry's status to approval_requested;
+     after an answer, to licensed (record terms) or declined. -->
+
+- **Registry id:** {e['id']}
+- **Status:** {e['status']} (priority: {e.get('priority', 'n/a')})
+- **Contact:** {e.get('contact') or 'TBD — find rights/permissions contact'}
+- **Generated:** {date.today()}
+
+---
+
+**To:** {e.get('contact') or '[rights & permissions contact]'}
+**Subject:** Permission request — "{e['title']}" as a recommended text in an open CS curriculum
+
+Dear {authors or 'rights and permissions team'},
+
+I am developing **Open CS Degree 2026**, a freely available, university-level
+computer-science curriculum aligned with the ACM/IEEE CS2023 guidelines and
+delivered through AI-assisted personalized tutoring. The curriculum recommends
+*{e['title']}* as a primary text for the following course(s):
+
+{course_lines}
+
+Learners are always directed to purchase or otherwise legitimately access the
+book — the curriculum links and cites; it does not reproduce the work.
+
+I am writing to ask:
+
+1. **Excerpt permission** — may course materials include short quoted excerpts
+   (with full attribution and a purchase link) where the curriculum discusses
+   the book's presentation of a topic?
+2. **Adaptation terms** — where a course's exercises build directly on the
+   book's material, what licensing terms would you offer for that adapted use?
+3. **Preferred purchase link** — which storefront link would you like learner
+   reading lists to use, so purchases credit the author as directly as possible?
+
+I'm happy to share the curriculum repository and the exact contexts in which
+the book is cited. Thank you for considering this — the book earned its place
+on this reading list.
+
+Kind regards,
+
+[Your name]
+[Your contact email]
+"""
+        (outdir / f"{e['id']}.md").write_text(body)
+    print(f"Wrote {len(queue)} outreach draft(s) to {outdir.relative_to(ROOT)}/")
+
+
 def outreach(registry: dict) -> None:
     prio = {"high": 0, "medium": 1, "low": 2}
     queue = sorted(
@@ -186,6 +319,14 @@ def outreach(registry: dict) -> None:
 def main() -> int:
     if "--outreach" in sys.argv:
         outreach(check_registry())
+        return 0
+    if "--outreach-drafts" in sys.argv:
+        courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
+        outreach_drafts(check_registry(), courses)
+        return 0
+    if "--mermaid" in sys.argv:
+        courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
+        sys.stdout.write(mermaid_doc(courses))
         return 0
     print("Validating pathway...")
     courses = check_courses(load_yaml(PATHWAY))

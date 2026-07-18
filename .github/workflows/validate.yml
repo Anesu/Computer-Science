@@ -14,3 +14,7 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - run: python3 scripts/validate_pathway.py
+      - name: Pathway graph is up to date
+        run: |
+          python3 scripts/validate_pathway.py --mermaid > planning/04-pathway-graph.md
+          git diff --exit-code -- planning/04-pathway-graph.md
