@@ -79,6 +79,14 @@ def md_to_mdx_body(body: str) -> str:
         seg = re.sub(r"<!--.*?-->", "", seg, flags=re.DOTALL)
         seg = seg.replace("{", "\\{").replace("}", "\\}")
         seg = re.sub(r"<(?=[A-Za-z/!])", "\\<", seg)
+        def concept_link(m: re.Match) -> str:
+            # Blume drops NN- ordering prefixes from route slugs.
+            slug = "/".join(re.sub(r"^\d+-", "", part)
+                            for part in m.group(2).split("/"))
+            return f"(/courses/{m.group(1)}/{slug}/)"
+
+        seg = re.sub(r"\(\.\./([A-Za-z][\w-]*)/([\w./-]+)\.md\)",
+                     concept_link, seg)
         seg = re.sub(r"\(([A-Za-z][\w-]*)\.md\)", r"(/courses/\1/)", seg)
         seg = re.sub(r"\n{3,}", "\n\n", seg)
         out.append(seg)
@@ -122,6 +130,30 @@ def course_page(cid: str, fm: dict, body: str) -> str:
         "---",
         "",
         prov,
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def concept_page(cid: str, fm: dict, body: str) -> str:
+    title = fm.get("title", "Untitled concept")
+    sources = ", ".join(f"`{s}`" for s in fm.get("sources", []) or [])
+    prov = (f"**Provenance:** churn `{fm.get('churn', 'stable')}` · "
+            f"verified {fm.get('last_verified', '?')}"
+            + (f" · sources: {sources}" if sources else ""))
+    lines = [
+        "---",
+        f"title: {json.dumps(str(title))}",
+        f"description: {json.dumps(f'{cid} concept document.')}",
+        f"lastModified: {fm.get('last_verified', '2026-07-19')}",
+        "search:",
+        f"  tags: [{cid}, concept]",
+        "---",
+        "",
+        md_to_mdx_body(body),
+        "---",
+        "",
+        f"{prov} · part of [{cid}](/courses/{cid}/)",
         "",
     ]
     return "\n".join(lines)
@@ -376,6 +408,25 @@ def main() -> int:
         write(DOCS / "courses" / f'{fm["id"]}.mdx',
               course_page(fm["id"], fm, text[m.end():]))
         n += 1
+
+    # Phase 3 concept documents: curriculum/<COURSE-ID>/**/*.md become pages
+    # nested under the course, so authored knowledge lands on the site with
+    # no extra wiring.
+    nc = 0
+    for cdir in sorted(p for p in (ROOT / "curriculum").iterdir()
+                       if p.is_dir() and p.name != "courses"):
+        cid = cdir.name
+        for path in sorted(cdir.rglob("*.md")):
+            text = path.read_text(encoding="utf-8")
+            m = FRONTMATTER_RE.match(text)
+            if not m:
+                print(f"WARN: {path} has no frontmatter, skipped")
+                continue
+            fm = yaml.safe_load(m.group(1))
+            rel = path.relative_to(cdir).with_suffix("").as_posix()
+            write(DOCS / "courses" / cid / f"{rel}.mdx",
+                  concept_page(cid, fm, text[m.end():]))
+            nc += 1
 
     write(DOCS / "courses" / "index.mdx", catalog_page(courses))
     for track in ("ai", "systems", "security"):

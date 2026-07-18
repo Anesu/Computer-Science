@@ -28,6 +28,18 @@
   status_date: 2026-07-18
   used_in:
     - CS1101
+- id: think-python
+  title: Think Python (3rd edition)
+  authors:
+    - Allen B. Downey
+  publisher: Green Tea Press / O'Reilly
+  year: 2024
+  url: https://allendowney.github.io/ThinkPython/
+  license: CC BY-NC-SA 4.0 (online edition)
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - CS1101
 - id: rust-book
   title: The Rust Programming Language
   authors:
