@@ -7,6 +7,13 @@ curriculum data, served by **Caddy**; learner progress in a **git-backed file**
 (working copy in browser localStorage); **local-first** hosting with a
 copy-paste promotion path to a VPS.
 
+**Revision (2026-07-19): content layer is [Blume](https://useblume.dev).**
+Blume is an Astro-based zero-config docs framework, so the 07-18 stack
+decision stands — but navigation, search, theming, MDX components (callouts,
+steps, tabs, Mermaid, KaTeX), and the AI surface now come from Blume instead
+of being hand-built. See "Blume adoption" below; it supersedes the hand-rolled
+parts of FE-1/FE-4.
+
 ## Architecture
 
 ```
@@ -162,3 +169,40 @@ curriculum Phases 2–3 producing course bundles and concept documents.
   multi-learner (that's the "Static + small API" fork we deliberately skipped).
 - No lesson player — `/teach` owns lesson delivery.
 - No CMS — content is edited in git, that's the point.
+
+## Blume adoption (2026-07-19)
+
+**What Blume replaces:** the hand-built content pipeline — loaders, course and
+concept page templates, search (Pagefind), navigation, dark mode, SEO/OG.
+`site/` is now a Blume project (`blume.config.ts` + `docs/`); `blume build
+--strict` emits plain static HTML to `site/dist/`, served by Caddy exactly as
+planned. Spike verified 2026-07-19: strict build passes, serves fully offline,
+no external assets.
+
+**What Blume adds — the human/AI split.** The same corpus serves both readers:
+
+- humans get the polished UI (search, components, theming);
+- agents get `llms.txt` + `llms-full.txt`, raw Markdown at every URL (append
+  `.md` to a page path), and an `agent-readability.json` index — all emitted
+  by the static build with no config. `/teach` sessions read the same pages
+  the learner sees. Blume's MCP server needs `output: "server"`; not needed
+  locally (Claude has the repo and the raw-`.md` URLs), revisit at VPS time.
+
+**What stays custom (unchanged from this plan):** the progress island, DAG
+frontier, and interactive pathway map — app logic, not docs. Blume supports
+Astro islands on `.mdx` pages, so they live inside the site when built
+(FE-2/FE-3). Until then the tldraw canvas (`planning/pathway.tldraw`) is the
+interactive map.
+
+**Frontmatter contract.** Blume validates frontmatter strictly (title,
+description, type, date, authors, slug, draft, lastModified, sidebar, seo,
+search — nothing else), so OKF documents cannot be dropped in verbatim.
+`curriculum/` remains the OKF source of truth; a transform (FE-4, extending
+`scripts/`) generates `site/docs/` pages from them: OKF-only keys (`churn`,
+`sources`, `last_verified`, `prerequisites`, `pce:*`) are stripped from
+frontmatter and rendered into a per-page provenance footer, `last_verified`
+maps to `lastModified`, and track/semester become `search.tags`.
+
+**Phasing impact:** FE-1 is effectively done (Blume scaffold in `site/`,
+builds and serves). FE-4 becomes "write the curriculum→docs transform +
+concept content lands from Phase 3". FE-2/FE-3/FE-5 unchanged.

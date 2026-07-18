@@ -21,6 +21,7 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
+| `site/` | "The University" — Blume docs site (static, offline, serves humans + agents) |
 | `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
 
 ## Working with the source registry

@@ -1,7 +1,7 @@
 name: Validate curriculum
 on:
   push:
-    paths: ["curriculum/**", "resources/**", "scripts/**"]
+    paths: ["curriculum/**", "resources/**", "scripts/**", "site/**"]
   pull_request:
 
 jobs:
@@ -18,3 +18,15 @@ jobs:
         run: |
           python3 scripts/validate_pathway.py --graph
           git diff --exit-code -- planning/pathway.tldr planning/04-pathway-graph.md
+
+  site-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+        working-directory: site
+      - run: npx blume build --strict
+        working-directory: site
