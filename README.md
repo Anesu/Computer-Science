@@ -14,6 +14,7 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/02-programme-structure.md` | Human-readable programme: 8 semesters, 3 tracks, capstone |
 | `planning/03-coverage-matrix.md` | CS2023 knowledge-area coverage proof |
 | `planning/04-pathway-graph.md` | Generated Mermaid rendering of the prerequisite DAG + semester load |
+| `planning/05-frontend-plan.md` | Frontend build plan: Astro static site + Caddy, git-backed progress |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
