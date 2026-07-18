@@ -518,3 +518,107 @@
   status_date: 2026-07-18
   used_in:
     - EL-QUANT
+- id: owasp-wstg
+  title: OWASP Web Security Testing Guide (v4.2)
+  authors:
+    - Elie Saad
+    - Rick Mitchell
+    - OWASP Foundation contributors
+  publisher: OWASP Foundation
+  year: 2020
+  url: https://owasp.org/www-project-web-security-testing-guide/
+  license: CC BY-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - SEC-OFFDEF
+- id: owasp-asvs
+  title: OWASP Application Security Verification Standard (5.0.0)
+  authors:
+    - Daniel Cuthbert
+    - Jim Manico
+    - Josh Grossman
+    - Elar Lang
+    - OWASP Foundation contributors
+  publisher: OWASP Foundation
+  year: 2025
+  url: https://owasp.org/www-project-application-security-verification-standard/
+  license: CC BY-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - SEC-SSD
+- id: k8s-docs
+  title: Kubernetes Documentation
+  authors:
+    - The Kubernetes Authors
+  publisher: Cloud Native Computing Foundation (CNCF)
+  year: 2026
+  url: https://kubernetes.io/docs/home/
+  license: CC BY 4.0
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - SYS-CLOUD
+- id: nist-privacy-framework
+  title: 'NIST Privacy Framework: A Tool for Improving Privacy through Enterprise Risk Management (v1.0)'
+  authors:
+    - National Institute of Standards and Technology (NIST)
+  publisher: National Institute of Standards and Technology (NIST)
+  year: 2020
+  url: https://www.nist.gov/privacy-framework/privacy-framework
+  license: public domain (U.S. Government work, not subject to copyright per 17 U.S.C. 105)
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - SEC-PRIV
+- id: nist-sp800-41
+  title: 'Guidelines on Firewalls and Firewall Policy (NIST SP 800-41 Rev. 1)'
+  authors:
+    - Karen Scarfone
+    - Paul Hoffman
+  publisher: National Institute of Standards and Technology (NIST)
+  year: 2009
+  url: https://csrc.nist.gov/pubs/sp/800/41/r1/final
+  license: public domain (U.S. Government work, not subject to copyright per 17 U.S.C. 105)
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - SEC-NET
+- id: ros2-docs
+  title: ROS 2 Documentation
+  authors:
+    - Open Robotics
+    - ROS 2 documentation contributors
+  publisher: Open Source Robotics Foundation (Open Robotics)
+  year: 2026
+  url: https://docs.ros.org/en/rolling/
+  license: CC BY 4.0
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - EL-ROBOT
+- id: flutter-docs
+  title: Flutter Documentation
+  authors:
+    - Flutter documentation contributors
+  publisher: Google / Flutter
+  year: 2026
+  url: https://docs.flutter.dev/
+  license: CC BY 3.0 (content); BSD-3-Clause (code samples)
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - EL-MOBILE
+- id: aisafetybook
+  title: 'Introduction to AI Safety, Ethics, and Society'
+  authors:
+    - Dan Hendrycks
+  publisher: Taylor & Francis (CRC Press)
+  year: 2024
+  url: https://www.aisafetybook.com/
+  license: CC BY-NC-ND 4.0
+  status: open
+  status_date: 2026-07-19
+  used_in:
+    - AI-SAFE
