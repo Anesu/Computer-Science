@@ -18,6 +18,10 @@ jobs:
         run: |
           python3 scripts/validate_pathway.py --graph
           git diff --exit-code -- planning/pathway.tldr planning/04-pathway-graph.md
+      - name: Site docs are up to date
+        run: |
+          python3 scripts/build_site_docs.py
+          git diff --exit-code -- site/docs site/public site/lib
 
   site-build:
     runs-on: ubuntu-latest

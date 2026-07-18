@@ -12,11 +12,19 @@ lesson-by-lesson through `/teach`.
 
 ## How this campus works
 
-- **This site** is orientation: the catalog, the map, the library.
+- **[Dashboard](/dashboard/)** — your progress, the frontier of what you can
+  study next, credits, and knowledge-area coverage. Exports `progress.yaml`.
+- **[Course catalog](/courses/)** — all 45 courses; every page ends with a
+  ready-to-paste `/teach` mission.
+- **[Pathway map](/pathway/)** — the prerequisite DAG with your progress
+  overlaid. (For the click-to-explore canvas, open `planning/pathway.tldraw`
+  in tldraw Desktop.)
+- **[Library](/library/)** — every cited source and its license status.
+- **Tracks** — [AI](/tracks/ai/) · [Systems](/tracks/systems/) ·
+  [Security](/tracks/security/).
 - **`/teach`** delivers the lessons — it reads the same Markdown corpus this
-  site renders.
-- **The pathway canvas** (`planning/pathway.tldraw`) is the interactive
-  prerequisite map: click a course to see its ancestry and what it unlocks.
+  site renders (every page is raw Markdown at `<path>.md`, and the build
+  emits `llms.txt`).
 
 ## Programme shape
 

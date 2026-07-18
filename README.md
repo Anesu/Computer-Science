@@ -19,10 +19,13 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/04-pathway-graph.md` | Generated companion doc: semester credit-load table + canvas legend |
 | `planning/05-frontend-plan.md` | Frontend build plan: Astro static site + Caddy, git-backed progress |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
-| `curriculum/courses/` | Per-course OKF bundles (Phase 2+) |
+| `curriculum/courses/` | Per-course OKF bundles: spec, reading list, `/teach` mission (Phase 2) |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
 | `site/` | "The University" — Blume docs site (static, offline, serves humans + agents) |
+| `site/islands/` | React islands: progress Dashboard (frontier, export/import), PathwayMap |
 | `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
+| `scripts/scaffold_courses.py` | Scaffold-once generator for `curriculum/courses/` |
+| `scripts/build_site_docs.py` | Deterministic curriculum→site transform (pages, SVG map, data) |
 
 ## Working with the source registry
 
@@ -60,11 +63,34 @@ python3 scripts/validate_pathway.py
 
 Runs in CI on every push touching `curriculum/`, `resources/`, or `scripts/`.
 
+## The site
+
+```
+cd site && npm install
+npm run dev            # live dev server
+npx blume build --strict && (cd dist && python -m http.server 8080)
+```
+
+After editing curriculum data, regenerate everything generated:
+
+```
+python3 scripts/validate_pathway.py --graph   # canvas + graph doc
+python3 scripts/build_site_docs.py            # site pages, SVG map, data module
+```
+
+Progress is personal: the dashboard stores it in localStorage and
+exports/imports `progress.yaml` (keep yours in a private repo — it never
+belongs here).
+
 ## Phase status
 
 - [x] Phase 0 — Charter
 - [x] Phase 1 — Scaffold (ontology, pathway DAG, OKF profile, validator, coverage matrix, registry)
-- [ ] Phase 2 — Course specs (one page per course + `/teach` mission templates)
+- [x] Phase 2 — Course specs: all 45 scaffolded with reading lists + `/teach` missions (authoring enriches them over time)
 - [ ] Phase 3 — Knowledge base (OKF concept documents, in prerequisite order)
-- [ ] Phase 4 — `/teach` delivery integration, one-course pilot
+- [ ] Phase 4 — `/teach` delivery integration, one-course pilot (site side done: missions on every course page, agent surface built)
 - [ ] Phase 5 — Sustainment (refresh policy on `churn`/`last_verified`)
+
+Frontend (planning/05): FE-1 skeleton ✅ · FE-2 progress dashboard ✅ ·
+FE-3 pathway map ✅ · FE-4 curriculum→site transform ✅ · FE-5 VPS promotion
+pending.

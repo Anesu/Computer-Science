@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -20 1720 2756" font-family="system-ui, sans-serif">
+<style>
+  .pw-frame { fill: rgba(148,163,184,.07); stroke: rgba(148,163,184,.45); }
+  .pw-frame-label { font: 600 15px system-ui, sans-serif; fill: #64748b; }
+  .pw-edge { fill: none; stroke: #94a3b8; stroke-opacity: .55; stroke-width: 1.6; }
+  .pw-course rect { stroke-width: 1.5; }
+  .pw-course text { text-anchor: middle; }
+  .pw-id { font: 700 14px system-ui, sans-serif; fill: #0f172a; }
+  .pw-title { font: 400 12px system-ui, sans-serif; fill: #334155; }
+  .pw-done rect { stroke: #16a34a !important; stroke-width: 4 !important; }
+  .pw-avail rect { stroke: #d97706 !important; stroke-width: 3.5 !important; stroke-dasharray: 7 4; }
+  .pw-locked { opacity: .3; }
+</style>
+<defs><marker id="pw-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker></defs>
+<rect class="pw-frame" x="0" y="0" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="30">Semester 1</text>
+<rect class="pw-frame" x="0" y="340" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="370">Semester 2</text>
+<rect class="pw-frame" x="0" y="680" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="710">Semester 3</text>
+<rect class="pw-frame" x="0" y="1020" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="1050">Semester 4</text>
+<rect class="pw-frame" x="0" y="1360" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="1390">Semester 5</text>
+<rect class="pw-frame" x="0" y="1700" width="1700" height="326" rx="10"/><text class="pw-frame-label" x="14" y="1730">Semester 6</text>
+<rect class="pw-frame" x="0" y="2176" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="2206">Semester 7</text>
+<rect class="pw-frame" x="0" y="2516" width="1700" height="190" rx="10"/><text class="pw-frame-label" x="14" y="2546">Semester 8</text>
+<path class="pw-edge" data-from="CS3102" data-to="AI-DL" d="M 370 1520 V 1625 H 610 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3102" data-to="AI-MLOPS" d="M 370 1520 V 2101 H 1330 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3203" data-to="AI-MLOPS" d="M 850 1996 V 2101 H 1330 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="AI-DL" data-to="AI-NLP" d="M 610 1996 V 2101 H 1570 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3102" data-to="AI-RL" d="M 370 1520 V 2101 H 610 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA2101" data-to="AI-RL" d="M 610 840 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3102" data-to="AI-SAFE" d="M 370 1520 V 2101 H 850 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1101" data-to="CS1201" d="M 130 160 V 265 H 370 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1101" data-to="CS1201" d="M 610 160 V 265 H 370 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1101" data-to="CS1202" d="M 130 160 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1102" data-to="CS1202" d="M 370 160 V 265 H 130 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1101" data-to="CS1203" d="M 130 160 V 265 H 610 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1201" data-to="CS2101" d="M 370 500 V 605 H 130 V 740" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1101" data-to="CS2101" d="M 610 160 V 605 H 130 V 740" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1202" data-to="CS2102" d="M 130 500 V 605 H 370 V 740" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1203" data-to="CS2103" d="M 610 500 V 605 H 850 V 740" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2102" data-to="CS2201" d="M 370 840 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1202" data-to="CS2201" d="M 130 500 V 945 H 370 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1201" data-to="CS2202" d="M 370 500 V 945 H 610 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1101" data-to="CS2203" d="M 610 160 V 945 H 130 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1203" data-to="CS2204" d="M 610 500 V 945 H 850 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="CS3101" d="M 370 1180 V 1285 H 610 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1201" data-to="CS3102" d="M 850 500 V 1285 H 370 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA2101" data-to="CS3102" d="M 610 840 V 1285 H 370 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1201" data-to="CS3102" d="M 370 500 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1202" data-to="CS3103" d="M 130 500 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2203" data-to="CS3103" d="M 130 1180 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="CS3104" d="M 370 1180 V 1285 H 1090 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3101" data-to="CS3201" d="M 610 1520 V 1625 H 130 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="CS3201" d="M 370 1180 V 1625 H 130 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3102" data-to="CS3202" d="M 370 1520 V 1625 H 1090 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2103" data-to="CS3202" d="M 850 840 V 1625 H 1090 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2103" data-to="CS3203" d="M 850 840 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2202" data-to="CS3203" d="M 610 1180 V 1625 H 850 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2103" data-to="CS4101" d="M 850 840 V 2101 H 1090 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3203" data-to="CS4901" d="M 850 1996 V 2101 H 130 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS4901" data-to="CS4902" d="M 130 2336 V 2576" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1201" data-to="EL-GRAPH" d="M 850 500 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1201" data-to="EL-GRAPH" d="M 370 500 V 1285 H 850 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS1203" data-to="EL-MOBILE" d="M 610 500 V 945 H 1090 V 1080" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1201" data-to="EL-QUANT" d="M 850 500 V 1285 H 1330 V 1420" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3102" data-to="EL-ROBOT" d="M 370 1520 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1102" data-to="MA1201" d="M 850 160 V 400" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1102" data-to="MA2101" d="M 850 160 V 605 H 610 V 740" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3104" data-to="SEC-CRYPTO" d="M 1090 1520 V 1625 H 1570 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="MA1101" data-to="SEC-CRYPTO" d="M 610 160 V 1625 H 1570 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3104" data-to="SEC-NET" d="M 1090 1520 V 1625 H 370 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3101" data-to="SEC-NET" d="M 610 1520 V 1625 H 370 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3104" data-to="SEC-OFFDEF" d="M 1090 1520 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3101" data-to="SEC-OFFDEF" d="M 610 1520 V 1625 H 1090 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3104" data-to="SEC-PRIV" d="M 1090 1520 V 1625 H 1330 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3104" data-to="SEC-SSD" d="M 1090 1520 V 1625 H 1570 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2103" data-to="SEC-SSD" d="M 850 840 V 1625 H 1570 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="SYS-ADV" d="M 370 1180 V 1625 H 610 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3201" data-to="SYS-CLOUD" d="M 130 1860 V 2101 H 370 V 2236" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS3103" data-to="SYS-COMP" d="M 130 1520 V 1625 H 1330 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2202" data-to="SYS-DBI" d="M 610 1180 V 1625 H 850 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="SYS-DBI" d="M 370 1180 V 1625 H 850 V 1760" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2102" data-to="SYS-PERF" d="M 370 840 V 1625 H 130 V 1896" marker-end="url(#pw-arrow)"/>
+<path class="pw-edge" data-from="CS2201" data-to="SYS-PERF" d="M 370 1180 V 1625 H 130 V 1896" marker-end="url(#pw-arrow)"/>
+<a href="/courses/CS1101/"><g class="pw-course pw-core" id="pw-CS1101" data-course="CS1101"><rect x="30" y="60" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="94">CS1101</text><text class="pw-title" x="130" y="94"><tspan x="130" dy="22">Programming Fundamentals</tspan></text></g></a>
+<a href="/courses/CS1102/"><g class="pw-course pw-core" id="pw-CS1102" data-course="CS1102"><rect x="270" y="60" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="370" y="94">CS1102</text><text class="pw-title" x="370" y="94"><tspan x="370" dy="22">Computer Systems</tspan><tspan x="370" dy="16">Fundamentals</tspan></text></g></a>
+<a href="/courses/MA1101/"><g class="pw-course pw-core" id="pw-MA1101" data-course="MA1101"><rect x="510" y="60" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="610" y="94">MA1101</text><text class="pw-title" x="610" y="94"><tspan x="610" dy="22">Discrete Mathematics</tspan></text></g></a>
+<a href="/courses/MA1102/"><g class="pw-course pw-core" id="pw-MA1102" data-course="MA1102"><rect x="750" y="60" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="850" y="94">MA1102</text><text class="pw-title" x="850" y="94"><tspan x="850" dy="22">Calculus for Computing</tspan></text></g></a>
+<a href="/courses/CS1202/"><g class="pw-course pw-core" id="pw-CS1202" data-course="CS1202"><rect x="30" y="400" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="434">CS1202</text><text class="pw-title" x="130" y="434"><tspan x="130" dy="22">Systems Programming</tspan></text></g></a>
+<a href="/courses/CS1201/"><g class="pw-course pw-core" id="pw-CS1201" data-course="CS1201"><rect x="270" y="400" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="370" y="434">CS1201</text><text class="pw-title" x="370" y="434"><tspan x="370" dy="22">Data Structures &amp;</tspan><tspan x="370" dy="16">Algorithms I</tspan></text></g></a>
+<a href="/courses/CS1203/"><g class="pw-course pw-core" id="pw-CS1203" data-course="CS1203"><rect x="510" y="400" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="610" y="434">CS1203</text><text class="pw-title" x="610" y="434"><tspan x="610" dy="22">Software Construction &amp;</tspan><tspan x="610" dy="16">Tooling</tspan></text></g></a>
+<a href="/courses/MA1201/"><g class="pw-course pw-core" id="pw-MA1201" data-course="MA1201"><rect x="750" y="400" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="850" y="434">MA1201</text><text class="pw-title" x="850" y="434"><tspan x="850" dy="22">Linear Algebra</tspan></text></g></a>
+<a href="/courses/CS2101/"><g class="pw-course pw-core" id="pw-CS2101" data-course="CS2101"><rect x="30" y="740" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="774">CS2101</text><text class="pw-title" x="130" y="774"><tspan x="130" dy="22">Algorithm Design &amp;</tspan><tspan x="130" dy="16">Analysis</tspan></text></g></a>
+<a href="/courses/CS2102/"><g class="pw-course pw-core" id="pw-CS2102" data-course="CS2102"><rect x="270" y="740" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="370" y="774">CS2102</text><text class="pw-title" x="370" y="774"><tspan x="370" dy="22">Computer Architecture</tspan></text></g></a>
+<a href="/courses/MA2101/"><g class="pw-course pw-core" id="pw-MA2101" data-course="MA2101"><rect x="510" y="740" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="610" y="774">MA2101</text><text class="pw-title" x="610" y="774"><tspan x="610" dy="22">Probability &amp; Statistics</tspan><tspan x="610" dy="16">for CS</tspan></text></g></a>
+<a href="/courses/CS2103/"><g class="pw-course pw-core" id="pw-CS2103" data-course="CS2103"><rect x="750" y="740" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="850" y="774">CS2103</text><text class="pw-title" x="850" y="774"><tspan x="850" dy="22">Software Engineering</tspan></text></g></a>
+<a href="/courses/CS2203/"><g class="pw-course pw-core" id="pw-CS2203" data-course="CS2203"><rect x="30" y="1080" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="1114">CS2203</text><text class="pw-title" x="130" y="1114"><tspan x="130" dy="22">Theory of Computation</tspan></text></g></a>
+<a href="/courses/CS2201/"><g class="pw-course pw-core" id="pw-CS2201" data-course="CS2201"><rect x="270" y="1080" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="370" y="1114">CS2201</text><text class="pw-title" x="370" y="1114"><tspan x="370" dy="22">Operating Systems</tspan></text></g></a>
+<a href="/courses/CS2202/"><g class="pw-course pw-core" id="pw-CS2202" data-course="CS2202"><rect x="510" y="1080" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="610" y="1114">CS2202</text><text class="pw-title" x="610" y="1114"><tspan x="610" dy="22">Data Management &amp;</tspan><tspan x="610" dy="16">Databases</tspan></text></g></a>
+<a href="/courses/CS2204/"><g class="pw-course pw-core" id="pw-CS2204" data-course="CS2204"><rect x="750" y="1080" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="850" y="1114">CS2204</text><text class="pw-title" x="850" y="1114"><tspan x="850" dy="22">HCI &amp; Visual Computing</tspan></text></g></a>
+<a href="/courses/EL-MOBILE/"><g class="pw-course pw-elective" id="pw-EL-MOBILE" data-course="EL-MOBILE"><rect x="990" y="1080" width="200" height="100" rx="8" fill="#e5e7eb" stroke="#374151"/><text class="pw-id" x="1090" y="1114">EL-MOBILE</text><text class="pw-title" x="1090" y="1114"><tspan x="1090" dy="22">Mobile &amp; Cross-Platform</tspan><tspan x="1090" dy="16">Development</tspan></text></g></a>
+<a href="/courses/CS3103/"><g class="pw-course pw-core" id="pw-CS3103" data-course="CS3103"><rect x="30" y="1420" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="1454">CS3103</text><text class="pw-title" x="130" y="1454"><tspan x="130" dy="22">Programming Languages</tspan></text></g></a>
+<a href="/courses/CS3102/"><g class="pw-course pw-core" id="pw-CS3102" data-course="CS3102"><rect x="270" y="1420" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="370" y="1454">CS3102</text><text class="pw-title" x="370" y="1454"><tspan x="370" dy="22">Machine Learning</tspan></text></g></a>
+<a href="/courses/CS3101/"><g class="pw-course pw-core" id="pw-CS3101" data-course="CS3101"><rect x="510" y="1420" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="610" y="1454">CS3101</text><text class="pw-title" x="610" y="1454"><tspan x="610" dy="22">Computer Networks</tspan></text></g></a>
+<a href="/courses/EL-GRAPH/"><g class="pw-course pw-elective" id="pw-EL-GRAPH" data-course="EL-GRAPH"><rect x="750" y="1420" width="200" height="100" rx="8" fill="#e5e7eb" stroke="#374151"/><text class="pw-id" x="850" y="1454">EL-GRAPH</text><text class="pw-title" x="850" y="1454"><tspan x="850" dy="22">Computer Graphics</tspan></text></g></a>
+<a href="/courses/CS3104/"><g class="pw-course pw-core" id="pw-CS3104" data-course="CS3104"><rect x="990" y="1420" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="1090" y="1454">CS3104</text><text class="pw-title" x="1090" y="1454"><tspan x="1090" dy="22">Security Fundamentals</tspan></text></g></a>
+<a href="/courses/EL-QUANT/"><g class="pw-course pw-elective" id="pw-EL-QUANT" data-course="EL-QUANT"><rect x="1230" y="1420" width="200" height="100" rx="8" fill="#e5e7eb" stroke="#374151"/><text class="pw-id" x="1330" y="1454">EL-QUANT</text><text class="pw-title" x="1330" y="1454"><tspan x="1330" dy="22">Quantum Computing</tspan></text></g></a>
+<a href="/courses/CS3201/"><g class="pw-course pw-core" id="pw-CS3201" data-course="CS3201"><rect x="30" y="1760" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="1794">CS3201</text><text class="pw-title" x="130" y="1794"><tspan x="130" dy="22">Parallel &amp; Distributed</tspan><tspan x="130" dy="16">Computing</tspan></text></g></a>
+<a href="/courses/EL-ROBOT/"><g class="pw-course pw-elective" id="pw-EL-ROBOT" data-course="EL-ROBOT"><rect x="270" y="1760" width="200" height="100" rx="8" fill="#e5e7eb" stroke="#374151"/><text class="pw-id" x="370" y="1794">EL-ROBOT</text><text class="pw-title" x="370" y="1794"><tspan x="370" dy="22">Robotics &amp; Embedded AI</tspan></text></g></a>
+<a href="/courses/SYS-ADV/"><g class="pw-course pw-systems" id="pw-SYS-ADV" data-course="SYS-ADV"><rect x="510" y="1760" width="200" height="100" rx="8" fill="#dcfce7" stroke="#166534"/><text class="pw-id" x="610" y="1794">SYS-ADV</text><text class="pw-title" x="610" y="1794"><tspan x="610" dy="22">Advanced Operating Systems</tspan></text></g></a>
+<a href="/courses/SYS-DBI/"><g class="pw-course pw-systems" id="pw-SYS-DBI" data-course="SYS-DBI"><rect x="750" y="1760" width="200" height="100" rx="8" fill="#dcfce7" stroke="#166534"/><text class="pw-id" x="850" y="1794">SYS-DBI</text><text class="pw-title" x="850" y="1794"><tspan x="850" dy="22">Database Internals</tspan></text></g></a>
+<a href="/courses/CS3202/"><g class="pw-course pw-core" id="pw-CS3202" data-course="CS3202"><rect x="990" y="1760" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="1090" y="1794">CS3202</text><text class="pw-title" x="1090" y="1794"><tspan x="1090" dy="22">LLM Application</tspan><tspan x="1090" dy="16">Engineering</tspan></text></g></a>
+<a href="/courses/SYS-COMP/"><g class="pw-course pw-systems" id="pw-SYS-COMP" data-course="SYS-COMP"><rect x="1230" y="1760" width="200" height="100" rx="8" fill="#dcfce7" stroke="#166534"/><text class="pw-id" x="1330" y="1794">SYS-COMP</text><text class="pw-title" x="1330" y="1794"><tspan x="1330" dy="22">Compilers</tspan></text></g></a>
+<a href="/courses/SEC-CRYPTO/"><g class="pw-course pw-security" id="pw-SEC-CRYPTO" data-course="SEC-CRYPTO"><rect x="1470" y="1760" width="200" height="100" rx="8" fill="#fef3c7" stroke="#92400e"/><text class="pw-id" x="1570" y="1794">SEC-CRYPTO</text><text class="pw-title" x="1570" y="1794"><tspan x="1570" dy="22">Applied Cryptography</tspan></text></g></a>
+<a href="/courses/SYS-PERF/"><g class="pw-course pw-systems" id="pw-SYS-PERF" data-course="SYS-PERF"><rect x="30" y="1896" width="200" height="100" rx="8" fill="#dcfce7" stroke="#166534"/><text class="pw-id" x="130" y="1930">SYS-PERF</text><text class="pw-title" x="130" y="1930"><tspan x="130" dy="22">Performance Engineering</tspan></text></g></a>
+<a href="/courses/SEC-NET/"><g class="pw-course pw-security" id="pw-SEC-NET" data-course="SEC-NET"><rect x="270" y="1896" width="200" height="100" rx="8" fill="#fef3c7" stroke="#92400e"/><text class="pw-id" x="370" y="1930">SEC-NET</text><text class="pw-title" x="370" y="1930"><tspan x="370" dy="22">Network Security</tspan></text></g></a>
+<a href="/courses/AI-DL/"><g class="pw-course pw-ai" id="pw-AI-DL" data-course="AI-DL"><rect x="510" y="1896" width="200" height="100" rx="8" fill="#fce7f3" stroke="#9d174d"/><text class="pw-id" x="610" y="1930">AI-DL</text><text class="pw-title" x="610" y="1930"><tspan x="610" dy="22">Deep Learning</tspan></text></g></a>
+<a href="/courses/CS3203/"><g class="pw-course pw-core" id="pw-CS3203" data-course="CS3203"><rect x="750" y="1896" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="850" y="1930">CS3203</text><text class="pw-title" x="850" y="1930"><tspan x="850" dy="22">Large-Scale Software &amp;</tspan><tspan x="850" dy="16">DevOps</tspan></text></g></a>
+<a href="/courses/SEC-OFFDEF/"><g class="pw-course pw-security" id="pw-SEC-OFFDEF" data-course="SEC-OFFDEF"><rect x="990" y="1896" width="200" height="100" rx="8" fill="#fef3c7" stroke="#92400e"/><text class="pw-id" x="1090" y="1930">SEC-OFFDEF</text><text class="pw-title" x="1090" y="1930"><tspan x="1090" dy="22">Offensive Security for</tspan><tspan x="1090" dy="16">Defenders</tspan></text></g></a>
+<a href="/courses/SEC-PRIV/"><g class="pw-course pw-security" id="pw-SEC-PRIV" data-course="SEC-PRIV"><rect x="1230" y="1896" width="200" height="100" rx="8" fill="#fef3c7" stroke="#92400e"/><text class="pw-id" x="1330" y="1930">SEC-PRIV</text><text class="pw-title" x="1330" y="1930"><tspan x="1330" dy="22">Privacy Engineering</tspan></text></g></a>
+<a href="/courses/SEC-SSD/"><g class="pw-course pw-security" id="pw-SEC-SSD" data-course="SEC-SSD"><rect x="1470" y="1896" width="200" height="100" rx="8" fill="#fef3c7" stroke="#92400e"/><text class="pw-id" x="1570" y="1930">SEC-SSD</text><text class="pw-title" x="1570" y="1930"><tspan x="1570" dy="22">Secure Software</tspan><tspan x="1570" dy="16">Development</tspan></text></g></a>
+<a href="/courses/CS4901/"><g class="pw-course pw-core" id="pw-CS4901" data-course="CS4901"><rect x="30" y="2236" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="2270">CS4901</text><text class="pw-title" x="130" y="2270"><tspan x="130" dy="22">Capstone I</tspan></text></g></a>
+<a href="/courses/SYS-CLOUD/"><g class="pw-course pw-systems" id="pw-SYS-CLOUD" data-course="SYS-CLOUD"><rect x="270" y="2236" width="200" height="100" rx="8" fill="#dcfce7" stroke="#166534"/><text class="pw-id" x="370" y="2270">SYS-CLOUD</text><text class="pw-title" x="370" y="2270"><tspan x="370" dy="22">Cloud Infrastructure &amp;</tspan><tspan x="370" dy="16">Virtualization</tspan></text></g></a>
+<a href="/courses/AI-RL/"><g class="pw-course pw-ai" id="pw-AI-RL" data-course="AI-RL"><rect x="510" y="2236" width="200" height="100" rx="8" fill="#fce7f3" stroke="#9d174d"/><text class="pw-id" x="610" y="2270">AI-RL</text><text class="pw-title" x="610" y="2270"><tspan x="610" dy="22">Reinforcement Learning</tspan></text></g></a>
+<a href="/courses/AI-SAFE/"><g class="pw-course pw-ai" id="pw-AI-SAFE" data-course="AI-SAFE"><rect x="750" y="2236" width="200" height="100" rx="8" fill="#fce7f3" stroke="#9d174d"/><text class="pw-id" x="850" y="2270">AI-SAFE</text><text class="pw-title" x="850" y="2270"><tspan x="850" dy="22">AI Safety &amp; Alignment</tspan></text></g></a>
+<a href="/courses/CS4101/"><g class="pw-course pw-core" id="pw-CS4101" data-course="CS4101"><rect x="990" y="2236" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="1090" y="2270">CS4101</text><text class="pw-title" x="1090" y="2270"><tspan x="1090" dy="22">Computing, Ethics &amp;</tspan><tspan x="1090" dy="16">Society</tspan></text></g></a>
+<a href="/courses/AI-MLOPS/"><g class="pw-course pw-ai" id="pw-AI-MLOPS" data-course="AI-MLOPS"><rect x="1230" y="2236" width="200" height="100" rx="8" fill="#fce7f3" stroke="#9d174d"/><text class="pw-id" x="1330" y="2270">AI-MLOPS</text><text class="pw-title" x="1330" y="2270"><tspan x="1330" dy="22">MLOps &amp; Production ML</tspan></text></g></a>
+<a href="/courses/AI-NLP/"><g class="pw-course pw-ai" id="pw-AI-NLP" data-course="AI-NLP"><rect x="1470" y="2236" width="200" height="100" rx="8" fill="#fce7f3" stroke="#9d174d"/><text class="pw-id" x="1570" y="2270">AI-NLP</text><text class="pw-title" x="1570" y="2270"><tspan x="1570" dy="22">NLP &amp; Large Language</tspan><tspan x="1570" dy="16">Models</tspan></text></g></a>
+<a href="/courses/CS4902/"><g class="pw-course pw-core" id="pw-CS4902" data-course="CS4902"><rect x="30" y="2576" width="200" height="100" rx="8" fill="#dbeafe" stroke="#1e40af"/><text class="pw-id" x="130" y="2610">CS4902</text><text class="pw-title" x="130" y="2610"><tspan x="130" dy="22">Capstone II</tspan></text></g></a>
+</svg>

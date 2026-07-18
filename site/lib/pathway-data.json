@@ -1,0 +1,649 @@
+{
+  "targetCredits": 120,
+  "kaNames": {
+    "AI": "Artificial Intelligence",
+    "AL": "Algorithmic Foundations",
+    "AR": "Architecture and Organization",
+    "DM": "Data Management",
+    "FPL": "Foundations of Programming Languages",
+    "GIT": "Graphics and Interactive Techniques",
+    "HCI": "Human-Computer Interaction",
+    "MSF": "Mathematical and Statistical Foundations",
+    "NC": "Networking and Communication",
+    "OS": "Operating Systems",
+    "PDC": "Parallel and Distributed Computing",
+    "SDF": "Software Development Fundamentals",
+    "SE": "Software Engineering",
+    "SEC": "Security",
+    "SEP": "Society, Ethics and the Profession",
+    "SF": "Systems Fundamentals",
+    "SPD": "Specialized Platform Development"
+  },
+  "courses": [
+    {
+      "id": "AI-DL",
+      "title": "Deep Learning",
+      "semester": 6,
+      "credits": 3,
+      "track": "ai",
+      "kas": [
+        "AI"
+      ],
+      "prereqs": [
+        "CS3102"
+      ]
+    },
+    {
+      "id": "AI-MLOPS",
+      "title": "MLOps & Production ML",
+      "semester": 7,
+      "credits": 3,
+      "track": "ai",
+      "kas": [
+        "AI",
+        "SE",
+        "SPD"
+      ],
+      "prereqs": [
+        "CS3102",
+        "CS3203"
+      ]
+    },
+    {
+      "id": "AI-NLP",
+      "title": "NLP & Large Language Models",
+      "semester": 7,
+      "credits": 3,
+      "track": "ai",
+      "kas": [
+        "AI"
+      ],
+      "prereqs": [
+        "AI-DL"
+      ]
+    },
+    {
+      "id": "AI-RL",
+      "title": "Reinforcement Learning",
+      "semester": 7,
+      "credits": 3,
+      "track": "ai",
+      "kas": [
+        "AI"
+      ],
+      "prereqs": [
+        "CS3102",
+        "MA2101"
+      ]
+    },
+    {
+      "id": "AI-SAFE",
+      "title": "AI Safety & Alignment",
+      "semester": 7,
+      "credits": 3,
+      "track": "ai",
+      "kas": [
+        "AI",
+        "SEP"
+      ],
+      "prereqs": [
+        "CS3102"
+      ]
+    },
+    {
+      "id": "CS1101",
+      "title": "Programming Fundamentals",
+      "semester": 1,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SDF",
+        "SEP"
+      ],
+      "prereqs": []
+    },
+    {
+      "id": "CS1102",
+      "title": "Computer Systems Fundamentals",
+      "semester": 1,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SF",
+        "AR"
+      ],
+      "prereqs": []
+    },
+    {
+      "id": "CS1201",
+      "title": "Data Structures & Algorithms I",
+      "semester": 2,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "AL",
+        "SDF"
+      ],
+      "prereqs": [
+        "CS1101",
+        "MA1101"
+      ]
+    },
+    {
+      "id": "CS1202",
+      "title": "Systems Programming",
+      "semester": 2,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SF",
+        "SDF",
+        "FPL"
+      ],
+      "prereqs": [
+        "CS1101",
+        "CS1102"
+      ]
+    },
+    {
+      "id": "CS1203",
+      "title": "Software Construction & Tooling",
+      "semester": 2,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SDF",
+        "SE",
+        "SPD"
+      ],
+      "prereqs": [
+        "CS1101"
+      ]
+    },
+    {
+      "id": "CS2101",
+      "title": "Algorithm Design & Analysis",
+      "semester": 3,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "AL"
+      ],
+      "prereqs": [
+        "CS1201",
+        "MA1101"
+      ]
+    },
+    {
+      "id": "CS2102",
+      "title": "Computer Architecture",
+      "semester": 3,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "AR"
+      ],
+      "prereqs": [
+        "CS1202"
+      ]
+    },
+    {
+      "id": "CS2103",
+      "title": "Software Engineering",
+      "semester": 3,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SE",
+        "SEP"
+      ],
+      "prereqs": [
+        "CS1203"
+      ]
+    },
+    {
+      "id": "CS2201",
+      "title": "Operating Systems",
+      "semester": 4,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "OS"
+      ],
+      "prereqs": [
+        "CS2102",
+        "CS1202"
+      ]
+    },
+    {
+      "id": "CS2202",
+      "title": "Data Management & Databases",
+      "semester": 4,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "DM"
+      ],
+      "prereqs": [
+        "CS1201"
+      ]
+    },
+    {
+      "id": "CS2203",
+      "title": "Theory of Computation",
+      "semester": 4,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "AL"
+      ],
+      "prereqs": [
+        "MA1101"
+      ]
+    },
+    {
+      "id": "CS2204",
+      "title": "HCI & Visual Computing",
+      "semester": 4,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "HCI",
+        "GIT"
+      ],
+      "prereqs": [
+        "CS1203"
+      ]
+    },
+    {
+      "id": "CS3101",
+      "title": "Computer Networks",
+      "semester": 5,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "NC"
+      ],
+      "prereqs": [
+        "CS2201"
+      ]
+    },
+    {
+      "id": "CS3102",
+      "title": "Machine Learning",
+      "semester": 5,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "AI",
+        "MSF"
+      ],
+      "prereqs": [
+        "MA1201",
+        "MA2101",
+        "CS1201"
+      ]
+    },
+    {
+      "id": "CS3103",
+      "title": "Programming Languages",
+      "semester": 5,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "FPL"
+      ],
+      "prereqs": [
+        "CS1202",
+        "CS2203"
+      ]
+    },
+    {
+      "id": "CS3104",
+      "title": "Security Fundamentals",
+      "semester": 5,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "SEC"
+      ],
+      "prereqs": [
+        "CS2201"
+      ]
+    },
+    {
+      "id": "CS3201",
+      "title": "Parallel & Distributed Computing",
+      "semester": 6,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "PDC"
+      ],
+      "prereqs": [
+        "CS3101",
+        "CS2201"
+      ]
+    },
+    {
+      "id": "CS3202",
+      "title": "LLM Application Engineering",
+      "semester": 6,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "AI",
+        "SPD",
+        "SE"
+      ],
+      "prereqs": [
+        "CS3102",
+        "CS2103"
+      ]
+    },
+    {
+      "id": "CS3203",
+      "title": "Large-Scale Software & DevOps",
+      "semester": 6,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "SE",
+        "SPD"
+      ],
+      "prereqs": [
+        "CS2103",
+        "CS2202"
+      ]
+    },
+    {
+      "id": "CS4101",
+      "title": "Computing, Ethics & Society",
+      "semester": 7,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "SEP"
+      ],
+      "prereqs": [
+        "CS2103"
+      ]
+    },
+    {
+      "id": "CS4901",
+      "title": "Capstone I",
+      "semester": 7,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "SE",
+        "SDF"
+      ],
+      "prereqs": [
+        "CS3203"
+      ]
+    },
+    {
+      "id": "CS4902",
+      "title": "Capstone II",
+      "semester": 8,
+      "credits": 5,
+      "track": "core",
+      "kas": [
+        "SE",
+        "SEP"
+      ],
+      "prereqs": [
+        "CS4901"
+      ]
+    },
+    {
+      "id": "EL-GRAPH",
+      "title": "Computer Graphics",
+      "semester": 5,
+      "credits": 3,
+      "track": "elective",
+      "kas": [
+        "GIT"
+      ],
+      "prereqs": [
+        "MA1201",
+        "CS1201"
+      ]
+    },
+    {
+      "id": "EL-MOBILE",
+      "title": "Mobile & Cross-Platform Development",
+      "semester": 4,
+      "credits": 3,
+      "track": "elective",
+      "kas": [
+        "SPD",
+        "HCI"
+      ],
+      "prereqs": [
+        "CS1203"
+      ]
+    },
+    {
+      "id": "EL-QUANT",
+      "title": "Quantum Computing",
+      "semester": 5,
+      "credits": 3,
+      "track": "elective",
+      "kas": [
+        "AL",
+        "MSF"
+      ],
+      "prereqs": [
+        "MA1201"
+      ]
+    },
+    {
+      "id": "EL-ROBOT",
+      "title": "Robotics & Embedded AI",
+      "semester": 6,
+      "credits": 3,
+      "track": "elective",
+      "kas": [
+        "AI",
+        "SPD"
+      ],
+      "prereqs": [
+        "CS3102"
+      ]
+    },
+    {
+      "id": "MA1101",
+      "title": "Discrete Mathematics",
+      "semester": 1,
+      "credits": 4,
+      "track": "core",
+      "kas": [
+        "MSF"
+      ],
+      "prereqs": []
+    },
+    {
+      "id": "MA1102",
+      "title": "Calculus for Computing",
+      "semester": 1,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "MSF"
+      ],
+      "prereqs": []
+    },
+    {
+      "id": "MA1201",
+      "title": "Linear Algebra",
+      "semester": 2,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "MSF"
+      ],
+      "prereqs": [
+        "MA1102"
+      ]
+    },
+    {
+      "id": "MA2101",
+      "title": "Probability & Statistics for CS",
+      "semester": 3,
+      "credits": 3,
+      "track": "core",
+      "kas": [
+        "MSF"
+      ],
+      "prereqs": [
+        "MA1102"
+      ]
+    },
+    {
+      "id": "SEC-CRYPTO",
+      "title": "Applied Cryptography",
+      "semester": 6,
+      "credits": 3,
+      "track": "security",
+      "kas": [
+        "SEC",
+        "MSF"
+      ],
+      "prereqs": [
+        "CS3104",
+        "MA1101"
+      ]
+    },
+    {
+      "id": "SEC-NET",
+      "title": "Network Security",
+      "semester": 6,
+      "credits": 3,
+      "track": "security",
+      "kas": [
+        "SEC",
+        "NC"
+      ],
+      "prereqs": [
+        "CS3104",
+        "CS3101"
+      ]
+    },
+    {
+      "id": "SEC-OFFDEF",
+      "title": "Offensive Security for Defenders",
+      "semester": 6,
+      "credits": 3,
+      "track": "security",
+      "kas": [
+        "SEC"
+      ],
+      "prereqs": [
+        "CS3104",
+        "CS3101"
+      ]
+    },
+    {
+      "id": "SEC-PRIV",
+      "title": "Privacy Engineering",
+      "semester": 6,
+      "credits": 3,
+      "track": "security",
+      "kas": [
+        "SEC",
+        "SEP"
+      ],
+      "prereqs": [
+        "CS3104"
+      ]
+    },
+    {
+      "id": "SEC-SSD",
+      "title": "Secure Software Development",
+      "semester": 6,
+      "credits": 3,
+      "track": "security",
+      "kas": [
+        "SEC",
+        "SE"
+      ],
+      "prereqs": [
+        "CS3104",
+        "CS2103"
+      ]
+    },
+    {
+      "id": "SYS-ADV",
+      "title": "Advanced Operating Systems",
+      "semester": 6,
+      "credits": 3,
+      "track": "systems",
+      "kas": [
+        "OS"
+      ],
+      "prereqs": [
+        "CS2201"
+      ]
+    },
+    {
+      "id": "SYS-CLOUD",
+      "title": "Cloud Infrastructure & Virtualization",
+      "semester": 7,
+      "credits": 3,
+      "track": "systems",
+      "kas": [
+        "PDC",
+        "SPD"
+      ],
+      "prereqs": [
+        "CS3201"
+      ]
+    },
+    {
+      "id": "SYS-COMP",
+      "title": "Compilers",
+      "semester": 6,
+      "credits": 3,
+      "track": "systems",
+      "kas": [
+        "FPL",
+        "SF"
+      ],
+      "prereqs": [
+        "CS3103"
+      ]
+    },
+    {
+      "id": "SYS-DBI",
+      "title": "Database Internals",
+      "semester": 6,
+      "credits": 3,
+      "track": "systems",
+      "kas": [
+        "DM",
+        "OS"
+      ],
+      "prereqs": [
+        "CS2202",
+        "CS2201"
+      ]
+    },
+    {
+      "id": "SYS-PERF",
+      "title": "Performance Engineering",
+      "semester": 6,
+      "credits": 3,
+      "track": "systems",
+      "kas": [
+        "AR",
+        "SF"
+      ],
+      "prereqs": [
+        "CS2102",
+        "CS2201"
+      ]
+    }
+  ]
+}
