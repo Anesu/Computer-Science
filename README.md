@@ -21,12 +21,14 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `planning/06-agentic-feedback-system.md` | Assessment & feedback layer for AI-only feedback: examiner/reviewer roles, rubrics-as-data, evidence-linked records |
 | `planning/07-agentic-feedback-implementation.md` | Implementation plan for 06: work packages WP1–WP6, schemas, migration, validator rules, gates |
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
-| `curriculum/courses/` | Per-course OKF bundles: spec, reading list, `/teach` mission (Phase 2) |
+| `curriculum/courses/<ID>/` | Per-course bundle: `course.md`, `mission.md`, `project.md`, `rubric.yaml`, `exam.md`, `units/` |
+| `schemas/rubric.schema.md` | Assessment-bundle contract (rules V8–V13); exemplar: CS1101 |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
 | `site/` | "The University" — Blume docs site (static, offline, serves humans + agents) |
 | `site/islands/` | React islands: progress Dashboard (frontier, export/import), PathwayMap |
-| `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
-| `scripts/scaffold_courses.py` | Scaffold-once generator for `curriculum/courses/` |
+| `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs, assessment bundles |
+| `scripts/scaffold_courses.py` | Scaffold-once generator for `curriculum/courses/` (pre-directory layout) |
+| `scripts/migrate_course_layout.py` | One-shot WP1 migration to per-course directories (kept for the record) |
 | `scripts/build_site_docs.py` | Deterministic curriculum→site transform (pages, SVG map, data) |
 
 ## Working with the source registry

@@ -43,6 +43,12 @@ STATUSES = {
 CHURN = {"evergreen", "stable", "volatile"}
 STALE_AFTER = timedelta(days=183)
 
+# Assessment bundle contract (schemas/rubric.schema.md, rules V8-V13)
+ASSESSMENT_FILES = ("course.md", "mission.md", "project.md", "rubric.yaml", "exam.md")
+AI_MODES = {"closed", "open-book", "ai-paired"}
+WEIGHTS = {"core", "supporting"}
+OBJECTIVE_ID_RE = re.compile(r"^[a-z0-9-]+(\.[a-z0-9-]+)+$")
+
 errors: list[str] = []
 warnings: list[str] = []
 
@@ -160,6 +166,8 @@ def check_documents(courses: dict, registry: dict) -> None:
     today = date.today()
     n = 0
     for path in docs:
+        if path.name == "mission.md":
+            continue  # /teach missions are plain markdown, not OKF documents
         m = FRONTMATTER_RE.match(path.read_text())
         if not m:
             warn(f"{path.relative_to(ROOT)}: no frontmatter")
@@ -183,6 +191,129 @@ def check_documents(courses: dict, registry: dict) -> None:
         if fm.get("churn") == "volatile" and lv and (today - lv) > STALE_AFTER:
             warn(f"{rel}: volatile document last verified {lv} — refresh due")
     print(f"  {n} curriculum documents checked")
+
+
+def _frontmatter(path: Path):
+    m = FRONTMATTER_RE.match(path.read_text())
+    if not m:
+        err(f"{path.relative_to(ROOT)}: no frontmatter")
+        return None, ""
+    try:
+        return yaml.safe_load(m.group(1)), path.read_text()[m.end():]
+    except yaml.YAMLError as e:
+        err(f"{path.relative_to(ROOT)}: bad frontmatter YAML: {e}")
+        return None, ""
+
+
+def check_assessments(courses: dict) -> None:
+    """Rules V8-V13 (schemas/rubric.schema.md): per-course assessment bundles."""
+    courses_dir = CURRICULUM / "courses"
+
+    # V12 — uniform layout: nothing under curriculum/ but courses/ + pathway.yaml
+    for p in CURRICULUM.iterdir():
+        if p.is_dir() and p.name != "courses":
+            err(f"V12: stray directory curriculum/{p.name}/ — "
+                f"concept docs belong in curriculum/courses/<ID>/units/")
+    for p in courses_dir.iterdir():
+        if p.is_file():
+            err(f"V12: stray flat file curriculum/courses/{p.name} — "
+                f"courses are directories now")
+        elif p.name not in courses:
+            err(f"V12: curriculum/courses/{p.name}/ has no course in pathway.yaml")
+
+    seen_objectives: dict[str, str] = {}
+    stub_rubrics = 0
+    for cid in sorted(courses):
+        cdir = courses_dir / cid
+        if not cdir.is_dir():
+            err(f"V8: {cid}: missing directory curriculum/courses/{cid}/")
+            continue
+        missing = [f for f in ASSESSMENT_FILES if not (cdir / f).exists()]
+        if missing:
+            err(f"V8: {cid}: missing {', '.join(missing)}")
+            continue
+
+        # V9/V10 — rubric shape and global objective uniqueness
+        rel = f"courses/{cid}/rubric.yaml"
+        try:
+            rubric = load_yaml(cdir / "rubric.yaml")
+        except yaml.YAMLError as e:
+            err(f"V9: {rel}: bad YAML: {e}")
+            continue
+        if rubric.get("course") != cid:
+            err(f"V9: {rel}: course '{rubric.get('course')}' != directory '{cid}'")
+        objectives = rubric.get("objectives") or []
+        if not objectives:
+            err(f"V9: {rel}: no objectives")
+        has_core = False
+        for o in objectives:
+            oid = o.get("id", "")
+            ctx = f"V9: {rel}: objective '{oid or '?'}'"
+            if not OBJECTIVE_ID_RE.match(oid):
+                err(f"{ctx}: id must be dot-namespaced lowercase")
+            elif oid in seen_objectives:
+                err(f"V10: {rel}: objective id '{oid}' already used in "
+                    f"{seen_objectives[oid]}")
+            else:
+                seen_objectives[oid] = rel
+            if not str(o.get("statement", "")).strip():
+                err(f"{ctx}: empty statement")
+            ev = o.get("evidence")
+            if not isinstance(ev, list) or not ev or not all(
+                    str(e).strip() for e in ev):
+                err(f"{ctx}: evidence must be a non-empty list")
+            if o.get("weight") not in WEIGHTS:
+                err(f"{ctx}: illegal weight '{o.get('weight')}'")
+            has_core = has_core or o.get("weight") == "core"
+            if o.get("ai_mode") not in AI_MODES:
+                err(f"{ctx}: illegal ai_mode '{o.get('ai_mode')}'")
+        if objectives and not has_core:
+            err(f"V9: {rel}: no core objective — pass_rule 'core: all' "
+                f"would be vacuous")
+        pr = rubric.get("pass_rule") or {}
+        if pr.get("core") != "all":
+            err(f"V9: {rel}: pass_rule.core must be 'all'")
+        sm = pr.get("supporting_min")
+        if not isinstance(sm, (int, float)) or not 0 <= sm <= 1:
+            err(f"V9: {rel}: pass_rule.supporting_min must be a number in [0,1]")
+        if any("TODO" in (cdir / f).read_text()
+               for f in ("rubric.yaml", "exam.md", "project.md")):
+            stub_rubrics += 1
+
+        # V11 — exam.md / project.md frontmatter and required sections
+        exam_fm, _ = _frontmatter(cdir / "exam.md")
+        if exam_fm is not None:
+            if exam_fm.get("course") != cid or exam_fm.get("type") != "exam":
+                err(f"V11: courses/{cid}/exam.md: frontmatter must declare "
+                    f"course: {cid}, type: exam")
+            if exam_fm.get("ai_mode") not in AI_MODES:
+                err(f"V11: courses/{cid}/exam.md: illegal ai_mode "
+                    f"'{exam_fm.get('ai_mode')}'")
+            for field in ("format", "duration_minutes", "retake_cooldown_days"):
+                if field not in exam_fm:
+                    err(f"V11: courses/{cid}/exam.md: missing '{field}'")
+        proj_fm, proj_body = _frontmatter(cdir / "project.md")
+        if proj_fm is not None:
+            if proj_fm.get("course") != cid or proj_fm.get("type") != "project":
+                err(f"V11: courses/{cid}/project.md: frontmatter must declare "
+                    f"course: {cid}, type: project")
+            if proj_fm.get("ai_mode") not in AI_MODES:
+                err(f"V11: courses/{cid}/project.md: illegal ai_mode "
+                    f"'{proj_fm.get('ai_mode')}'")
+            if "## Acceptance criteria" not in proj_body:
+                err(f"V11: courses/{cid}/project.md: missing "
+                    f"'## Acceptance criteria' section")
+
+        # V13 — concept docs carry a misconception catalogue (warning until
+        # the Phase 3 template lands; flipped to error by WP4)
+        for doc in sorted((cdir / "units").rglob("*.md")) if (cdir / "units").is_dir() else []:
+            if "## Common misconceptions" not in doc.read_text():
+                warn(f"V13: {doc.relative_to(ROOT)}: no "
+                     f"'## Common misconceptions' section")
+
+    print(f"  {len(courses)} assessment bundles checked; "
+          f"{len(seen_objectives)} objectives; "
+          f"{stub_rubrics} rubrics still carry TODO stubs")
 
 
 # ---------------------------------------------------------------------------
@@ -557,6 +688,8 @@ def main() -> int:
     registry = check_registry()
     print("Validating curriculum documents...")
     check_documents(courses, registry)
+    print("Validating assessment bundles...")
+    check_assessments(courses)
     for w in warnings:
         print(f"WARN: {w}")
     if errors:

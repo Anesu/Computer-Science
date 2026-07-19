@@ -31,7 +31,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "AI-MLOPS",
@@ -47,7 +55,15 @@
       "prereqs": [
         "CS3102",
         "CS3203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "AI-NLP",
@@ -60,7 +76,15 @@
       ],
       "prereqs": [
         "AI-DL"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "AI-RL",
@@ -74,7 +98,15 @@
       "prereqs": [
         "CS3102",
         "MA2101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "AI-SAFE",
@@ -88,7 +120,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS1101",
@@ -100,7 +140,17 @@
         "SDF",
         "SEP"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "assessment": {
+        "core": 5,
+        "supporting": 4,
+        "aiModes": [
+          "ai-paired",
+          "closed",
+          "open-book"
+        ],
+        "stub": false
+      }
     },
     {
       "id": "CS1102",
@@ -112,7 +162,15 @@
         "SF",
         "AR"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS1201",
@@ -127,7 +185,15 @@
       "prereqs": [
         "CS1101",
         "MA1101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS1202",
@@ -143,7 +209,15 @@
       "prereqs": [
         "CS1101",
         "CS1102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS1203",
@@ -158,7 +232,15 @@
       ],
       "prereqs": [
         "CS1101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2101",
@@ -172,7 +254,15 @@
       "prereqs": [
         "CS1201",
         "MA1101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2102",
@@ -185,7 +275,15 @@
       ],
       "prereqs": [
         "CS1202"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2103",
@@ -199,7 +297,15 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2201",
@@ -213,7 +319,15 @@
       "prereqs": [
         "CS2102",
         "CS1202"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2202",
@@ -226,7 +340,15 @@
       ],
       "prereqs": [
         "CS1201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2203",
@@ -239,7 +361,15 @@
       ],
       "prereqs": [
         "MA1101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS2204",
@@ -253,7 +383,15 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3101",
@@ -266,7 +404,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3102",
@@ -282,7 +428,15 @@
         "MA1201",
         "MA2101",
         "CS1201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3103",
@@ -296,7 +450,15 @@
       "prereqs": [
         "CS1202",
         "CS2203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3104",
@@ -309,7 +471,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3201",
@@ -323,7 +493,15 @@
       "prereqs": [
         "CS3101",
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3202",
@@ -339,7 +517,15 @@
       "prereqs": [
         "CS3102",
         "CS2103"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS3203",
@@ -354,7 +540,15 @@
       "prereqs": [
         "CS2103",
         "CS2202"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS4101",
@@ -367,7 +561,15 @@
       ],
       "prereqs": [
         "CS2103"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS4901",
@@ -381,7 +583,15 @@
       ],
       "prereqs": [
         "CS3203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "CS4902",
@@ -395,7 +605,15 @@
       ],
       "prereqs": [
         "CS4901"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "EL-GRAPH",
@@ -409,7 +627,15 @@
       "prereqs": [
         "MA1201",
         "CS1201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "EL-MOBILE",
@@ -423,7 +649,15 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "EL-QUANT",
@@ -437,7 +671,15 @@
       ],
       "prereqs": [
         "MA1201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "EL-ROBOT",
@@ -451,7 +693,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "MA1101",
@@ -462,7 +712,15 @@
       "kas": [
         "MSF"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "MA1102",
@@ -473,7 +731,15 @@
       "kas": [
         "MSF"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "MA1201",
@@ -486,7 +752,15 @@
       ],
       "prereqs": [
         "MA1102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "MA2101",
@@ -499,7 +773,15 @@
       ],
       "prereqs": [
         "MA1102"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SEC-CRYPTO",
@@ -514,7 +796,15 @@
       "prereqs": [
         "CS3104",
         "MA1101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SEC-NET",
@@ -529,7 +819,15 @@
       "prereqs": [
         "CS3104",
         "CS3101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SEC-OFFDEF",
@@ -543,7 +841,15 @@
       "prereqs": [
         "CS3104",
         "CS3101"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SEC-PRIV",
@@ -557,7 +863,15 @@
       ],
       "prereqs": [
         "CS3104"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SEC-SSD",
@@ -572,7 +886,15 @@
       "prereqs": [
         "CS3104",
         "CS2103"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SYS-ADV",
@@ -585,7 +907,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SYS-CLOUD",
@@ -599,7 +929,15 @@
       ],
       "prereqs": [
         "CS3201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SYS-COMP",
@@ -613,7 +951,15 @@
       ],
       "prereqs": [
         "CS3103"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SYS-DBI",
@@ -628,7 +974,15 @@
       "prereqs": [
         "CS2202",
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     },
     {
       "id": "SYS-PERF",
@@ -643,7 +997,15 @@
       "prereqs": [
         "CS2102",
         "CS2201"
-      ]
+      ],
+      "assessment": {
+        "core": 1,
+        "supporting": 0,
+        "aiModes": [
+          "ai-paired"
+        ],
+        "stub": true
+      }
     }
   ]
 }

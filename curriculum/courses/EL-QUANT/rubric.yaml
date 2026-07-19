@@ -1,0 +1,14 @@
+# Grading rubric — seeded by scripts/migrate_course_layout.py.
+# Schema: schemas/rubric.schema.md. Refine before the first /examiner run.
+course: EL-QUANT
+objectives:
+  - id: el-quant.project.defense
+    statement: Complete the course project and defend it in the viva
+    evidence:
+      - Project passes every acceptance criterion in project.md
+      - Learner explains design decisions and modifies their own code live
+    weight: core
+    ai_mode: ai-paired
+pass_rule:
+  core: all
+  supporting_min: 0.7

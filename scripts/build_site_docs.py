@@ -69,8 +69,20 @@ def write(path: Path, text: str) -> None:
 
 # ── markdown → MDX ─────────────────────────────────────────────────────────
 
-def md_to_mdx_body(body: str) -> str:
-    """Transform CommonMark to MDX-safe text, leaving code fences alone."""
+def _route_slug(path: str) -> str:
+    # Blume drops NN- ordering prefixes from route slugs.
+    return "/".join(re.sub(r"^\d+-", "", part) for part in path.split("/"))
+
+
+def md_to_mdx_body(body: str, cid: str = "", kind: str = "course") -> str:
+    """Transform CommonMark to MDX-safe text, leaving code fences alone.
+
+    Link rewriting is layout-aware (curriculum/courses/<ID>/ bundles):
+      (../<ID>/course.md)   -> /courses/<ID>/          (sibling course)
+      (units/<doc>.md)      -> /courses/<cid>/<slug>/  (own concept, from course.md)
+      (../course.md)        -> /courses/<cid>/         (own course, from a concept doc)
+      (<doc>.md)            -> /courses/<cid>/<slug>/  (sibling concept, concept docs only)
+    """
     out, in_fence = [], False
     buf: list[str] = []
 
@@ -79,15 +91,16 @@ def md_to_mdx_body(body: str) -> str:
         seg = re.sub(r"<!--.*?-->", "", seg, flags=re.DOTALL)
         seg = seg.replace("{", "\\{").replace("}", "\\}")
         seg = re.sub(r"<(?=[A-Za-z/!])", "\\<", seg)
-        def concept_link(m: re.Match) -> str:
-            # Blume drops NN- ordering prefixes from route slugs.
-            slug = "/".join(re.sub(r"^\d+-", "", part)
-                            for part in m.group(2).split("/"))
-            return f"(/courses/{m.group(1)}/{slug}/)"
-
-        seg = re.sub(r"\(\.\./([A-Za-z][\w-]*)/([\w./-]+)\.md\)",
-                     concept_link, seg)
-        seg = re.sub(r"\(([A-Za-z][\w-]*)\.md\)", r"(/courses/\1/)", seg)
+        seg = re.sub(r"\(\.\./([A-Za-z][\w-]*)/course\.md\)",
+                     r"(/courses/\1/)", seg)
+        seg = re.sub(r"\(\.\./course\.md\)", f"(/courses/{cid}/)", seg)
+        seg = re.sub(r"\(units/([\w./-]+)\.md\)",
+                     lambda m: f"(/courses/{cid}/{_route_slug(m.group(1))}/)",
+                     seg)
+        if kind == "concept":
+            seg = re.sub(r"\((?!\.\.|/|https?:)([\w./-]+)\.md\)",
+                         lambda m: f"(/courses/{cid}/{_route_slug(m.group(1))}/)",
+                         seg)
         seg = re.sub(r"\n{3,}", "\n\n", seg)
         out.append(seg)
         buf.clear()
@@ -109,7 +122,41 @@ def md_to_mdx_body(body: str) -> str:
     return "\n".join(out).strip() + "\n"
 
 
-def course_page(cid: str, fm: dict, body: str) -> str:
+POINTER_SECTION_RE = re.compile(
+    r"\n## Assessment & delivery\n.*?(?=\n## |\Z)", re.DOTALL)
+H1_RE = re.compile(r"\A\s*# .*?\n")
+
+
+def assessment_section(rubric: dict, exam_fm: dict, stub: bool) -> str:
+    objectives = rubric.get("objectives", [])
+    core = [o for o in objectives if o.get("weight") == "core"]
+    supporting = [o for o in objectives if o.get("weight") == "supporting"]
+    sm = rubric.get("pass_rule", {}).get("supporting_min", 0)
+    lines = [
+        "## Assessment",
+        "",
+        f"{exam_fm.get('format', 'viva').capitalize()} exam "
+        f"(`{exam_fm.get('ai_mode', 'closed')}`, "
+        f"{exam_fm.get('duration_minutes', '?')} min) conducted by the "
+        f"`/examiner` skill against the course rubric: "
+        f"**{len(core)} core** objective{'s' if len(core) != 1 else ''} "
+        f"(all required) + {len(supporting)} supporting "
+        f"(≥{round(sm * 100)}% required). Retake cooldown: "
+        f"{exam_fm.get('retake_cooldown_days', '?')} days.",
+        "",
+    ]
+    if stub:
+        lines += ["_Assessment bundle still carries Phase-2 stubs — refined "
+                  "alongside unit content._", ""]
+    lines += ["| Objective | Weight | AI mode |", "|---|---|---|"]
+    for o in objectives:
+        lines.append(f"| {o.get('statement', '?')} | {o.get('weight', '?')} "
+                     f"| `{o.get('ai_mode', '?')}` |")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def course_page(cid: str, fm: dict, body: str, bundle: dict) -> str:
     title = f"{cid} — {fm['title']}"
     desc = (f"Semester {fm['semester']} {TRACK_LABEL[fm['track']]} course, "
             f"{fm['credits']} credits.")
@@ -117,6 +164,9 @@ def course_page(cid: str, fm: dict, body: str) -> str:
     prov = (f"**Provenance:** churn `{fm.get('churn', 'stable')}` · "
             f"verified {fm.get('last_verified', '?')}"
             + (f" · sources: {sources}" if sources else ""))
+    body = POINTER_SECTION_RE.sub("\n", body)
+    project_body = H1_RE.sub("", bundle["project_body"]).strip()
+    mission_body = H1_RE.sub("", bundle["mission_body"]).strip()
     lines = [
         "---",
         f"title: {json.dumps(title)}",
@@ -126,7 +176,14 @@ def course_page(cid: str, fm: dict, body: str) -> str:
         f"  tags: [{fm['track']}, semester-{fm['semester']}]",
         "---",
         "",
-        md_to_mdx_body(body),
+        md_to_mdx_body(body, cid),
+        assessment_section(bundle["rubric"], bundle["exam_fm"], bundle["stub"]),
+        "## Project",
+        "",
+        md_to_mdx_body(project_body, cid),
+        "## /teach mission",
+        "",
+        md_to_mdx_body(mission_body, cid),
         "---",
         "",
         prov,
@@ -150,7 +207,7 @@ def concept_page(cid: str, fm: dict, body: str) -> str:
         f"  tags: [{cid}, concept]",
         "---",
         "",
-        md_to_mdx_body(body),
+        md_to_mdx_body(body, cid, kind="concept"),
         "---",
         "",
         f"{prov} · part of [{cid}](/courses/{cid}/)",
@@ -398,32 +455,57 @@ def main() -> int:
     registry = load(REGISTRY) or []
 
     n = 0
-    for path in sorted(COURSES_SRC.glob("*.md")):
+    assessments: dict[str, dict] = {}
+    for path in sorted(COURSES_SRC.glob("*/course.md")):
+        cdir = path.parent
         text = path.read_text(encoding="utf-8")
         m = FRONTMATTER_RE.match(text)
         if not m:
-            print(f"WARN: {path.name} has no frontmatter, skipped")
+            print(f"WARN: {path} has no frontmatter, skipped")
             continue
         fm = yaml.safe_load(m.group(1))
-        write(DOCS / "courses" / f'{fm["id"]}.mdx',
-              course_page(fm["id"], fm, text[m.end():]))
+        cid = fm["id"]
+
+        rubric = load(cdir / "rubric.yaml")
+        proj_text = (cdir / "project.md").read_text(encoding="utf-8")
+        pm = FRONTMATTER_RE.match(proj_text)
+        exam_text = (cdir / "exam.md").read_text(encoding="utf-8")
+        em = FRONTMATTER_RE.match(exam_text)
+        stub = any("TODO" in (cdir / f).read_text(encoding="utf-8")
+                   for f in ("rubric.yaml", "exam.md", "project.md"))
+        bundle = {
+            "rubric": rubric,
+            "exam_fm": yaml.safe_load(em.group(1)) if em else {},
+            "project_body": proj_text[pm.end():] if pm else proj_text,
+            "mission_body": (cdir / "mission.md").read_text(encoding="utf-8"),
+            "stub": stub,
+        }
+        objectives = rubric.get("objectives", [])
+        assessments[cid] = {
+            "core": sum(1 for o in objectives if o.get("weight") == "core"),
+            "supporting": sum(1 for o in objectives
+                              if o.get("weight") == "supporting"),
+            "aiModes": sorted({o.get("ai_mode") for o in objectives if o.get("ai_mode")}),
+            "stub": stub,
+        }
+        write(DOCS / "courses" / f"{cid}.mdx",
+              course_page(cid, fm, text[m.end():], bundle))
         n += 1
 
-    # Phase 3 concept documents: curriculum/<COURSE-ID>/**/*.md become pages
-    # nested under the course, so authored knowledge lands on the site with
-    # no extra wiring.
+    # Phase 3 concept documents: courses/<ID>/units/**/*.md become pages
+    # nested under the course (the units/ path segment is dropped, so routes
+    # are unchanged from the pre-directory layout).
     nc = 0
-    for cdir in sorted(p for p in (ROOT / "curriculum").iterdir()
-                       if p.is_dir() and p.name != "courses"):
-        cid = cdir.name
-        for path in sorted(cdir.rglob("*.md")):
+    for units in sorted(COURSES_SRC.glob("*/units")):
+        cid = units.parent.name
+        for path in sorted(units.rglob("*.md")):
             text = path.read_text(encoding="utf-8")
             m = FRONTMATTER_RE.match(text)
             if not m:
                 print(f"WARN: {path} has no frontmatter, skipped")
                 continue
             fm = yaml.safe_load(m.group(1))
-            rel = path.relative_to(cdir).with_suffix("").as_posix()
+            rel = path.relative_to(units).with_suffix("").as_posix()
             write(DOCS / "courses" / cid / f"{rel}.mdx",
                   concept_page(cid, fm, text[m.end():]))
             nc += 1
@@ -443,7 +525,8 @@ def main() -> int:
             {"id": c["id"], "title": c["title"], "semester": c["semester"],
              "credits": c["credits"], "track": c["track"],
              "kas": c.get("knowledge_areas", []),
-             "prereqs": c.get("prerequisites", [])}
+             "prereqs": c.get("prerequisites", []),
+             "assessment": assessments.get(c["id"])}
             for c in sorted(courses.values(), key=lambda x: x["id"])
         ],
     }

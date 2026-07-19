@@ -1,0 +1,70 @@
+# Grading rubric — CS1101 Programming Fundamentals.
+# Schema: schemas/rubric.schema.md. Refined exemplar rubric (planning/07 WP1
+# gate): objectives are observable, evidence is what the examiner must
+# actually see, and ai_mode declares how each is demonstrated.
+course: CS1101
+objectives:
+  - id: cs1101.values.evaluate-expressions
+    statement: Predict the value and type of a Python expression by mechanical inside-out evaluation, before running it
+    evidence:
+      - Learner reduces a nested expression (arithmetic, string ops, len, comparisons) step by step, stating the type at each step
+      - Learner identifies which of a set of expressions raise TypeError and explains why the types forbid the operation
+    weight: core
+    ai_mode: closed
+  - id: cs1101.control.trace-execution
+    statement: Trace loops and conditionals by hand, maintaining a variable table, and predict the output
+    evidence:
+      - Learner traces a while-loop with a mutating accumulator and an off-by-one hazard, producing the exact output
+      - Learner explains when a for-over-range and a while formulation diverge (early exit, skipped update)
+    weight: core
+    ai_mode: closed
+  - id: cs1101.functions.decompose
+    statement: Decompose a problem into functions with clear contracts before writing any body
+    evidence:
+      - Given a word-level problem statement, learner writes function signatures plus one-line contracts first, and defends the split when probed with "why is this one function"
+      - Learner explains scope rules for a program where a local shadows a global
+    weight: core
+    ai_mode: open-book
+  - id: cs1101.recursion.base-and-step
+    statement: Write and verify a recursive function by identifying base case, recursive step, and progress toward the base
+    evidence:
+      - Learner writes a recursive solution (list sum, string reversal, or similar) from a blank buffer, narrating base case and progress argument
+      - Learner predicts the call tree for a small input and spots a missing-base-case infinite recursion in presented code
+    weight: core
+    ai_mode: closed
+  - id: cs1101.collections.choose-structure
+    statement: Choose between list, dict, and set for a task and justify the choice by access pattern
+    evidence:
+      - Given three word problems, learner picks a structure for each and justifies via lookup, ordering, and uniqueness needs
+      - Learner rewrites a quadratic membership-test loop to use a set and explains the effect
+    weight: supporting
+    ai_mode: open-book
+  - id: cs1101.files.robust-io
+    statement: Read and process a text file defensively, handling missing files and malformed lines with exceptions
+    evidence:
+      - Learner writes a loader that skips malformed lines, counts them, and fails cleanly on a missing path, then explains where and why the try block sits
+    weight: supporting
+    ai_mode: open-book
+  - id: cs1101.debugging.predict-diverge
+    statement: Debug by predicting expected behavior first, then locating the exact step where reality diverges
+    evidence:
+      - Given a buggy function and a failing input, learner states the expected intermediate values, finds the divergent step, and names the fault before proposing a fix
+    weight: supporting
+    ai_mode: closed
+  - id: cs1101.ai-practice.verify-generated
+    statement: Direct an AI assistant on a small coding task and verify its output rather than trusting it
+    evidence:
+      - Transcript shows learner specifying the task, spotting at least one defect or unjustified assumption in generated code, and testing the fix
+      - Learner articulates one case from the course where the tool's answer was wrong or misleading and how they caught it
+    weight: supporting
+    ai_mode: ai-paired
+  - id: cs1101.project.defense
+    statement: Complete the course project and defend it in the viva
+    evidence:
+      - Project passes every acceptance criterion in project.md, run by the /reviewer skill
+      - In the defense, learner explains any line the examiner picks, and rewrites one chosen function from a blank buffer while narrating
+    weight: core
+    ai_mode: ai-paired
+pass_rule:
+  core: all
+  supporting_min: 0.7

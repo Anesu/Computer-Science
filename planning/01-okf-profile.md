@@ -13,14 +13,17 @@ OKF's native units map onto our ontology like this:
 |---|---|---|
 | Programme | the whole repo (bundle of bundles) | `curriculum/` |
 | Course | **bundle (forest)** — one directory | `curriculum/courses/<course-id>/` |
-| Unit | **tree** — subdirectory with a primary doc | `curriculum/courses/<course-id>/units/<nn>-<slug>/` |
-| Concept | **document** — one markdown file | `.../units/<nn>-<slug>/<concept-slug>.md` |
+| Unit | **tree** — a doc, or a subdirectory once it needs assets | `curriculum/courses/<course-id>/units/<nn>-<slug>.md` (or `<nn>-<slug>/` with a primary doc) |
+| Concept | **document** — one markdown file | the unit doc itself, or `.../units/<nn>-<slug>/<concept-slug>.md` |
 
-Each course directory also contains:
+Each course directory also contains the assessment bundle
+(contract: `schemas/rubric.schema.md`, validated as rules V8–V13):
 
 - `course.md` — the course-level document (spec, Phase 2 deliverable)
-- `mission.md` — the `/teach` mission template for this course
-- `project.md` — the course project with acceptance criteria
+- `mission.md` — the `/teach` mission template (plain markdown, no frontmatter)
+- `project.md` — the course project with acceptance criteria (`ai_mode` frontmatter)
+- `rubric.yaml` — grading rubric as data: objectives, evidence, pass rule
+- `exam.md` — summative viva spec for the `/examiner` skill
 
 ## Frontmatter schema
 

@@ -1,0 +1,50 @@
+---
+id: CS1203
+title: "Software Construction & Tooling"
+semester: 2
+credits: 4
+track: core
+knowledge_areas: [SDF, SE, SPD]
+prerequisites: [CS1101]
+churn: stable
+last_verified: 2026-07-19
+sources: [pragprog]
+---
+
+# CS1203 — Software Construction & Tooling
+
+Semester 2 · Core · 4 credits
+
+## Overview
+
+Covers CS2023 knowledge areas: SDF (Software Development Fundamentals), SE (Software Engineering), SPD (Specialized Platform Development).
+
+<!-- PHASE-2 AUTHORING: replace this scaffold overview with 2-3 paragraphs on what the course is about and why it sits here in the pathway. -->
+
+## Prerequisites
+
+- [CS1101 — Programming Fundamentals](../CS1101/course.md)
+
+## Unlocks
+
+- [CS2103 — Software Engineering](../CS2103/course.md)
+- [CS2204 — HCI & Visual Computing](../CS2204/course.md)
+- [EL-MOBILE — Mobile & Cross-Platform Development](../EL-MOBILE/course.md)
+
+## Units
+
+<!-- PHASE-2 AUTHORING: define 6-9 units, each mapping to concept documents (Phase 3) under curriculum/CS1203/. -->
+
+1. _To be specified._
+
+## Reading list
+
+- **The Pragmatic Programmer (20th Anniversary ed.)** — David Thomas, Andrew Hunt (`pragprog`, status: identified)
+
+## Assessment & delivery
+
+Assessment lives beside this spec: [rubric.yaml](rubric.yaml)
+(objectives and pass rule), [exam.md](exam.md) (viva spec), and
+[project.md](project.md) (project + acceptance criteria). The `/teach`
+mission is in [mission.md](mission.md). The site renders all of them
+on this course's page.
