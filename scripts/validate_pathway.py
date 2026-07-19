@@ -135,12 +135,13 @@ def semester_load(courses: dict) -> dict:
     return dict(sorted(load.items()))
 
 
-def check_registry() -> dict:
+def check_registry(courses: dict) -> dict:
     if not REGISTRY.exists():
         warn(f"registry not found at {REGISTRY}")
         return {}
     entries = load_yaml(REGISTRY) or []
     registry = {}
+    anchors = 0
     for e in entries:
         rid = e.get("id")
         if not rid:
@@ -154,7 +155,19 @@ def check_registry() -> dict:
         for field in ("title", "authors", "license", "status"):
             if not e.get(field):
                 err(f"registry '{rid}': missing field '{field}'")
-    print(f"  {len(registry)} registry entries")
+        kind = e.get("kind", "resource")
+        if kind not in ("resource", "anchor"):
+            err(f"registry '{rid}': illegal kind '{kind}'")
+        if kind == "anchor":
+            anchors += 1
+            if not e.get("anchor_for"):
+                err(f"registry '{rid}': kind anchor requires anchor_for")
+            for cid in e.get("anchor_for") or []:
+                if cid not in courses:
+                    err(f"registry '{rid}': anchor_for unknown course '{cid}'")
+        elif "anchor_for" in e:
+            err(f"registry '{rid}': anchor_for is only legal on kind: anchor")
+    print(f"  {len(registry)} registry entries ({anchors} anchors)")
     return registry
 
 
@@ -205,7 +218,7 @@ def _frontmatter(path: Path):
         return None, ""
 
 
-def check_assessments(courses: dict) -> None:
+def check_assessments(courses: dict, registry: dict) -> None:
     """Rules V8-V13 (schemas/rubric.schema.md): per-course assessment bundles."""
     courses_dir = CURRICULUM / "courses"
 
@@ -292,6 +305,13 @@ def check_assessments(courses: dict) -> None:
             for field in ("format", "duration_minutes", "retake_cooldown_days"):
                 if field not in exam_fm:
                     err(f"V11: courses/{cid}/exam.md: missing '{field}'")
+            for aid in exam_fm.get("anchors") or []:
+                entry = registry.get(aid)
+                if entry is None:
+                    err(f"V11: courses/{cid}/exam.md: unknown anchor '{aid}'")
+                elif entry.get("kind") != "anchor":
+                    err(f"V11: courses/{cid}/exam.md: '{aid}' is not "
+                        f"kind: anchor in the registry")
         proj_fm, proj_body = _frontmatter(cdir / "project.md")
         if proj_fm is not None:
             if proj_fm.get("course") != cid or proj_fm.get("type") != "project":
@@ -830,11 +850,11 @@ def main() -> int:
     print("Validating canvas archive...")
     check_canvas_archive(courses)
     print("Validating registry...")
-    registry = check_registry()
+    registry = check_registry(courses)
     print("Validating curriculum documents...")
     check_documents(courses, registry)
     print("Validating assessment bundles...")
-    check_assessments(courses)
+    check_assessments(courses, registry)
     for w in warnings:
         print(f"WARN: {w}")
     if errors:

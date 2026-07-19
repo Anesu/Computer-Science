@@ -518,3 +518,141 @@
   status_date: 2026-07-18
   used_in:
     - EL-QUANT
+
+# ── External anchor assessments (planning/06 §2.6, WP5) ─────────────────────
+# kind: anchor — published exams/autograders that calibrate the examiner
+# agent and the learner against the outside world. anchor_for lists the
+# keystone courses each one anchors; exam.md files reference these ids in
+# their `anchors` frontmatter.
+
+- id: anchor-mit-6006-exams
+  kind: anchor
+  title: MIT 6.006 Introduction to Algorithms — past exams with solutions
+  authors:
+    - MIT OpenCourseWare
+  publisher: MIT OCW
+  year: 2020
+  url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/exams/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS1201, CS2101]
+  used_in: []
+- id: anchor-codeforces-band
+  kind: anchor
+  title: Codeforces — sustained Division 2 rating band (target ≥ 1400)
+  authors:
+    - Codeforces
+  publisher: codeforces.com
+  year: 2026
+  url: https://codeforces.com/
+  license: free platform account
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS1201, CS2101]
+  used_in: []
+- id: anchor-mit-6.1810-labs
+  kind: anchor
+  title: MIT 6.1810 Operating System Engineering — xv6 labs with public grading tests
+  authors:
+    - MIT PDOS
+  publisher: MIT
+  year: 2025
+  url: https://pdos.csail.mit.edu/6.1810/
+  license: free online course materials
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS2201]
+  used_in: []
+- id: anchor-cmu-15213-labs
+  kind: anchor
+  title: CMU 15-213 (CS:APP) self-study labs — bomb lab, attack lab, cache lab
+  authors:
+    - Randal E. Bryant
+    - David R. O'Hallaron
+  publisher: CMU / csapp.cs.cmu.edu
+  year: 2023
+  url: https://csapp.cs.cmu.edu/3e/labs.html
+  license: free for self-study
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS2102]
+  used_in: []
+- id: anchor-mit-6045-exams
+  kind: anchor
+  title: MIT 6.045 Automata, Computability, and Complexity — past exams with solutions
+  authors:
+    - MIT OpenCourseWare
+  publisher: MIT OCW
+  year: 2011
+  url: https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011/pages/exams/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS2203]
+  used_in: []
+- id: anchor-stanford-cs229-materials
+  kind: anchor
+  title: Stanford CS229 Machine Learning — public problem sets and past exams
+  authors:
+    - Stanford University
+  publisher: cs229.stanford.edu
+  year: 2025
+  url: https://cs229.stanford.edu/
+  license: free online course materials
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS3102]
+  used_in: []
+- id: anchor-kaggle-band
+  kind: anchor
+  title: Kaggle — competition leaderboard placement (target - a medal in any featured competition)
+  authors:
+    - Kaggle
+  publisher: kaggle.com
+  year: 2026
+  url: https://www.kaggle.com/competitions
+  license: free platform account
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS3102]
+  used_in: []
+- id: anchor-stanford-cs144-labs
+  kind: anchor
+  title: Stanford CS144 Computer Networking — lab checkpoints with public test suites
+  authors:
+    - Stanford University
+  publisher: cs144.github.io
+  year: 2025
+  url: https://cs144.github.io/
+  license: free online course materials
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [CS3101]
+  used_in: []
+- id: anchor-mit-1806-exams
+  kind: anchor
+  title: MIT 18.06 Linear Algebra — past exams with solutions
+  authors:
+    - MIT OpenCourseWare
+  publisher: MIT OCW
+  year: 2010
+  url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/exams/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [MA1201]
+  used_in: []
+- id: anchor-mit-1805-exams
+  kind: anchor
+  title: MIT 18.05 Introduction to Probability and Statistics — exams with solutions
+  authors:
+    - MIT OpenCourseWare
+  publisher: MIT OCW
+  year: 2022
+  url: https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/exams/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-19
+  anchor_for: [MA2101]
+  used_in: []

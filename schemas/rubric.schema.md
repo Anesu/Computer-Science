@@ -78,6 +78,14 @@ retake_cooldown_days: 3
 Body: scope and question style for the viva. The `/examiner` skill loads this
 together with `rubric.yaml`.
 
+Keystone courses add `anchors: [<registry-id>, ...]` — each id must exist in
+`resources/registry.yaml` with `kind: anchor` (a published exam with
+solutions, or a public autograder). Anchor sittings are `closed`-mode,
+self-marked against the published scheme, and recorded verbatim in the
+learning record's `anchor_results`; they calibrate the learner *and* the
+examiner agent against an external standard, and are not a second pass/fail
+gate (`planning/06` §2.6).
+
 ## `project.md` frontmatter (rule V11)
 
 ```yaml
