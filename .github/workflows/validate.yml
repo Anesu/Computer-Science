@@ -1,7 +1,8 @@
 name: Validate curriculum
 on:
   push:
-    paths: ["curriculum/**", "resources/**", "scripts/**", "site/**"]
+    paths: ["curriculum/**", "resources/**", "scripts/**", "site/**",
+            "schemas/**", "templates/**", "samples/**", ".claude/**"]
   pull_request:
 
 jobs:
@@ -14,6 +15,15 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - run: python3 scripts/validate_pathway.py
+      - name: Record schema fixtures behave
+        run: |
+          python3 scripts/validate_pathway.py --record templates/progress.yaml
+          python3 scripts/validate_pathway.py --record samples/learner-record/progress.yaml
+          for f in samples/record-fixtures/invalid-*.yaml; do
+            if python3 scripts/validate_pathway.py --record "$f"; then
+              echo "expected $f to fail validation"; exit 1
+            fi
+          done
       - name: Pathway graph is up to date
         run: |
           python3 scripts/validate_pathway.py --graph

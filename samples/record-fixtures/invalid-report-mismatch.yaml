@@ -1,0 +1,12 @@
+# INVALID fixture: report exists but a core objective failed while the
+# record claims the course is passed.
+version: 2
+learner: sample
+updated: 2026-08-01
+courses:
+  CS1101:
+    status: passed
+    passed_on: 2026-08-01
+    examiner_report: reports/CS1101-exam-failed-core.md
+review_queue: []
+misconception_log: []

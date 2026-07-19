@@ -1,0 +1,26 @@
+# Sample learning record (v2) — fixture for dashboard/validator development.
+# A real record lives in the learner's private repo.
+version: 2
+learner: sample
+updated: 2026-08-01
+courses:
+  CS1101:
+    status: passed
+    passed_on: 2026-08-01
+    examiner_report: reports/CS1101-exam-2026-08-01.md
+    project: https://example.invalid/you/wordstats
+    retakes: 0
+    misconceptions_resolved:
+      - cs1101.values.evaluate-expressions:names-are-boxes
+  MA1101:
+    status: self-reported
+  CS1102:
+    status: in-progress
+review_queue:
+  - {objective: cs1101.recursion.base-and-step, due: 2026-08-31, interval: 30}
+  - {objective: cs1101.values.evaluate-expressions, due: 2026-07-01, interval: 30}
+misconception_log:
+  - {id: cs1101.values.evaluate-expressions:names-are-boxes,
+     detected: 2026-07-20, resolved: 2026-08-01, course: CS1101}
+  - {id: cs1101.recursion.base-and-step:missing-base-case,
+     detected: 2026-07-28, resolved: null, course: CS1101}

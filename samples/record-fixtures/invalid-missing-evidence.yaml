@@ -1,0 +1,9 @@
+# INVALID fixture: status passed without examiner_report / passed_on.
+version: 2
+learner: sample
+updated: 2026-08-01
+courses:
+  CS1101:
+    status: passed
+review_queue: []
+misconception_log: []

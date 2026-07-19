@@ -1,0 +1,13 @@
+# INVALID fixture: unknown course id, unknown objective ids, bad status.
+version: 2
+learner: sample
+updated: 2026-08-01
+courses:
+  CS9999:
+    status: self-reported
+  MA1101:
+    status: finished
+review_queue:
+  - {objective: cs9999.not.real, due: 2026-08-31, interval: 30}
+misconception_log:
+  - {id: not-namespaced, detected: 2026-07-20, resolved: null, course: CS9999}

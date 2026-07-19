@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import data from "../lib/pathway-data.json";
 import {
-  courseStates, loadProgress, parseProgressFile, PROGRESS_EVENT,
+  courseStates, doneIds, loadProgress, parseProgressFile, PROGRESS_EVENT,
   saveProgress, toYaml, type Course, type Progress,
 } from "../lib/progress";
 
@@ -56,7 +56,8 @@ const CSS = `
 
 export default function Dashboard() {
   const [progress, setProgress] = useState<Progress>(
-    { learner: "", completed: [], inProgress: [] },
+    { learner: "", completed: [], inProgress: [], records: {},
+      reviewDue: 0, reviewCounted: "" },
   );
   const fileRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
@@ -71,11 +72,13 @@ export default function Dashboard() {
   }, []);
 
   const courses = data.courses as Course[];
+  const done = useMemo(() => doneIds(progress), [progress]);
   const states = useMemo(
-    () => courseStates(courses, progress.completed),
-    [courses, progress.completed],
+    () => courseStates(courses, done),
+    [courses, done],
   );
-  const doneSet = new Set(progress.completed);
+  const doneSet = new Set(done);
+  const passedSet = new Set(Object.keys(progress.records));
   const studySet = new Set(progress.inProgress);
 
   const creditsDone = courses.filter((c) => doneSet.has(c.id))
@@ -107,6 +110,7 @@ export default function Dashboard() {
     setProgress(next);
   };
   const toggleDone = (id: string) => {
+    if (passedSet.has(id)) return; // evidence-gated — only an import changes it
     const completed = doneSet.has(id)
       ? progress.completed.filter((x) => x !== id)
       : [...progress.completed, id];
@@ -137,10 +141,20 @@ export default function Dashboard() {
     const ids = new Set(courses.map((c) => c.id));
     const merge = (a: string[], b?: string[]) =>
       [...new Set([...a, ...(b ?? []).filter((x) => ids.has(x))])];
+    const records = { ...progress.records };
+    for (const [id, r] of Object.entries(parsed.records ?? {})) {
+      if (ids.has(id)) records[id] = r;
+    }
     update({
       learner: parsed.learner || progress.learner,
-      completed: merge(progress.completed, parsed.completed),
+      completed: merge(progress.completed, parsed.completed)
+        .filter((x) => !records[x]),
       inProgress: merge(progress.inProgress, parsed.inProgress),
+      records,
+      ...(parsed.isV2
+        ? { reviewDue: parsed.reviewDue ?? 0,
+            reviewCounted: parsed.reviewCounted ?? "" }
+        : {}),
     });
   };
 
@@ -151,8 +165,9 @@ export default function Dashboard() {
       <div className="tiles">
         <div className="tile"><b>{creditsDone}<small style={{ fontSize: 15 }}> / {data.targetCredits}</small></b><span>credits earned</span></div>
         <div className="tile"><b>{coreDone}<small style={{ fontSize: 15 }}> / {coreTotal}</small></b><span>core credits</span></div>
-        <div className="tile"><b>{progress.completed.length}<small style={{ fontSize: 15 }}> / {courses.length}</small></b><span>courses completed</span></div>
+        <div className="tile"><b>{passedSet.size}<small style={{ fontSize: 15 }}> / {done.length}</small></b><span>passed with evidence / done</span></div>
         <div className="tile"><b>{available.length}</b><span>available now</span></div>
+        <div className="tile"><b>{progress.reviewDue}</b><span>reviews due{progress.reviewCounted ? ` (as of ${progress.reviewCounted})` : " — import your record"}</span></div>
       </div>
 
       <h2>Available next</h2>
@@ -182,20 +197,27 @@ export default function Dashboard() {
             <summary>Semester {s} — {done}/{list.length} complete</summary>
             {list.map((c) => {
               const st = states.get(c.id)!;
+              const passed = passedSet.has(c.id);
               return (
                 <div className="row" key={c.id}>
                   <input
                     type="checkbox"
                     checked={doneSet.has(c.id)}
+                    disabled={passed}
                     onChange={() => toggleDone(c.id)}
                     aria-label={`Mark ${c.id} complete`}
+                    title={passed
+                      ? `Passed ${progress.records[c.id].passedOn ?? ""} — ${progress.records[c.id].examinerReport}`
+                      : "Self-reported — attach evidence by importing your record"}
                   />
                   <span className="grow">
                     <a href={`/courses/${c.id}/`}>{c.id}</a> — {c.title}
                   </span>
                   <span className="chip">{TRACK_LABEL[c.track]} · {c.credits} cr</span>
                   <span className={`state ${st}`}>
-                    {st === "done" ? "✓ done" : st === "available" ? "◔ available" : "🔒 locked"}
+                    {st === "done"
+                      ? (passed ? "✓ passed" : "☑ self-reported")
+                      : st === "available" ? "◔ available" : "🔒 locked"}
                   </span>
                   <button
                     className="chip"
@@ -247,14 +269,17 @@ export default function Dashboard() {
         <button
           onClick={() => {
             if (confirm("Clear all progress in this browser?"))
-              update({ completed: [], inProgress: [] });
+              update({ completed: [], inProgress: [], records: {},
+                reviewDue: 0, reviewCounted: "" });
           }}
         >
           Reset
         </button>
         <span className="note">
-          Import merges (progress only grows). Keep the export in your private
-          learner-state repo.
+          Import merges (progress only grows); a v2 record attaches examiner
+          evidence — "passed" is only rendered with an examiner report. The
+          private learner-state repo stays authoritative: the review queue and
+          misconception log live there, not here.
         </span>
       </div>
     </div>

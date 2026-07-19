@@ -1,0 +1,10 @@
+# Learning record v2 — copy this into your PRIVATE learner-state repo as
+# progress.yaml (it never belongs in the curriculum repo). Schema and
+# semantics: schemas/learning-record.md. Validate with:
+#   python3 scripts/validate_pathway.py --record path/to/progress.yaml
+version: 2
+learner: anonymous
+updated: 2026-07-19
+courses: {}
+review_queue: []
+misconception_log: []

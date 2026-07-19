@@ -317,6 +317,134 @@ def check_assessments(courses: dict) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Learning-record validation (schemas/learning-record.md) — learner-side tool,
+# run as:  validate_pathway.py --record path/to/progress.yaml
+# ---------------------------------------------------------------------------
+
+RECORD_STATUSES = {"passed", "self-reported", "in-progress"}
+
+
+def _all_objective_ids() -> set[str]:
+    ids = set()
+    for rub in (CURRICULUM / "courses").glob("*/rubric.yaml"):
+        for o in (load_yaml(rub).get("objectives") or []):
+            if o.get("id"):
+                ids.add(o["id"])
+    return ids
+
+
+def _core_objective_ids(cid: str) -> set[str]:
+    rub = CURRICULUM / "courses" / cid / "rubric.yaml"
+    if not rub.exists():
+        return set()
+    return {o["id"] for o in (load_yaml(rub).get("objectives") or [])
+            if o.get("weight") == "core" and o.get("id")}
+
+
+def _check_misconception_id(mid: str, objectives: set[str], ctx: str) -> None:
+    base = str(mid).split(":", 1)[0]
+    if base not in objectives:
+        err(f"{ctx}: misconception id '{mid}' does not start with a known "
+            f"objective id")
+
+
+def _check_report(report: Path, cid: str, rec_status: str) -> None:
+    rel = report.name
+    m = FRONTMATTER_RE.match(report.read_text())
+    if not m:
+        err(f"report {rel}: no frontmatter")
+        return
+    fm = yaml.safe_load(m.group(1))
+    if fm.get("course") != cid:
+        err(f"report {rel}: course '{fm.get('course')}' != record course {cid}")
+    if fm.get("type") != "examiner-report":
+        err(f"report {rel}: type must be examiner-report")
+    verdicts = {o.get("id"): o.get("verdict")
+                for o in (fm.get("objectives") or [])}
+    core = _core_objective_ids(cid)
+    if rec_status == "passed":
+        if fm.get("result") != "pass":
+            err(f"report {rel}: record says {cid} passed but report result "
+                f"is '{fm.get('result')}'")
+        missing = sorted(c for c in core if verdicts.get(c) != "evidenced")
+        if missing:
+            err(f"report {rel}: {cid} marked passed but core objectives not "
+                f"evidenced in the report: {', '.join(missing)}")
+
+
+def check_record(path: Path) -> None:
+    rec = load_yaml(path)
+    if not isinstance(rec, dict):
+        err(f"{path}: not a mapping")
+        return
+    if rec.get("version") != 2:
+        err(f"{path}: version must be 2 (schemas/learning-record.md)")
+    if not rec.get("learner"):
+        err(f"{path}: missing learner")
+    courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
+    registry = {e["id"] for e in (load_yaml(REGISTRY) or [])}
+    objectives = _all_objective_ids()
+
+    entries = rec.get("courses") or {}
+    passed = 0
+    for cid, entry in entries.items():
+        ctx = f"courses.{cid}"
+        if cid not in courses:
+            err(f"{ctx}: unknown course id")
+            continue
+        status = (entry or {}).get("status")
+        if status not in RECORD_STATUSES:
+            err(f"{ctx}: illegal status '{status}'")
+            continue
+        if status == "passed":
+            passed += 1
+            for field in ("passed_on", "examiner_report"):
+                if not entry.get(field):
+                    err(f"{ctx}: status passed requires '{field}'")
+            report = entry.get("examiner_report")
+            if report:
+                rp = (path.parent / report).resolve()
+                if rp.exists():
+                    _check_report(rp, cid, status)
+                else:
+                    warn(f"{ctx}: examiner_report '{report}' not found "
+                         f"relative to the record — cannot cross-check")
+        retakes = entry.get("retakes", 0) if entry else 0
+        if not isinstance(retakes, int) or retakes < 0:
+            err(f"{ctx}: retakes must be a non-negative integer")
+        for mid in (entry or {}).get("misconceptions_resolved") or []:
+            _check_misconception_id(mid, objectives, ctx)
+        for a in (entry or {}).get("anchor_results") or []:
+            if a.get("registry_id") not in registry:
+                err(f"{ctx}: anchor_results registry_id "
+                    f"'{a.get('registry_id')}' not in resources/registry.yaml")
+
+    today = date.today()
+    due = 0
+    for i, q in enumerate(rec.get("review_queue") or []):
+        ctx = f"review_queue[{i}]"
+        if q.get("objective") not in objectives:
+            err(f"{ctx}: unknown objective '{q.get('objective')}'")
+        if not isinstance(q.get("interval"), int) or q["interval"] <= 0:
+            err(f"{ctx}: interval must be a positive integer (days)")
+        d = q.get("due")
+        if not isinstance(d, date):
+            err(f"{ctx}: due must be a YYYY-MM-DD date")
+        elif d <= today:
+            due += 1
+    for i, mc in enumerate(rec.get("misconception_log") or []):
+        ctx = f"misconception_log[{i}]"
+        _check_misconception_id(mc.get("id", ""), objectives, ctx)
+        if mc.get("course") not in courses:
+            err(f"{ctx}: unknown course '{mc.get('course')}'")
+        if not isinstance(mc.get("detected"), date):
+            err(f"{ctx}: detected must be a YYYY-MM-DD date")
+    print(f"  record: {len(entries)} courses ({passed} passed with evidence), "
+          f"{len(rec.get('review_queue') or [])} queued reviews ({due} due), "
+          f"{len(rec.get('misconception_log') or [])} misconception entries")
+
+
+# ---------------------------------------------------------------------------
 # Pathway graph generation (tldraw canvas + companion markdown)
 #
 # Emits a .tldr file (tldraw Desktop's native format): one frame per semester,
@@ -666,6 +794,23 @@ def check_canvas_archive(courses: dict) -> None:
 
 
 def main() -> int:
+    if "--record" in sys.argv:
+        try:
+            target = Path(sys.argv[sys.argv.index("--record") + 1])
+        except IndexError:
+            print("usage: validate_pathway.py --record path/to/progress.yaml")
+            return 2
+        print(f"Validating learning record {target}...")
+        check_record(target)
+        for w in warnings:
+            print(f"WARN: {w}")
+        if errors:
+            for e in errors:
+                print(f"ERROR: {e}")
+            print(f"\nFAILED: {len(errors)} error(s), {len(warnings)} warning(s)")
+            return 1
+        print(f"\nOK: 0 errors, {len(warnings)} warning(s)")
+        return 0
     if "--graph" in sys.argv:
         courses = {c["id"]: c for c in load_yaml(PATHWAY)["courses"]}
         doc = tldr_doc(courses)

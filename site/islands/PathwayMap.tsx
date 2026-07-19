@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../lib/pathway-data.json";
 import {
-  courseStates, loadProgress, PROGRESS_EVENT, type Course,
+  courseStates, doneIds, loadProgress, PROGRESS_EVENT, type Course,
 } from "../lib/progress";
 
 const LEGEND = [
@@ -26,7 +26,7 @@ export default function PathwayMap() {
     if (!svg || !host.current) return;
     const apply = () => {
       const states = courseStates(
-        data.courses as Course[], loadProgress().completed,
+        data.courses as Course[], doneIds(loadProgress()),
       );
       for (const g of host.current!.querySelectorAll<SVGGElement>(".pw-course")) {
         const id = g.dataset.course!;
