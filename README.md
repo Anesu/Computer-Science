@@ -23,7 +23,7 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/<ID>/` | Per-course bundle: `course.md`, `mission.md`, `project.md`, `rubric.yaml`, `exam.md`, `units/` |
 | `schemas/rubric.schema.md` | Assessment-bundle contract (rules V8–V13); exemplar: CS1101 |
-| `.claude/skills/` | Role-separated agents: `/examiner` (viva), `/reviewer` (project review), `/review` (spaced retrieval) — tutor = `/teach` |
+| `.claude/skills/` | Role-separated agents: `/examiner` (viva), `/reviewer` (project review), `/review` (spaced retrieval), `/retro` (weekly + term cadence) — tutor = `/teach` |
 | `templates/` | `examiner-report.md` skeleton + empty `progress.yaml` record for the learner's private repo |
 | `schemas/learning-record.md` | Learning record v2: evidence-linked passes, review queue, misconception log |
 | `samples/` | Record fixtures: one valid learner record + invalid cases CI proves are rejected |
@@ -102,3 +102,9 @@ belongs here).
 Frontend (planning/05): FE-1 skeleton ✅ · FE-2 progress dashboard ✅ ·
 FE-3 pathway map ✅ · FE-4 curriculum→site transform ✅ · FE-5 VPS promotion
 pending.
+
+Agentic feedback layer (planning/06 + 07): WP1 assessment bundles ✅ ·
+WP2 examiner/reviewer skills ✅ (pilot exam pending a learner sitting) ·
+WP3 record v2 + evidence-gated dashboard + `/review` ✅ · WP4 misconception
+catalogues ✅ · WP5 anchor assessments ✅ · WP6 `/retro` + capstone panel ✅.
+Rubric refinement beyond CS1101 happens with Phase 3 authoring.
