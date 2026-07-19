@@ -23,6 +23,8 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `curriculum/pathway.yaml` | **Single source of truth**: all courses + prerequisite DAG |
 | `curriculum/courses/<ID>/` | Per-course bundle: `course.md`, `mission.md`, `project.md`, `rubric.yaml`, `exam.md`, `units/` |
 | `schemas/rubric.schema.md` | Assessment-bundle contract (rules V8–V13); exemplar: CS1101 |
+| `.claude/skills/` | Role-separated agents: `/examiner` (viva), `/reviewer` (project review) — tutor = `/teach` |
+| `templates/examiner-report.md` | Report skeleton the examiner fills; lands in the learner's private repo |
 | `resources/registry.yaml` | Source registry: every book/resource with license status |
 | `site/` | "The University" — Blume docs site (static, offline, serves humans + agents) |
 | `site/islands/` | React islands: progress Dashboard (frontier, export/import), PathwayMap |
