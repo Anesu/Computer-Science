@@ -90,7 +90,15 @@ def md_to_mdx_body(body: str, cid: str = "", kind: str = "course") -> str:
         seg = "\n".join(buf)
         seg = re.sub(r"<!--.*?-->", "", seg, flags=re.DOTALL)
         seg = seg.replace("{", "\\{").replace("}", "\\}")
+        # misconception anchors (<a id="mc-..."></a>) are valid JSX — keep
+        # them as real elements so mc- ids deep-link on the site
+        anchors: list[str] = []
+        def stash(m: re.Match) -> str:
+            anchors.append(m.group(0))
+            return f"\x00{len(anchors) - 1}\x00"
+        seg = re.sub(r'<a id="[\w:-]+"></a>', stash, seg)
         seg = re.sub(r"<(?=[A-Za-z/!])", "\\<", seg)
+        seg = re.sub(r"\x00(\d+)\x00", lambda m: anchors[int(m.group(1))], seg)
         seg = re.sub(r"\(\.\./([A-Za-z][\w-]*)/course\.md\)",
                      r"(/courses/\1/)", seg)
         seg = re.sub(r"\(\.\./course\.md\)", f"(/courses/{cid}/)", seg)

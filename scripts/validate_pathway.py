@@ -304,12 +304,12 @@ def check_assessments(courses: dict) -> None:
                 err(f"V11: courses/{cid}/project.md: missing "
                     f"'## Acceptance criteria' section")
 
-        # V13 — concept docs carry a misconception catalogue (warning until
-        # the Phase 3 template lands; flipped to error by WP4)
+        # V13 — every concept doc carries a misconception catalogue; it is
+        # what makes tutor probes and examiner distractors specific
         for doc in sorted((cdir / "units").rglob("*.md")) if (cdir / "units").is_dir() else []:
             if "## Common misconceptions" not in doc.read_text():
-                warn(f"V13: {doc.relative_to(ROOT)}: no "
-                     f"'## Common misconceptions' section")
+                err(f"V13: {doc.relative_to(ROOT)}: no "
+                    f"'## Common misconceptions' section")
 
     print(f"  {len(courses)} assessment bundles checked; "
           f"{len(seen_objectives)} objectives; "

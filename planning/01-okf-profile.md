@@ -54,6 +54,18 @@ confidence: high                         # high | medium | low (agent-authored, 
 ---
 ```
 
+### Concept document body (required sections)
+
+Beyond frontmatter, every concept document must contain a
+`## Common misconceptions` section (validator rule V13, an error): 2–5
+entries, each stating the **misconception in the learner's voice**, why it is
+wrong, and a *probe question* that detects it. Give each entry a stable
+anchor (`<a id="mc-<slug>"></a>`) so rubrics and the misconception log can
+reference `<objective.id>:<slug>`. This catalogue is what makes AI feedback
+specific: `/teach` probes for these exact wrong models, and `/examiner`
+draws distractors and what-if questions from them. Exemplar:
+`curriculum/courses/CS1101/units/01-values-types-expressions.md`.
+
 ### Course document (`course.md`)
 
 ```yaml

@@ -77,6 +77,34 @@ then makes the name `x` refer to it. Names have no type of their own — they
 borrow the type of whatever value they currently point at. Reassigning a
 name never changes the value it used to point at; it just moves the label.
 
+## Common misconceptions
+
+<a id="mc-names-are-boxes"></a>
+**"A variable is a box that contains a value."** — Wrong: a name is a label
+*pointing at* a value; assignment moves the label, never mutates the old
+value, and two names can label the same value. The box model breaks the
+moment aliasing appears (lists, unit 5). *Probe:* after `a = [1]` then
+`b = a`, what does `b` see when `a.append(2)` runs — and would your answer
+change for `a = 1; b = a; a = 2`?
+
+<a id="mc-plus-means-add"></a>
+**"`+` means addition."** — Wrong: the operands' types choose the behavior;
+`+` concatenates strings, adds ints, and errors across the boundary. The
+operator has no meaning until the types are known. *Probe:* predict `"3" + "4"`,
+`3 + 4`, and `"3" + 4` — and say which fact decided each outcome.
+
+<a id="mc-division-keeps-type"></a>
+**"Dividing two ints gives an int."** — Wrong in Python: `/` always yields a
+`float` (`7 / 2 == 3.5`); floor division `//` is the operation that stays in
+int-land. *Probe:* what type is `8 / 2`, and why is the answer not `int`?
+
+<a id="mc-expressions-run-left-to-right"></a>
+**"Python evaluates an expression in one go / left to right."** — Evaluation
+is mechanical and *inside-out*: subexpressions reduce to values first, then
+the combining operation applies. Getting this wrong makes debugging by
+prediction impossible. *Probe:* reduce `len("ab") * (2 + 1)` one step per
+line, naming the rule used at each step.
+
 ## Check yourself
 
 1. Reduce `3 * (2 + len("abc")) - 1` to a value, one step per line.
