@@ -62,10 +62,13 @@
   year: 1988
   url: null
   license: all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - CS1202
+  files:
+    - library/books/knr.pdf
+    - library/text/knr.txt
 - id: pragprog
   title: The Pragmatic Programmer (20th Anniversary ed.)
   authors:
@@ -75,11 +78,14 @@
   year: 2019
   url: https://pragprog.com/titles/tpp20/
   license: all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - CS1203
     - CS2103
+  files:
+    - library/books/pragprog.epub
+    - library/text/pragprog.md
 - id: aposd
   title: A Philosophy of Software Design (2nd ed.)
   authors:
@@ -114,10 +120,13 @@
   year: 2019
   url: null
   license: all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - MA1101
+  files:
+    - library/books/rosen-discrete.pdf
+    - library/text/rosen-discrete.txt
 - id: openstax-calculus
   title: "Calculus Volume 1\u20133"
   authors:
@@ -133,17 +142,20 @@
   used_in:
     - MA1102
 - id: strang-linalg
-  title: Introduction to Linear Algebra (6th ed.)
+  title: Introduction to Linear Algebra (5th ed.)
   authors:
     - Gilbert Strang
   publisher: Wellesley-Cambridge Press
-  year: 2023
+  year: 2016
   url: https://math.mit.edu/~gs/linearalgebra/
   license: all rights reserved (MIT OCW 18.06 lectures are CC BY-NC-SA)
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - MA1201
+  files:
+    - library/books/strang-linalg.pdf
+    - library/text/strang-linalg.txt
 - id: openintro-stats
   title: OpenIntro Statistics (4th ed.)
   authors:
@@ -185,11 +197,14 @@
   year: 2022
   url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
   license: all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - CS1201
     - CS2101
+  files:
+    - library/books/clrs.epub
+    - library/text/clrs.md
 - id: erickson-algorithms
   title: Algorithms
   authors:
@@ -223,10 +238,13 @@
   year: 2021
   url: https://www.nand2tetris.org/
   license: course materials free; book all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
     - CS1102
+  files:
+    - library/books/nand2tetris.epub
+    - library/text/nand2tetris.md
 - id: csapp
   title: 'Computer Systems: A Programmer''s Perspective (3rd ed.)'
   authors:
@@ -236,11 +254,15 @@
   year: 2016
   url: https://csapp.cs.cmu.edu/
   license: all rights reserved
-  status: identified
-  status_date: 2026-07-18
+  status: ingested
+  status_date: 2026-07-20
   used_in:
+    - CS1102
     - CS1202
     - CS2102
+  files:
+    - library/books/csapp.epub
+    - library/text/csapp.md
 - id: ostep
   title: 'Operating Systems: Three Easy Pieces'
   authors:
@@ -452,6 +474,7 @@
   license: publicly available documentation
   status: open
   status_date: 2026-07-18
+  kind: docs
   used_in:
     - CS3202
     - AI-MLOPS
@@ -530,6 +553,7 @@
   license: CC BY-SA 4.0
   status: open
   status_date: 2026-07-19
+  kind: docs
   used_in:
     - SEC-OFFDEF
 - id: owasp-asvs
@@ -546,6 +570,7 @@
   license: CC BY-SA 4.0
   status: open
   status_date: 2026-07-19
+  kind: standard
   used_in:
     - SEC-SSD
 - id: k8s-docs
@@ -558,6 +583,7 @@
   license: CC BY 4.0
   status: open
   status_date: 2026-07-19
+  kind: docs
   used_in:
     - SYS-CLOUD
 - id: nist-privacy-framework
@@ -570,6 +596,7 @@
   license: public domain (U.S. Government work, not subject to copyright per 17 U.S.C. 105)
   status: open
   status_date: 2026-07-19
+  kind: standard
   used_in:
     - SEC-PRIV
 - id: nist-sp800-41
@@ -583,6 +610,7 @@
   license: public domain (U.S. Government work, not subject to copyright per 17 U.S.C. 105)
   status: open
   status_date: 2026-07-19
+  kind: standard
   used_in:
     - SEC-NET
 - id: ros2-docs
@@ -596,6 +624,7 @@
   license: CC BY 4.0
   status: open
   status_date: 2026-07-19
+  kind: docs
   used_in:
     - EL-ROBOT
 - id: flutter-docs
@@ -608,6 +637,7 @@
   license: CC BY 3.0 (content); BSD-3-Clause (code samples)
   status: open
   status_date: 2026-07-19
+  kind: docs
   used_in:
     - EL-MOBILE
 - id: aisafetybook
@@ -622,3 +652,728 @@
   status_date: 2026-07-19
   used_in:
     - AI-SAFE
+- id: strang-linalg-solutions
+  title: Introduction to Linear Algebra (5th ed.) — Manual for Instructors
+  authors:
+    - Gilbert Strang
+  publisher: Wellesley-Cambridge Press
+  year: 2016
+  url: https://math.mit.edu/~gs/linearalgebra/
+  license: all rights reserved
+  status: ingested
+  status_date: 2026-07-20
+  used_in:
+    - MA1201
+  files:
+    - library/books/strang-linalg-solutions.pdf
+    - library/text/strang-linalg-solutions.txt
+- id: mooc-cs50p
+  title: CS50's Introduction to Programming with Python
+  authors:
+    - David J. Malan
+    - Brian Yu (Harvard University)
+  publisher: Harvard University
+  year: 2024
+  url: https://cs50.harvard.edu/python/
+  license: free online (materials CC BY-NC-SA 4.0)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS1101
+- id: mooc-n2t
+  title: Build a Modern Computer from First Principles (Nand to Tetris, Parts I & II)
+  authors:
+    - Noam Nisan
+    - Shimon Schocken
+  publisher: Hebrew University / Coursera
+  year: 2021
+  url: https://www.coursera.org/learn/build-a-computer
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS1102
+- id: mooc-algs1
+  title: Algorithms, Part I (Princeton)
+  authors:
+    - Robert Sedgewick
+    - Kevin Wayne
+  publisher: Princeton University / Coursera
+  year: 2024
+  url: https://www.coursera.org/learn/algorithms-part1
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS1201
+- id: mooc-15213
+  title: CMU 15-213 Introduction to Computer Systems (recorded lectures)
+  authors:
+    - Carnegie Mellon University
+  publisher: Carnegie Mellon University
+  year: 2015
+  url: http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS1202
+- id: mooc-missing-sem
+  title: The Missing Semester of Your CS Education
+  authors:
+    - Anish Athalye
+    - Jon Gjengset
+    - Jose Javier Gonzalez Ortiz
+  publisher: MIT
+  year: 2020
+  url: https://missing.csail.mit.edu
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS1203
+- id: mooc-6042
+  title: Mathematics for Computer Science (MITx 6.042J, Open Learning Library)
+  authors:
+    - F. Thomson Leighton
+    - Albert R. Meyer
+  publisher: MIT Open Learning Library
+  year: 2019
+  url: https://openlearninglibrary.mit.edu/courses/course-v1:OCW+6.042J+2T2019/about
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - MA1101
+- id: mooc-1801sc
+  title: Single Variable Calculus (MIT OCW 18.01SC)
+  authors:
+    - David Jerison
+  publisher: MIT OpenCourseWare
+  year: 2010
+  url: https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - MA1102
+- id: mooc-1806
+  title: Linear Algebra (MIT OCW 18.06, Strang lectures)
+  authors:
+    - Gilbert Strang
+  publisher: MIT OpenCourseWare
+  year: 2010
+  url: https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - MA1201
+- id: mooc-algillum
+  title: Algorithms Illuminated (videos and book site)
+  authors:
+    - Tim Roughgarden
+  publisher: self-published
+  year: 2020
+  url: https://www.algorithmsilluminated.org/
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2101
+- id: mooc-6004
+  title: Computation Structures (MIT OCW 6.004)
+  authors:
+    - MIT Department of Electrical Engineering and Computer Science
+  publisher: MIT OpenCourseWare
+  year: 2017
+  url: https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2102
+- id: mooc-ubc310
+  title: UBC CPSC 310 Introduction to Software Engineering (course resources)
+  authors:
+    - University of British Columbia
+  publisher: UBC
+  year: 2024
+  url: https://github.com/ubccpsc/310
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2103
+- id: mooc-stat110
+  title: 'Stat 110: Probability (Harvard)'
+  authors:
+    - Joe Blitzstein
+  publisher: Harvard University
+  year: 2023
+  url: https://stat110.hsites.harvard.edu/
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - MA2101
+- id: mooc-61810
+  title: MIT 6.1810 Operating System Engineering
+  authors:
+    - MIT PDOS
+  publisher: MIT
+  year: 2024
+  url: https://pdos.csail.mit.edu/6.1810/
+  license: free online (course code MIT-licensed)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2201
+    - SYS-ADV
+- id: mooc-stanford-db
+  title: Databases (Stanford Online mini-courses)
+  authors:
+    - Jennifer Widom
+  publisher: Stanford University / edX
+  year: 2020
+  url: https://www.edx.org/learn/databases/stanford-university-databases-modeling-and-theory
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2202
+- id: mooc-18404
+  title: Theory of Computation (MIT OCW 18.404J, Sipser lectures)
+  authors:
+    - Michael Sipser
+  publisher: MIT OpenCourseWare
+  year: 2020
+  url: https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2203
+- id: mooc-hci
+  title: Human-Computer Interaction (UCSD / Coursera)
+  authors:
+    - Scott Klemmer
+  publisher: UC San Diego / Coursera
+  year: 2023
+  url: https://www.coursera.org/learn/human-computer-interaction
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS2204
+- id: mooc-kr-lectures
+  title: Computer Networking online lectures (Kurose & Ross)
+  authors:
+    - James Kurose
+    - Keith Ross
+  publisher: UMass Amherst
+  year: 2024
+  url: https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3101
+- id: mooc-mlspec
+  title: Machine Learning Specialization
+  authors:
+    - Andrew Ng
+  publisher: DeepLearning.AI / Stanford Online
+  year: 2022
+  url: https://www.deeplearning.ai/courses/machine-learning-specialization/
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3102
+- id: mooc-cse341
+  title: Programming Languages (UW CSE 341)
+  authors:
+    - Dan Grossman
+  publisher: University of Washington
+  year: 2019
+  url: https://courses.cs.washington.edu/courses/cse341/19sp/
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3103
+- id: mooc-rit-cyber
+  title: Cybersecurity Fundamentals (RIT / edX)
+  authors:
+    - Rochester Institute of Technology
+  publisher: RIT / edX
+  year: 2022
+  url: https://www.edx.org/learn/cybersecurity/rochester-institute-of-technology-cybersecurity-fundamentals
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3104
+- id: mooc-6824
+  title: MIT 6.824 Distributed Systems
+  authors:
+    - Robert Morris
+    - Frans Kaashoek
+  publisher: MIT PDOS
+  year: 2024
+  url: https://pdos.csail.mit.edu/6.824/
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3201
+- id: mooc-llmcourse
+  title: LLM Course (roadmap, notebooks, fundamentals)
+  authors:
+    - Maxime Labonne
+  publisher: self-published (GitHub)
+  year: 2025
+  url: https://github.com/mlabonne/llm-course
+  license: free online (open-source repo)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3202
+- id: mooc-6033
+  title: Computer System Engineering (MIT OCW 6.033)
+  authors:
+    - MIT Department of Electrical Engineering and Computer Science
+  publisher: MIT OpenCourseWare
+  year: 2018
+  url: https://ocw.mit.edu/courses/6-033-computer-system-engineering-spring-2018/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS3203
+- id: mooc-ethics
+  title: Ethics, Technology and Engineering (TU Eindhoven / Coursera)
+  authors:
+    - Eindhoven University of Technology
+  publisher: TU Eindhoven / Coursera
+  year: 2023
+  url: https://www.coursera.org/learn/ethics-technology-engineering
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS4101
+- id: mooc-fullstackopen
+  title: Full Stack Open
+  authors:
+    - University of Helsinki
+  publisher: University of Helsinki
+  year: 2025
+  url: https://fullstackopen.com/en/
+  license: CC BY-NC-SA 3.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - CS4901
+    - CS4902
+- id: mooc-fastai
+  title: Practical Deep Learning for Coders
+  authors:
+    - Jeremy Howard
+    - Rachel Thomas
+  publisher: fast.ai
+  year: 2024
+  url: https://course.fast.ai/
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - AI-DL
+- id: mooc-cs224n
+  title: Natural Language Processing with Deep Learning (Stanford CS224n)
+  authors:
+    - Christopher Manning
+  publisher: Stanford University
+  year: 2025
+  url: https://web.stanford.edu/class/cs224n/
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - AI-NLP
+- id: mooc-silver-rl
+  title: Reinforcement Learning (UCL, David Silver)
+  authors:
+    - David Silver
+  publisher: University College London
+  year: 2015
+  url: https://www.davidsilver.uk/teaching/
+  license: free online (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - AI-RL
+- id: mooc-madewithml
+  title: Made With ML
+  authors:
+    - Goku Mohandas
+  publisher: self-published
+  year: 2025
+  url: https://madewithml.com/
+  license: MIT (code); free online (content)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - AI-MLOPS
+- id: mooc-aisafety
+  title: AI Safety Fundamentals
+  authors:
+    - BlueDot Impact
+  publisher: BlueDot Impact
+  year: 2025
+  url: https://aisafetyfundamentals.com/
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - AI-SAFE
+- id: mooc-stanford-compilers
+  title: Compilers (Stanford / edX)
+  authors:
+    - Alex Aiken
+  publisher: Stanford University / edX
+  year: 2021
+  url: https://www.edx.org/learn/computer-science/stanford-university-compilers
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SYS-COMP
+- id: mooc-cloud-concepts
+  title: Cloud Computing Concepts (UIUC / Coursera)
+  authors:
+    - Indranil Gupta
+  publisher: University of Illinois / Coursera
+  year: 2023
+  url: https://www.coursera.org/learn/cloud-computing
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SYS-CLOUD
+- id: mooc-6172
+  title: Performance Engineering of Software Systems (MIT OCW 6.172)
+  authors:
+    - Charles Leiserson
+    - Julian Shun
+  publisher: MIT OpenCourseWare
+  year: 2018
+  url: https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SYS-PERF
+- id: mooc-15445
+  title: CMU 15-445 Database Systems
+  authors:
+    - Andy Pavlo
+  publisher: Carnegie Mellon University
+  year: 2025
+  url: https://15445.courses.cs.cmu.edu/
+  license: free online (lecture videos public)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SYS-DBI
+- id: mooc-crypto1
+  title: Cryptography I (Stanford / Coursera)
+  authors:
+    - Dan Boneh
+  publisher: Stanford University / Coursera
+  year: 2023
+  url: https://www.coursera.org/learn/crypto
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SEC-CRYPTO
+- id: mooc-lf-securedev
+  title: Secure Software Development (Linux Foundation / edX)
+  authors:
+    - The Linux Foundation
+  publisher: The Linux Foundation / edX
+  year: 2022
+  url: https://www.edx.org/learn/software-development/the-linux-foundation-secure-software-development-requirements-design-and-reuse
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SEC-SSD
+- id: mooc-nptel-netsec
+  title: Cryptography and Network Security (NPTEL, IIT Kharagpur)
+  authors:
+    - Sourav Mukhopadhyay
+  publisher: NPTEL
+  year: 2022
+  url: https://nptel.ac.in/courses/106105031
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SEC-NET
+- id: mooc-dataprivacy
+  title: Data Privacy Fundamentals (Northeastern / Coursera)
+  authors:
+    - Northeastern University
+  publisher: Northeastern University / Coursera
+  year: 2023
+  url: https://www.coursera.org/learn/northeastern-data-privacy
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SEC-PRIV
+- id: mooc-portswigger
+  title: Web Security Academy
+  authors:
+    - PortSwigger
+  publisher: PortSwigger
+  year: 2025
+  url: https://portswigger.net/web-security
+  license: free online (account required)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - SEC-OFFDEF
+- id: mooc-ucsd-graphics
+  title: Computer Graphics (UCSD / edX)
+  authors:
+    - Ravi Ramamoorthi
+  publisher: UC San Diego / edX
+  year: 2022
+  url: https://www.edx.org/learn/computer-graphics/the-university-of-california-san-diego-computer-graphics
+  license: free to audit (all rights reserved)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - EL-GRAPH
+- id: mooc-flutter-labs
+  title: Flutter Codelabs
+  authors:
+    - Google
+  publisher: Google
+  year: 2025
+  url: https://codelabs.developers.google.com/?product=flutter
+  license: free online
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - EL-MOBILE
+- id: mooc-ibm-quantum
+  title: IBM Quantum Learning
+  authors:
+    - IBM Quantum
+  publisher: IBM
+  year: 2025
+  url: https://learning.quantum.ibm.com/
+  license: free online (account required)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - EL-QUANT
+- id: mooc-modernrobotics
+  title: 'Modern Robotics: Mechanics, Planning, and Control'
+  authors:
+    - Kevin Lynch
+    - Frank Park
+  publisher: Northwestern University
+  year: 2019
+  url: http://modernrobotics.northwestern.edu
+  license: free online (book draft and videos)
+  status: open
+  status_date: 2026-07-20
+  kind: mooc
+  used_in:
+    - EL-ROBOT
+- id: dive-into-systems
+  title: Dive into Systems (v1.2)
+  authors:
+    - Suzanne Matthews
+    - Tia Newhall
+    - Kevin Webb
+  publisher: No Starch Press / diveintosystems.org
+  year: 2023
+  url: https://diveintosystems.org
+  license: CC BY-NC-ND 4.0 (free online edition)
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS1102
+    - CS1202
+    - CS2102
+- id: open-data-structures
+  title: Open Data Structures (Python edition)
+  authors:
+    - Pat Morin
+  publisher: self-published
+  year: 2013
+  url: https://www.opendatastructures.org/
+  license: CC BY 2.5 CA
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS1201
+  files:
+    - library/books/open-data-structures.pdf
+    - library/text/open-data-structures.txt
+- id: pythonds3-runestone
+  title: Problem Solving with Algorithms and Data Structures using Python (Runestone)
+  authors:
+    - Bradley Miller
+    - David Ranum
+  publisher: Runestone Academy
+  year: 2022
+  url: https://runestone.academy/ns/books/published/pythonds3/index.html
+  license: CC BY-NC-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS1201
+- id: pro-git
+  title: Pro Git (2nd ed.)
+  authors:
+    - Scott Chacon
+    - Ben Straub
+  publisher: Apress / git-scm.com
+  year: 2014
+  url: https://git-scm.com/book/en/v2
+  license: CC BY-NC-SA 3.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS1203
+  files:
+    - library/books/pro-git.epub
+    - library/text/pro-git.md
+- id: producing-oss
+  title: Producing Open Source Software (2nd ed.)
+  authors:
+    - Karl Fogel
+  publisher: self-published
+  year: 2023
+  url: https://producingoss.com/
+  license: CC BY-SA 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS4901
+    - CS4902
+  files:
+    - library/books/producing-oss.pdf
+    - library/text/producing-oss.txt
+- id: swe-google
+  title: Software Engineering at Google
+  authors:
+    - Titus Winters
+    - Tom Manshreck
+    - Hyrum Wright
+  publisher: O'Reilly / free HTML on abseil.io
+  year: 2020
+  url: https://abseil.io/resources/swe-book
+  license: CC BY-NC-ND 4.0 (free HTML edition)
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS2103
+    - CS3203
+    - CS4901
+- id: introtcs-barak
+  title: Introduction to Theoretical Computer Science
+  authors:
+    - Boaz Barak
+  publisher: introtcs.org
+  year: 2023
+  url: https://introtcs.org
+  license: CC BY-NC-ND 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS2203
+- id: data-feminism
+  title: Data Feminism
+  authors:
+    - Catherine D'Ignazio
+    - Lauren Klein
+  publisher: MIT Press (open access)
+  year: 2020
+  url: https://data-feminism.mitpress.mit.edu
+  license: CC BY-NC-ND 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS4101
+- id: design-justice
+  title: Design Justice
+  authors:
+    - Sasha Costanza-Chock
+  publisher: MIT Press (open access)
+  year: 2020
+  url: https://designjustice.mitpress.mit.edu
+  license: CC BY-NC-ND 4.0
+  status: open
+  status_date: 2026-07-20
+  kind: book
+  used_in:
+    - CS4101

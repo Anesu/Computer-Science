@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .firecrawl/
+
+# Personal library holdings (proprietary books + extracted text) — never commit
+library/
