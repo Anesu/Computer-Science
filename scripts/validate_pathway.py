@@ -145,6 +145,8 @@ def check_registry() -> dict:
         registry[rid] = e
         if e.get("status") not in STATUSES:
             err(f"registry '{rid}': illegal status '{e.get('status')}'")
+        if e.get("kind") and e["kind"] not in {"book", "mooc", "docs", "tool", "standard"}:
+            err(f"registry '{rid}': illegal kind '{e.get('kind')}'")
         for field in ("title", "authors", "license", "status"):
             if not e.get(field):
                 err(f"registry '{rid}': missing field '{field}'")

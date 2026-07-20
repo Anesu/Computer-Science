@@ -109,7 +109,7 @@ def md_to_mdx_body(body: str) -> str:
     return "\n".join(out).strip() + "\n"
 
 
-def course_page(cid: str, fm: dict, body: str) -> str:
+def course_page(cid: str, fm: dict, body: str, registry: dict) -> str:
     title = f"{cid} — {fm['title']}"
     desc = (f"Semester {fm['semester']} {TRACK_LABEL[fm['track']]} course, "
             f"{fm['credits']} credits.")
@@ -117,6 +117,16 @@ def course_page(cid: str, fm: dict, body: str) -> str:
     prov = (f"**Provenance:** churn `{fm.get('churn', 'stable')}` · "
             f"verified {fm.get('last_verified', '?')}"
             + (f" · sources: {sources}" if sources else ""))
+    moocs = [registry[s] for s in fm.get("sources", []) or []
+             if s in registry and registry[s].get("kind") == "mooc"]
+    lecture: list[str] = []
+    if moocs:
+        lecture = ["## Lecture track", ""]
+        for e in moocs:
+            authors = ", ".join(e.get("authors", []))
+            lecture.append(
+                f"- [{e['title']}]({e['url']}) — {authors} · {e.get('license', '?')}")
+        lecture.append("")
     lines = [
         "---",
         f"title: {json.dumps(title)}",
@@ -127,6 +137,7 @@ def course_page(cid: str, fm: dict, body: str) -> str:
         "---",
         "",
         md_to_mdx_body(body),
+        "\n".join(lecture),
         "---",
         "",
         prov,
@@ -157,6 +168,24 @@ def concept_page(cid: str, fm: dict, body: str) -> str:
         "",
     ]
     return "\n".join(lines)
+
+
+def parse_units(body: str) -> list[str]:
+    """Unit titles from a course spec's '## Units' numbered list."""
+    units = []
+    in_units = False
+    for line in body.split("\n"):
+        if line.startswith("## "):
+            in_units = line.strip().lower().startswith("## units")
+            continue
+        if in_units:
+            m = re.match(r"^\d+\.\s+(.*)", line.strip())
+            if m:
+                t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", m.group(1))
+                t = t.split(" — ")[0].strip()
+                if t and not t.startswith("_"):
+                    units.append(t)
+    return units
 
 
 # ── generated site pages ───────────────────────────────────────────────────
@@ -232,8 +261,8 @@ def library_page(registry: list) -> str:
         "**identified** — the programme wants it but it is not yet in the",
         "library; **ingested** — acquired and available locally.",
         "",
-        "| Source | Authors | License | Status | Used in |",
-        "|---|---|---|---|---|",
+        "| Source | Kind | Authors | License | Status | Used in |",
+        "|---|---|---|---|---|---|",
     ]
     for e in sorted(registry, key=lambda x: x["id"]):
         authors = ", ".join(e.get("authors", []))
@@ -241,7 +270,8 @@ def library_page(registry: list) -> str:
             f'[{c}](/courses/{c}/)' for c in e.get("used_in", [])) or "—"
         title = (f'[{e["title"]}]({e["url"]})' if e.get("url")
                  else e["title"])
-        lines.append(f'| {title} | {authors} | {e.get("license", "?")} '
+        lines.append(f'| {title} | {e.get("kind", "book")} | {authors} '
+                     f'| {e.get("license", "?")} '
                      f'| **{e["status"]}** | {used} |')
     lines.append("")
     return "\n".join(lines)
@@ -396,8 +426,11 @@ def main() -> int:
     data = load(PATHWAY)
     courses = {c["id"]: c for c in data["courses"]}
     registry = load(REGISTRY) or []
+    regmap = {e["id"]: e for e in registry}
 
     n = 0
+    course_sources: dict[str, list] = {}
+    course_units: dict[str, list] = {}
     for path in sorted(COURSES_SRC.glob("*.md")):
         text = path.read_text(encoding="utf-8")
         m = FRONTMATTER_RE.match(text)
@@ -405,14 +438,17 @@ def main() -> int:
             print(f"WARN: {path.name} has no frontmatter, skipped")
             continue
         fm = yaml.safe_load(m.group(1))
+        course_sources[fm["id"]] = fm.get("sources", []) or []
+        course_units[fm["id"]] = parse_units(text[m.end():])
         write(DOCS / "courses" / f'{fm["id"]}.mdx',
-              course_page(fm["id"], fm, text[m.end():]))
+              course_page(fm["id"], fm, text[m.end():], regmap))
         n += 1
 
     # Phase 3 concept documents: curriculum/<COURSE-ID>/**/*.md become pages
     # nested under the course, so authored knowledge lands on the site with
     # no extra wiring.
     nc = 0
+    concept_counts: dict[str, int] = {}
     for cdir in sorted(p for p in (ROOT / "curriculum").iterdir()
                        if p.is_dir() and p.name != "courses"):
         cid = cdir.name
@@ -426,6 +462,7 @@ def main() -> int:
             rel = path.relative_to(cdir).with_suffix("").as_posix()
             write(DOCS / "courses" / cid / f"{rel}.mdx",
                   concept_page(cid, fm, text[m.end():]))
+            concept_counts[cid] = concept_counts.get(cid, 0) + 1
             nc += 1
 
     write(DOCS / "courses" / "index.mdx", catalog_page(courses))
@@ -443,7 +480,14 @@ def main() -> int:
             {"id": c["id"], "title": c["title"], "semester": c["semester"],
              "credits": c["credits"], "track": c["track"],
              "kas": c.get("knowledge_areas", []),
-             "prereqs": c.get("prerequisites", [])}
+             "prereqs": c.get("prerequisites", []),
+             "lecture": [
+                 {"title": regmap[s]["title"], "url": regmap[s]["url"]}
+                 for s in course_sources.get(c["id"], [])
+                 if s in regmap and regmap[s].get("kind") == "mooc"
+             ],
+             "units": course_units.get(c["id"], []),
+             "concepts": concept_counts.get(c["id"], 0)}
             for c in sorted(courses.values(), key=lambda x: x["id"])
         ],
     }
