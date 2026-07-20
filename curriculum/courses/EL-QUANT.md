@@ -8,7 +8,7 @@ knowledge_areas: [AL, MSF]
 prerequisites: [MA1201]
 churn: stable
 last_verified: 2026-07-19
-sources: [nielsen-chuang]
+sources: [nielsen-chuang, mooc-ibm-quantum]
 ---
 
 # EL-QUANT — Quantum Computing

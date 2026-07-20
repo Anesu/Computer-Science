@@ -8,7 +8,7 @@ knowledge_areas: [GIT]
 prerequisites: [MA1201, CS1201]
 churn: stable
 last_verified: 2026-07-19
-sources: [cg-from-scratch]
+sources: [cg-from-scratch, mooc-ucsd-graphics]
 ---
 
 # EL-GRAPH — Computer Graphics

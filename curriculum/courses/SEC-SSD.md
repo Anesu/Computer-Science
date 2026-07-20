@@ -8,7 +8,7 @@ knowledge_areas: [SEC, SE]
 prerequisites: [CS3104, CS2103]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-lf-securedev]
 ---
 
 # SEC-SSD — Secure Software Development

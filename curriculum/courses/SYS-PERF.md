@@ -8,7 +8,7 @@ knowledge_areas: [AR, SF]
 prerequisites: [CS2102, CS2201]
 churn: stable
 last_verified: 2026-07-19
-sources: [sysperf-gregg]
+sources: [sysperf-gregg, mooc-6172]
 ---
 
 # SYS-PERF — Performance Engineering

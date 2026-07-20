@@ -8,7 +8,7 @@ knowledge_areas: [SEC, SEP]
 prerequisites: [CS3104]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-dataprivacy]
 ---
 
 # SEC-PRIV — Privacy Engineering

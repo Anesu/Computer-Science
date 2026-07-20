@@ -8,7 +8,7 @@ knowledge_areas: [AI]
 prerequisites: [CS3102, MA2101]
 churn: stable
 last_verified: 2026-07-19
-sources: [sutton-barto]
+sources: [sutton-barto, mooc-silver-rl]
 ---
 
 # AI-RL — Reinforcement Learning

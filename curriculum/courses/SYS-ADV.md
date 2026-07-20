@@ -8,7 +8,7 @@ knowledge_areas: [OS]
 prerequisites: [CS2201]
 churn: stable
 last_verified: 2026-07-19
-sources: [ostep]
+sources: [ostep, mooc-61810]
 ---
 
 # SYS-ADV — Advanced Operating Systems

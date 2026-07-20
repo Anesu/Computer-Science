@@ -8,7 +8,7 @@ knowledge_areas: [AI, SE, SPD]
 prerequisites: [CS3102, CS3203]
 churn: stable
 last_verified: 2026-07-19
-sources: [anthropic-docs]
+sources: [anthropic-docs, mooc-madewithml]
 ---
 
 # AI-MLOPS — MLOps & Production ML

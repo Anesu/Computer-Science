@@ -8,7 +8,7 @@ knowledge_areas: [SEC, NC]
 prerequisites: [CS3104, CS3101]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-nptel-netsec]
 ---
 
 # SEC-NET — Network Security

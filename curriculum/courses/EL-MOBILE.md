@@ -8,7 +8,7 @@ knowledge_areas: [SPD, HCI]
 prerequisites: [CS1203]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-flutter-labs]
 ---
 
 # EL-MOBILE — Mobile & Cross-Platform Development

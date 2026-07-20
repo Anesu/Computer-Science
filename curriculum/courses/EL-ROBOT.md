@@ -8,7 +8,7 @@ knowledge_areas: [AI, SPD]
 prerequisites: [CS3102]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-modernrobotics]
 ---
 
 # EL-ROBOT — Robotics & Embedded AI

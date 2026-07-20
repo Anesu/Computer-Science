@@ -8,7 +8,7 @@ knowledge_areas: [FPL, SF]
 prerequisites: [CS3103]
 churn: stable
 last_verified: 2026-07-19
-sources: [crafting-interpreters]
+sources: [crafting-interpreters, mooc-stanford-compilers]
 ---
 
 # SYS-COMP — Compilers

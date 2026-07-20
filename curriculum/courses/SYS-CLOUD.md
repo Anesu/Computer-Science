@@ -8,7 +8,7 @@ knowledge_areas: [PDC, SPD]
 prerequisites: [CS3201]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-cloud-concepts]
 ---
 
 # SYS-CLOUD — Cloud Infrastructure & Virtualization

@@ -8,7 +8,7 @@ knowledge_areas: [AI]
 prerequisites: [CS3102]
 churn: stable
 last_verified: 2026-07-19
-sources: [d2l, goodfellow-dl]
+sources: [d2l, goodfellow-dl, mooc-fastai]
 ---
 
 # AI-DL — Deep Learning

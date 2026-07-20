@@ -8,7 +8,7 @@ knowledge_areas: [AI, SEP]
 prerequisites: [CS3102]
 churn: stable
 last_verified: 2026-07-19
-sources: []
+sources: [mooc-aisafety]
 ---
 
 # AI-SAFE — AI Safety & Alignment

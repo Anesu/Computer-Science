@@ -8,7 +8,7 @@ knowledge_areas: [AI]
 prerequisites: [AI-DL]
 churn: stable
 last_verified: 2026-07-19
-sources: [slp3]
+sources: [slp3, mooc-cs224n]
 ---
 
 # AI-NLP — NLP & Large Language Models

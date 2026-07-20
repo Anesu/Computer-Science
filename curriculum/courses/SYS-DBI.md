@@ -8,7 +8,7 @@ knowledge_areas: [DM, OS]
 prerequisites: [CS2202, CS2201]
 churn: stable
 last_verified: 2026-07-19
-sources: [db-internals, ddia]
+sources: [db-internals, ddia, mooc-15445]
 ---
 
 # SYS-DBI — Database Internals
