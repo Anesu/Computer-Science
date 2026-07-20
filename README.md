@@ -26,6 +26,16 @@ delivered to learners by [Matt Pocock's `/teach` skill](https://github.com/mattp
 | `scripts/validate_pathway.py` | CI validator: DAG integrity, KA coverage, registry refs |
 | `scripts/scaffold_courses.py` | Scaffold-once generator for `curriculum/courses/` |
 | `scripts/build_site_docs.py` | Deterministic curriculum→site transform (pages, SVG map, data) |
+| `planning/06-resource-gaps-and-reading-plan.md` | Per-course sourcing plan: ingest list, personal-reading list |
+| `planning/07-superiority-program.md` | S1–S10 program: MOOC bridge, SRS, grading, mastery, dashboard, CI |
+| `planning/08-ossu-cross-audit.md` | OSSU section-by-section diff: no structural holes, 2 findings |
+| `assess/<COURSE>/<NN-unit>/` | Graded exercise harnesses (`exercises.py` stubs + `test_unit.py` checks) |
+| `cards/` | Generated Anki decks (TSV) from concept docs |
+| `scripts/grade.py` | check50-style exercise runner: `grade.py CS1101 01` |
+| `scripts/cards.py` | Concept docs → Anki TSV decks (stable GUIDs, FSRS-ready) |
+| `scripts/portfolio.py` | progress.yaml → self-contained portfolio HTML |
+| `scripts/check_links.py` | Registry URL churn check (weekly CI) |
+| `scripts/university.cmd` | One-click campus launcher (desktop icon: "The University") |
 
 ## Working with the source registry
 
@@ -65,10 +75,13 @@ Runs in CI on every push touching `curriculum/`, `resources/`, or `scripts/`.
 
 ## The site
 
+Double-click **The University** on your desktop (or run
+`scripts/university.cmd`): regenerates content, starts Blume, opens the
+browser. Manual equivalent:
+
 ```
 cd site && npm install
-npm run dev            # live dev server
-npx blume build --strict && (cd dist && python -m http.server 8080)
+npx blume dev --port 4321 --open
 ```
 
 After editing curriculum data, regenerate everything generated:
@@ -87,9 +100,15 @@ belongs here).
 - [x] Phase 0 — Charter
 - [x] Phase 1 — Scaffold (ontology, pathway DAG, OKF profile, validator, coverage matrix, registry)
 - [x] Phase 2 — Course specs: all 45 scaffolded with reading lists + `/teach` missions (authoring enriches them over time)
-- [ ] Phase 3 — Knowledge base (OKF concept documents, in prerequisite order)
+- [~] Phase 3 — Knowledge base (OKF concept documents, in prerequisite order; CS1101 pilot live, coverage metric on the dashboard)
 - [ ] Phase 4 — `/teach` delivery integration, one-course pilot (site side done: missions on every course page, agent surface built)
-- [ ] Phase 5 — Sustainment (refresh policy on `churn`/`last_verified`)
+- [ ] Phase 5 — Sustainment (refresh policy on `churn`/`last_verified`; registry link-rot checked weekly in CI)
+
+Superiority program (planning/07, 2026-07-20) — complete: MOOC lecture
+tracks on all 45 courses, P0 open texts ingested, Anki deck pipeline,
+check50-style grading harness (CS1101 pilot), per-unit mastery model,
+dashboard (Today widget, streak, pace projection), portfolio generator,
+link-rot CI, OSSU cross-audit.
 
 Frontend (planning/05): FE-1 skeleton ✅ · FE-2 progress dashboard ✅ ·
 FE-3 pathway map ✅ · FE-4 curriculum→site transform ✅ · FE-5 VPS promotion
