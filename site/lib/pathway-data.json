@@ -31,7 +31,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Practical Deep Learning for Coders",
+          "url": "https://course.fast.ai/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "AI-MLOPS",
@@ -47,7 +55,15 @@
       "prereqs": [
         "CS3102",
         "CS3203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Made With ML",
+          "url": "https://madewithml.com/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "AI-NLP",
@@ -60,7 +76,15 @@
       ],
       "prereqs": [
         "AI-DL"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Natural Language Processing with Deep Learning (Stanford CS224n)",
+          "url": "https://web.stanford.edu/class/cs224n/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "AI-RL",
@@ -74,7 +98,15 @@
       "prereqs": [
         "CS3102",
         "MA2101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Reinforcement Learning (UCL, David Silver)",
+          "url": "https://www.davidsilver.uk/teaching/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "AI-SAFE",
@@ -88,7 +120,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "AI Safety Fundamentals",
+          "url": "https://aisafetyfundamentals.com/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS1101",
@@ -100,7 +140,23 @@
         "SDF",
         "SEP"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "lecture": [
+        {
+          "title": "CS50's Introduction to Programming with Python",
+          "url": "https://cs50.harvard.edu/python/"
+        }
+      ],
+      "units": [
+        "Values, types, and expressions",
+        "Control flow and iteration",
+        "Functions and decomposition",
+        "Recursion",
+        "Collections: lists, dicts, sets",
+        "Files and errors",
+        "A first project"
+      ],
+      "concepts": 1
     },
     {
       "id": "CS1102",
@@ -112,7 +168,15 @@
         "SF",
         "AR"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "lecture": [
+        {
+          "title": "Build a Modern Computer from First Principles (Nand to Tetris, Parts I & II)",
+          "url": "https://www.coursera.org/learn/build-a-computer"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS1201",
@@ -127,7 +191,15 @@
       "prereqs": [
         "CS1101",
         "MA1101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Algorithms, Part I (Princeton)",
+          "url": "https://www.coursera.org/learn/algorithms-part1"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS1202",
@@ -143,7 +215,15 @@
       "prereqs": [
         "CS1101",
         "CS1102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "CMU 15-213 Introduction to Computer Systems (recorded lectures)",
+          "url": "http://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS1203",
@@ -158,7 +238,24 @@
       ],
       "prereqs": [
         "CS1101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "The Missing Semester of Your CS Education",
+          "url": "https://missing.csail.mit.edu"
+        }
+      ],
+      "units": [
+        "The Unix shell and scripting",
+        "Editors and development environments",
+        "Version control with Git",
+        "Data wrangling on the command line",
+        "Debugging and profiling",
+        "Automated testing",
+        "Build systems, packages, and releases",
+        "Security hygiene for developers"
+      ],
+      "concepts": 0
     },
     {
       "id": "CS2101",
@@ -172,7 +269,15 @@
       "prereqs": [
         "CS1201",
         "MA1101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Algorithms Illuminated (videos and book site)",
+          "url": "https://www.algorithmsilluminated.org/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS2102",
@@ -185,7 +290,15 @@
       ],
       "prereqs": [
         "CS1202"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Computation Structures (MIT OCW 6.004)",
+          "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS2103",
@@ -199,7 +312,24 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "UBC CPSC 310 Introduction to Software Engineering (course resources)",
+          "url": "https://github.com/ubccpsc/310"
+        }
+      ],
+      "units": [
+        "Complexity and modular design",
+        "API and interface design",
+        "Testing strategy: unit, integration, end-to-end",
+        "Code review and collaboration workflows",
+        "Refactoring and technical debt",
+        "Engineering at scale: CI/CD, versioning, releases",
+        "Requirements, architecture, and documentation",
+        "Professional practice and ethics"
+      ],
+      "concepts": 0
     },
     {
       "id": "CS2201",
@@ -213,7 +343,15 @@
       "prereqs": [
         "CS2102",
         "CS1202"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "MIT 6.1810 Operating System Engineering",
+          "url": "https://pdos.csail.mit.edu/6.1810/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS2202",
@@ -226,7 +364,15 @@
       ],
       "prereqs": [
         "CS1201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Databases (Stanford Online mini-courses)",
+          "url": "https://www.edx.org/learn/databases/stanford-university-databases-modeling-and-theory"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS2203",
@@ -239,7 +385,15 @@
       ],
       "prereqs": [
         "MA1101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Theory of Computation (MIT OCW 18.404J, Sipser lectures)",
+          "url": "https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS2204",
@@ -253,7 +407,15 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Human-Computer Interaction (UCSD / Coursera)",
+          "url": "https://www.coursera.org/learn/human-computer-interaction"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3101",
@@ -266,7 +428,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Computer Networking online lectures (Kurose & Ross)",
+          "url": "https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3102",
@@ -282,7 +452,15 @@
         "MA1201",
         "MA2101",
         "CS1201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Machine Learning Specialization",
+          "url": "https://www.deeplearning.ai/courses/machine-learning-specialization/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3103",
@@ -296,7 +474,15 @@
       "prereqs": [
         "CS1202",
         "CS2203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Programming Languages (UW CSE 341)",
+          "url": "https://courses.cs.washington.edu/courses/cse341/19sp/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3104",
@@ -309,7 +495,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Cybersecurity Fundamentals (RIT / edX)",
+          "url": "https://www.edx.org/learn/cybersecurity/rochester-institute-of-technology-cybersecurity-fundamentals"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3201",
@@ -323,7 +517,15 @@
       "prereqs": [
         "CS3101",
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "MIT 6.824 Distributed Systems",
+          "url": "https://pdos.csail.mit.edu/6.824/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3202",
@@ -339,7 +541,15 @@
       "prereqs": [
         "CS3102",
         "CS2103"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "LLM Course (roadmap, notebooks, fundamentals)",
+          "url": "https://github.com/mlabonne/llm-course"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS3203",
@@ -354,7 +564,15 @@
       "prereqs": [
         "CS2103",
         "CS2202"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Computer System Engineering (MIT OCW 6.033)",
+          "url": "https://ocw.mit.edu/courses/6-033-computer-system-engineering-spring-2018/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS4101",
@@ -367,7 +585,15 @@
       ],
       "prereqs": [
         "CS2103"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Ethics, Technology and Engineering (TU Eindhoven / Coursera)",
+          "url": "https://www.coursera.org/learn/ethics-technology-engineering"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS4901",
@@ -381,7 +607,15 @@
       ],
       "prereqs": [
         "CS3203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Full Stack Open",
+          "url": "https://fullstackopen.com/en/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "CS4902",
@@ -395,7 +629,15 @@
       ],
       "prereqs": [
         "CS4901"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Full Stack Open",
+          "url": "https://fullstackopen.com/en/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "EL-GRAPH",
@@ -409,7 +651,15 @@
       "prereqs": [
         "MA1201",
         "CS1201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Computer Graphics (UCSD / edX)",
+          "url": "https://www.edx.org/learn/computer-graphics/the-university-of-california-san-diego-computer-graphics"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "EL-MOBILE",
@@ -423,7 +673,15 @@
       ],
       "prereqs": [
         "CS1203"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Flutter Codelabs",
+          "url": "https://codelabs.developers.google.com/?product=flutter"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "EL-QUANT",
@@ -437,7 +695,15 @@
       ],
       "prereqs": [
         "MA1201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "IBM Quantum Learning",
+          "url": "https://learning.quantum.ibm.com/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "EL-ROBOT",
@@ -451,7 +717,15 @@
       ],
       "prereqs": [
         "CS3102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Modern Robotics: Mechanics, Planning, and Control",
+          "url": "http://modernrobotics.northwestern.edu"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "MA1101",
@@ -462,7 +736,15 @@
       "kas": [
         "MSF"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "lecture": [
+        {
+          "title": "Mathematics for Computer Science (MITx 6.042J, Open Learning Library)",
+          "url": "https://openlearninglibrary.mit.edu/courses/course-v1:OCW+6.042J+2T2019/about"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "MA1102",
@@ -473,7 +755,15 @@
       "kas": [
         "MSF"
       ],
-      "prereqs": []
+      "prereqs": [],
+      "lecture": [
+        {
+          "title": "Single Variable Calculus (MIT OCW 18.01SC)",
+          "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "MA1201",
@@ -486,7 +776,15 @@
       ],
       "prereqs": [
         "MA1102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Linear Algebra (MIT OCW 18.06, Strang lectures)",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "MA2101",
@@ -499,7 +797,15 @@
       ],
       "prereqs": [
         "MA1102"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Stat 110: Probability (Harvard)",
+          "url": "https://stat110.hsites.harvard.edu/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SEC-CRYPTO",
@@ -514,7 +820,15 @@
       "prereqs": [
         "CS3104",
         "MA1101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Cryptography I (Stanford / Coursera)",
+          "url": "https://www.coursera.org/learn/crypto"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SEC-NET",
@@ -529,7 +843,15 @@
       "prereqs": [
         "CS3104",
         "CS3101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Cryptography and Network Security (NPTEL, IIT Kharagpur)",
+          "url": "https://nptel.ac.in/courses/106105031"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SEC-OFFDEF",
@@ -543,7 +865,15 @@
       "prereqs": [
         "CS3104",
         "CS3101"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Web Security Academy",
+          "url": "https://portswigger.net/web-security"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SEC-PRIV",
@@ -557,7 +887,15 @@
       ],
       "prereqs": [
         "CS3104"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Data Privacy Fundamentals (Northeastern / Coursera)",
+          "url": "https://www.coursera.org/learn/northeastern-data-privacy"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SEC-SSD",
@@ -572,7 +910,15 @@
       "prereqs": [
         "CS3104",
         "CS2103"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Secure Software Development (Linux Foundation / edX)",
+          "url": "https://www.edx.org/learn/software-development/the-linux-foundation-secure-software-development-requirements-design-and-reuse"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SYS-ADV",
@@ -585,7 +931,15 @@
       ],
       "prereqs": [
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "MIT 6.1810 Operating System Engineering",
+          "url": "https://pdos.csail.mit.edu/6.1810/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SYS-CLOUD",
@@ -599,7 +953,15 @@
       ],
       "prereqs": [
         "CS3201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Cloud Computing Concepts (UIUC / Coursera)",
+          "url": "https://www.coursera.org/learn/cloud-computing"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SYS-COMP",
@@ -613,7 +975,15 @@
       ],
       "prereqs": [
         "CS3103"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Compilers (Stanford / edX)",
+          "url": "https://www.edx.org/learn/computer-science/stanford-university-compilers"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SYS-DBI",
@@ -628,7 +998,15 @@
       "prereqs": [
         "CS2202",
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "CMU 15-445 Database Systems",
+          "url": "https://15445.courses.cs.cmu.edu/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     },
     {
       "id": "SYS-PERF",
@@ -643,7 +1021,15 @@
       "prereqs": [
         "CS2102",
         "CS2201"
-      ]
+      ],
+      "lecture": [
+        {
+          "title": "Performance Engineering of Software Systems (MIT OCW 6.172)",
+          "url": "https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/"
+        }
+      ],
+      "units": [],
+      "concepts": 0
     }
   ]
 }
