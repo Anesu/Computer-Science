@@ -1,0 +1,12 @@
+#separator:tab
+#html:true
+#notetype:Basic
+#deck:OpenCS::CS1101
+#guid column:1
+#tags column:4
+58f4031c8b4d	Values, types, and expressions: explain — values	Every program, no matter how large, is built from three things you can learn in an afternoon: <b>values</b> (the data), <b>types</b> (what kind of data), and <b>expressions</b> (recipes that combine values into new values). Master how these three interact and the rest of programming becomes arrangement rather than mystery.<br><br><i>CS1101 · unit 1 · Values, types, and expressions</i>	opencs CS1101 unit1
+aed4b476a67f	Values, types, and expressions — Every value has exactly one type: explain — Operations are type-directed.	1. <b>Operations are type-directed.</b> <code>+</code> on two ints is addition; <code>+</code> on two strings is concatenation; <code>+</code> on an int and a string is an error. The operator did not change — the types chose the behavior. 2. <b>Conversion is explicit.</b> <code>int(&quot;42&quot;)</code> and <code>str(42)</code> cross the boundary deliberately. Languages that convert silently for you are making a bet on your intent; Python mostly refuses to.<br><br><i>CS1101 · unit 1 · Values, types, and expressions</i>	opencs CS1101 unit1
+2d693f0ef0db	Values, types, and expressions: Reduce <code>3 * (2 + len(&quot;abc&quot;)) - 1</code> to a value, one step per line.	Answer from memory, then verify against CS1101 unit 1 — Values, types, and expressions (&quot;Check yourself&quot;).	opencs CS1101 unit1 check
+34d328026e0e	Values, types, and expressions: What type is the value of <code>7 / 2</code>? Of <code>7 // 2</code>? Explain the difference.	Answer from memory, then verify against CS1101 unit 1 — Values, types, and expressions (&quot;Check yourself&quot;).	opencs CS1101 unit1 check
+f18a72fb687a	Values, types, and expressions: After <code>a = &quot;3&quot;</code> then <code>b = a * 2</code>, what is <code>b</code> and what is its type? Why	Answer from memory, then verify against CS1101 unit 1 — Values, types, and expressions (&quot;Check yourself&quot;).	opencs CS1101 unit1 check
+4584f39972a9	Values, types, and expressions: Why does <code>&quot;credits: &quot; + 4</code> raise an error while <code>&quot;credits: &quot; + str(4)</code>	Answer from memory, then verify against CS1101 unit 1 — Values, types, and expressions (&quot;Check yourself&quot;).	opencs CS1101 unit1 check
