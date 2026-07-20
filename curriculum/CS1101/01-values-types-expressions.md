@@ -86,6 +86,19 @@ name never changes the value it used to point at; it just moves the label.
 4. Why does `"credits: " + 4` raise an error while `"credits: " + str(4)`
    does not? What decided?
 
+## Build this
+
+Work the exercises for this unit in
+`assess/CS1101/01-values-types-expressions/exercises.py` — four small
+functions (`type_name`, `to_number`, `repeat_word`, `division_types`) that
+pin down the ideas above. Run the checks:
+
+```
+python3 scripts/grade.py CS1101 01
+```
+
+Aim for 6/6 before moving to unit 2.
+
 ## Where to read more
 
 - *Composing Programs* §1.1–1.2 — expressions and the elements of
